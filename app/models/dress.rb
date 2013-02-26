@@ -6,7 +6,7 @@ class Dress < ActiveRecord::Base
   validates :size, :presence => true
   validates :photo_blob, :presence => true
 
-  before_save :convert_dollars
+  # before_save :convert_dollars
   before_save :cleanup_brand_and_color
 
   has_many :body_type_dresses

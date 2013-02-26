@@ -7,7 +7,7 @@ DressShare::Application.routes.draw do
     end
   end
 
-  # root :to => "dresses#index"
+  root :to => "dresses#index"
 
   devise_scope :user do
     get "/signin", :to => "devise/sessions#new"
@@ -16,10 +16,7 @@ DressShare::Application.routes.draw do
   end
 
    resources :users, :only=> :show
-  #   member do
-  #     get "my_dresses"
-  #   end
-  # end
+
   get "/contact_us", :to => "static_pages#contact"
   get "/about_us", :to => "static_pages#about"
   get "/our_story", :to => "static_pages#story"

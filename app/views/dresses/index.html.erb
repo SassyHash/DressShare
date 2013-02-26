@@ -3,3 +3,9 @@
 <h1>The Closet</h1>
 
 <%= render :partial => 'shared/show_dresses', :locals => {:dresses => @dresses} %>
+
+</ul>
+<div class=row>
+<%= link_to "Add Your Dress", new_dress_path %>
+<%= link_to "Your Dresses", user_path(current_user) %>
+</div>

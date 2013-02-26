@@ -1,23 +1,40 @@
- <ul>
-<%= dresses.each_with_index do |dress, i| %>
-  <ul>
+<ul>
+<% dresses.each_with_index do |dress, i| %>
+  <li><ul>
   <%= link_to "Dress #{i+1}", dress_path(dress) %></b>
-  <li class='thumbnail'><%= image_tag photo_dress_url(dress) %></div>
+  <span class="thumbnail">
+  <li><%= image_tag photo_dress_url(dress) %>
+  </span>
+  <span class="text">
   <li>Brand: <%= dress.brand %></li>
   <li>Color: <%= dress.color %></li>
   <li>Size: <%= dress.size %></li>
   <li>Flattering On: <%= dress.body_types_string %></li>
   <li>Rental Price: <%= dress.rent %></li>
   <li>Comments: <%= dress.notes %></li>
+  </span>
 
-  <% if current_user.id == dress.owner_id %>
-      <small><%= link_to "Edit Dress", edit_dress_path(dress) %></small>
+  <% if current_user && current_user.id == dress.owner_id %>
+      <%= link_to "Edit Dress", edit_dress_path(dress) %>
+      <%#= link_to(image_tag('/images/trash.png', :alt => 'Remove'), dress, :class => 'delete' %>
   <% end %>
   </ul>
+</li>
   <hr>
 <% end %>
-</ul>
-<div class= row>
-<%= link_to "Add A New Dress", new_dress_path %>
-<br>
-</div>
+
+<script type="text/javascript">
+  $('a.delete').click (function(){
+        if(confirm("Are you sure?")){
+            var row = $(this).closest("tr").get(0);
+            $.post(this.href, {_method:'delete'}, null, "script");
+            $(row).hide();
+            return false;
+        } else {
+            //they clicked no.
+            return false;
+        }
+
+});
+
+</script>

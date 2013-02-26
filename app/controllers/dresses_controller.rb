@@ -15,7 +15,6 @@ class DressesController < ApplicationController
       flash[:notices] << "Your dress is hung in our closet!"
       redirect_to dress_path(@dress)
     else
-      p @dress.errors
       render 'new'
     end
   end
@@ -29,10 +28,17 @@ class DressesController < ApplicationController
   end
 
   def update
-
+    @dress = Dress.find(params[:id])
+    @dress.update_attributes(params[:dress])
+    if @dress.save
+      render 'show'
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @dress = Dress.find(params[:id])
   end
 
   def index

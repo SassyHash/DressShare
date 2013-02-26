@@ -1,25 +1,17 @@
-<title>Rent Out Your Dress</title>
-<h1>Add A Dress <br>
-<small>Easier Way to Make Money Than Babysitting</small></h1>
-<hr>
 <h2>About Your Dress</h2>
-
 <p> * Marks mandatory fields. </p>
+<%= simple_form_for dress do |f| %>
+  <% if dress.errors.any? %>
+    <% render :partial => "shared/error_messages", :locals => {:object => dress} %>
+  <% end %>
 
-<%= simple_form_for @dress do |f| %>
-<div class="form-inputs">
-
-  <%= f.error_notification %>
+  <div class="form-inputs">
   <%= f.input :brand %>
   <%= f.input :color %>
   <%= f.input :size, :label => "Fits like a size X. (I wish Sisterhood of Traveling Pants existed too.)", :item_wrapper_class => 'inline', :collection => Dress::SIZES, :as => :radio_buttons%>
-  <br>
   <%= f.association :body_types, :label_method=> :label, :as => :check_boxes%>
-  <br>
-  <%= f.input :rent, :hint => " No Collis Baked Goods: In USD only. (Dresses are rented for 2 days.)" %>
-  <br>
+  <%= f.input :rent, :hint => "($0 if free.) Rent is for 2 days. Dollars only. No Collis Baked Goods!" %>
   <%= f.input :photo_blob, :as => :file, :label => "A picture's worth a thousand words." %>
-  <br>
   <%= f.input :notes, :label => "Notes. Special instructions. Memories about that time you wore this to formal and ... Nevermind." %>
   </div>
 
