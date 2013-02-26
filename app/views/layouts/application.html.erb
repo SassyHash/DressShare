@@ -15,10 +15,12 @@
         <%= link_to "Dress Share", signin_path, class: "brand" %>
         <ul class="nav">
 
-          <%if current_user == nil %>
-            <li><%= link_to "Log-In", signin_path %></li>
-          <%else%>
+          <%if user_signed_in? %>
             <li><%= link_to "Sign-Out", signout_path, method: :delete %></li>
+            <li><%= link_to "My Page", user_path(current_user)%></li>
+          <% else %>
+            <li><%= link_to "Log-In", signin_path %></li>
+            <li><%= link_to "Sign-Up", signup_path %></li>
           <%end%>
 
           <li><%= link_to "Home", signin_path %></li>
@@ -26,13 +28,8 @@
           <li><%= link_to "Contact",  contact_us_path %></li>
           <li><%= link_to "Our Story", our_story_path %></li>
           <li><%= link_to "Legal Stuff", legal_stuff_path %></li>
+          <li><%= link_to "The Closet", dresses_path %></li>
 
-          <%if session[:session_token] %>
-            <li><%= link_to "My Page", user_path(User.find(session[:current_user_id]))%></li>
-            <li><%= link_to "The Closet", dresses_path %></li>
-          <% else %>
-            <li><%= link_to "Sign-Up", signup_path %></li>
-          <%end%>
         </ul>
       </div>
     </header>

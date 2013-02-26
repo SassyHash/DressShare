@@ -9,6 +9,13 @@ gem 'sqlite3'
 gem 'twitter-bootstrap-rails'
 gem 'simple_form'
 
+group :development do
+  gem 'launchy', '~> 2.2.0'
+  gem "letter_opener"
+
+  gem "better_errors"
+
+end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

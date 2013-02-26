@@ -7,5 +7,7 @@
 </ul>
 <div class=row>
 <%= link_to "Add Your Dress", new_dress_path %>
-<%= link_to "Your Dresses", user_path(current_user) %>
+<% if user_signed_in? %>
+  <%= link_to "Your Dresses", user_path(current_user) %>
+<% end %>
 </div>

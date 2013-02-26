@@ -14,9 +14,11 @@
   <li>Comments: <%= dress.notes %></li>
   </span>
 
-  <% if current_user && current_user.id == dress.owner_id %>
+  <% if current_user %>
+    <% if current_user.id == dress.owner_id %>
       <%= link_to "Edit Dress", edit_dress_path(dress) %>
       <%#= link_to(image_tag('/images/trash.png', :alt => 'Remove'), dress, :class => 'delete' %>
+    <% end %>
   <% end %>
   </ul>
 </li>

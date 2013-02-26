@@ -31,7 +31,9 @@ class DressesController < ApplicationController
     @dress = Dress.find(params[:id])
     @dress.update_attributes(params[:dress])
     if @dress.save
-      render 'show'
+      flash[:notices] = [] unless flash[:notices]
+      flash[:notices] << "Your dress has been updated."
+      redirect_to dress_path(@dress)
     else
       render 'edit'
     end
