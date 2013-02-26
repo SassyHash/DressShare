@@ -36,7 +36,7 @@ class DressesController < ApplicationController
   end
 
   def index
-    @dress = Dress.all
+    @dresses = Dress.all
   end
 
 

@@ -1,0 +1,24 @@
+<h1> partial showing </h1>
+<%= dresses.each_with_index do |dress, i| %>
+  <ul>
+  <%= link_to "Dress #{i+1}", dress_path(dress) %></b>
+  <li class='thumbnail'><%= image_tag photo_dress_url(dress) %></div>
+  <li>Brand: <%= dress.brand %></li>
+  <li>Color: <%= dress.color %></li>
+  <li>Size: <%= dress.size %></li>
+  <li>Flattering On: <%= dress.body_types_string %></li>
+  <li>Rental Price: <%= dress.rent %></li>
+  <li>Comments: <%= dress.notes %></li>
+
+  <%= if current_user.id == dress.owner_id do %>
+  <small><%= link_to "Edit Dress", edit_dress_path(dress) %></small>
+  <% end %>
+  </ul>
+    <hr>
+<% end %>
+<br>
+<br>
+<div class= row>
+<%= link_to "Add A New Dress", new_dress_path %>
+<br>
+</div>
