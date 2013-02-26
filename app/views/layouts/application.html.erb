@@ -8,7 +8,51 @@
 </head>
 <body>
 
+ <div class="container">
+    <header class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <%= link_to "Dress Share", signin_path, class: "brand" %>
+        <ul class="nav">
+
+          <%if current_user == nil %>
+            <li><%= link_to "Log-In", signin_path %></li>
+          <%else%>
+            <li><%= link_to "Sign-Out", signout_path, method: :delete %></li>
+          <%end%>
+
+          <li><%= link_to "Home", signin_path %></li>
+          <li><%= link_to "About Us", about_us_path %></li>
+          <li><%= link_to "Contact",  contact_us_path %></li>
+          <li><%= link_to "Our Story", our_story_path %></li>
+          <li><%= link_to "Legal Stuff", legal_stuff_path %></li>
+
+          <%if session[:session_token] %>
+            <li><%= link_to "My Page", user_path(User.find(session[:current_user_id]))%></li>
+            <li><%= link_to "The Closet", dresses_path %></li>
+          <% else %>
+            <li><%= link_to "Sign-Up", signup_path %></li>
+          <%end%>
+        </ul>
+      </div>
+    </header>
+
+
+  <% if flash[:error] %>
+  <div class="alert alert-error"><%= flash[:error] %></div>
+  <% end %>
+
+  <% if flash[:success] %>
+  <div class="alert alert-success"><%= flash[:success] %></div>
+  <% end %>
+
 <%= yield %>
+
+  <footer>
+    <hr>
+    &copy; {Sassy Hash} 2013
+  </footer
+
+</div>
 
 </body>
 </html>

@@ -5,5 +5,5 @@ class BodyType < ActiveRecord::Base
   has_many :dresses, :through => :body_type_dresses
 
   validates :label, :presence => true
-  
+
 end

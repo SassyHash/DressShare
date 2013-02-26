@@ -1,4 +1,30 @@
 DressShare::Application.routes.draw do
+  devise_for :users
+  resources :static_pages
+  resources :dresses do
+    member do
+      get "photo"
+    end
+  end
+
+  # root :to => "dresses#index"
+
+  devise_scope :user do
+    get "/signin", :to => "devise/sessions#new"
+    delete "/signout", :to => "devise/sessions#destroy"
+    get "/signup", :to => "devise/registrations#new"
+  end
+
+   resources :users, :only=> :show
+  #   member do
+  #     get "my_dresses"
+  #   end
+  # end
+  get "/contact_us", :to => "static_pages#contact"
+  get "/about_us", :to => "static_pages#about"
+  get "/our_story", :to => "static_pages#story"
+  get "/legal_stuff", :to => "static_pages#legal"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

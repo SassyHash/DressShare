@@ -4,7 +4,4 @@ class BodyTypeDress < ActiveRecord::Base
   belongs_to :dress
   belongs_to :body_type
 
-  validates :body_type, :presence => true
-  validates :dress_id, :presence => true
-  
 end

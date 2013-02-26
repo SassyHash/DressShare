@@ -1,0 +1,20 @@
+<title> Dress Page</title>
+<h2>
+    <%= "Dress #{current_user.dresses.index(@dress)+1}" %>
+    </h2>
+    <div class='img' ><%= image_tag photo_dress_url(@dress) %></div>
+    <ul class='description'>
+        <li style="padding-top: 30px">Brand: <%= @dress.brand %></li>
+        <li>Color: <%= @dress.color %></li>
+        <li>Size: <%= @dress.size %></li>
+        <li>Flattering On: <%= @dress.body_types_string %></li>
+        <li>Rental Price: <%= @dress.rent %></li>
+        <li>Comments: <%= @dress.notes %></li>
+    </ul>
+<hr style="clear:both;">
+<div >
+    <p><%= link_to "Edit This Dress", edit_dress_path(@dress) %></p>
+    <p><%= link_to "Add A Dress", new_dress_path %></p>
+    <p><%= link_to "My Dresses", user_path(current_user) %></p>
+    <p><%= link_to "Delete This Dress", 'dresses#destroy', with: :delete %></p>
+</div>

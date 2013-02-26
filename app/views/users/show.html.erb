@@ -1,0 +1,36 @@
+<title>Your Closet</title>
+<h1>Hi, <%= current_user.first_name %>. Welcome to DressShare.</h1>
+
+<h4>  You have <%= pluralize(current_user.dresses.count, "dress") %> in your closet.</h4>
+
+<% if current_user.dresses.empty? %>
+  <p> Your closet is empty. :( </p>
+<% else %>
+  <ul>
+  <% current_user.dresses.each_with_index do |dress, i| %>
+    <li>
+      <ul><b>
+      <%= link_to "Dress #{i+1}", dress_path(dress) %></b>
+      <li class='thumbnail'><%= image_tag photo_dress_url(dress) %></div>
+      <li>Brand: <%= dress.brand %></li>
+      <li>Color: <%= dress.color %></li>
+      <li>Size: <%= dress.size %></li>
+      <li>Flattering On: <%= dress.body_types_string %></li>
+      <li>Rental Price: <%= dress.rent %></li>
+      <li>Comments: <%= dress.notes %></li>
+
+      <small><%= link_to "Edit Dress", edit_dress_path(dress) %></small>
+      </ul>
+    </li>
+    <hr>
+  <% end %>
+  </ul>
+<% end %>
+<br>
+<br>
+<br>
+<div class= row>
+<%= link_to "Add A New Dress", new_dress_path %>
+<br>
+<%= link_to "Rent A Dress", dresses_path %>
+</div>
