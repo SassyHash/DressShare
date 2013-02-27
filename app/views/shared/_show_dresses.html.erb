@@ -15,9 +15,10 @@
   </span>
 
   <% if current_user %>
+    <%= link_to "Rent This Dress!", new_rental_path(@dress) %>
     <% if current_user.id == dress.owner_id %>
       <%= link_to "Edit Dress", edit_dress_path(dress) %>
-      <%#= link_to(image_tag('/images/trash.png', :alt => 'Remove'), dress, :class => 'delete' %>
+      <%= link_to image_tag('/images/trash.png'), dress_path(dress), :class => 'remote-delete' %>
     <% end %>
   <% end %>
   </ul>
@@ -26,7 +27,7 @@
 <% end %>
 
 <script type="text/javascript">
-  $('a.delete').click (function(){
+  $('a.remote-delete').click (function(){
         if(confirm("Are you sure?")){
             var row = $(this).closest("tr").get(0);
             $.post(this.href, {_method:'delete'}, null, "script");

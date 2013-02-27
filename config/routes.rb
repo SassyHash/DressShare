@@ -1,6 +1,8 @@
 DressShare::Application.routes.draw do
   devise_for :users
   resources :static_pages
+  resources :rentals
+
   resources :dresses do
     member do
       get "photo"
