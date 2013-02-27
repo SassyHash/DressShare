@@ -12,7 +12,7 @@ gem 'simple_form'
 group :development do
   gem 'launchy', '~> 2.2.0'
   gem "letter_opener"
-
+  gem 'binding_of_caller'
   gem "better_errors"
 
 end

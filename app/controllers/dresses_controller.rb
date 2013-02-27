@@ -41,6 +41,9 @@ class DressesController < ApplicationController
 
   def destroy
     @dress = Dress.find(params[:id])
+    @dress.delete
+    flash[:notices] = [] unless flash[:notices]
+    flash[:notices] << "You have removed your dress."
   end
 
   def index
