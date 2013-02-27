@@ -15,17 +15,14 @@
   </span>
 
   <% if current_user %>
-    <%= link_to "Rent This Dress!", new_rental_path(@dress) %>
     <% if current_user.id == dress.owner_id %>
       <%= link_to "Edit Dress", edit_dress_path(dress) %>
-      <%= button_to "Delete This Dress", dress_path(dress), :method => :delete, :class => 'remote-delete', :remote => true, :confirm => "Are You Sure? You will delete this dress from the DressShare closet forever." %>
+      <%= button_to "Delete This Dress", dress_path(dress), :method => :delete, :class => 'remote-delete', :remote => true, :confirm => "Do you want to stop making money off of this dress? Click OK only if you're very very sure." %>
+    <% else %>
+      <%= link_to "Rent This Dress!", new_dress_rental_path(dress) %>
     <% end %>
   <% end %>
   </ul>
 </li>
   <hr>
 <% end %>
-
-<script type="text/javascript">
-
-</script>

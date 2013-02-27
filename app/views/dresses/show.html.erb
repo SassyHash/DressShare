@@ -2,19 +2,13 @@
 <h2>
     <%= "Dress #{current_user.dresses.index(@dress)+1}" %>
     </h2>
-    <div class='img' ><%= image_tag photo_dress_url(@dress) %></div>
-    <ul class='description'>
-        <li style="padding-top: 30px">Brand: <%= @dress.brand %></li>
-        <li>Color: <%= @dress.color %></li>
-        <li>Size: <%= @dress.size %></li>
-        <li>Flattering On: <%= @dress.body_types_string %></li>
-        <li>Rental Price: <%= @dress.rent %></li>
-        <li>Comments: <%= @dress.notes %></li>
-    </ul>
-<hr style="clear:both;">
-<div >
+
+<%= render :partial => 'shared/show_dress', :locals => {:dress => @dress} %>
+
     <p><%= link_to "Edit This Dress", edit_dress_path(@dress) %></p>
     <p><%= link_to "Add A Dress", new_dress_path %></p>
     <p><%= link_to "My Dresses", user_path(current_user) %></p>
-    <p><%= link_to "Delete This Dress", 'dresses#destroy', with: :delete %></p>
+    <p><%= button_to "Delete This Dress", dress_path(dress), :method => :delete,
+        :class => 'remote-delete', :remote => true,
+        :confirm => "Do you want to stop making money off of this dress? Click OK only if you're very very sure." %></p>
 </div>

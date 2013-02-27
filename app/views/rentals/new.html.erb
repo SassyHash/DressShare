@@ -1,0 +1,7 @@
+<title> Borrow A Dress From Our Closet </title>
+<h1>Borrow This Dress </h1>
+<h3> looking good on nickels and dimes </h3>
+
+<%= render :partial => 'shared/show_dress', :locals => {:dress => @dress} %>
+
+<%= render :partial => 'form', :locals => {:rental => @rental}  %>

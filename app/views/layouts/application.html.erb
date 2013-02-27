@@ -7,8 +7,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-   <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
  <div class="container">
     <header class="navbar navbar-inverse">
       <div class="navbar-inner">
@@ -39,7 +37,7 @@
   <div class="alert alert-error"><%= flash[:error] %></div>
   <% end %>
 
-  <% if flash[:success] %>
+  <% if flash[:notices] %>
   <div class="alert alert-success"><%= flash[:success] %></div>
   <% end %>
 
