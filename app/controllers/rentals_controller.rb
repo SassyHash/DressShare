@@ -28,6 +28,7 @@ class RentalsController < ApplicationController
   end
 
   def index
+    
   end
 
 end

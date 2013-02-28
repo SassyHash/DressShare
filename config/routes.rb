@@ -1,10 +1,10 @@
 DressShare::Application.routes.draw do
   devise_for :users
   resources :static_pages
-  resources :rentals, :only => [:edit, :show, :destroy]
+  resources :rentals, :only => [:edit, :update, :show, :destroy]
 
   resources :dresses do
-    resources :rentals, :only => [:new, :index]
+    resources :rentals, :only => [:new, :create, :index]
     member do
       get "photo"
     end

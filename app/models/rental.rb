@@ -3,7 +3,7 @@ class Rental < ActiveRecord::Base
 
   validates :end_date, :presence => true
   validates :start_date, :presence => true
-  validates :user_id, :uniqueness => { :scope => [:start_date, :end_date], :message => "This dress is already rented for those days."}
+  validates :dress_id, :uniqueness => { :scope => [:start_date, :end_date], :message => "This dress is already rented for those days."}
 
   belongs_to :dress
   belongs_to :user
