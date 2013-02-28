@@ -1,9 +1,0 @@
-<h2> Request to Rent </h2>
-<%= simple_form_for rental, :url => new_dress_rental_path do |f| %>
-  <% if rental.errors.any? %>
-    <% render :partial => "shared/error_messages", :locals => {:object => rental} %>
-  <% end %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.button :submit, "Request the owner" %>
-<% end %>

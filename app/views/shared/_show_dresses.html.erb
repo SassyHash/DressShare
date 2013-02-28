@@ -2,10 +2,10 @@
 <% dresses.each_with_index do |dress, i| %>
   <li><ul>
   <%= link_to "Dress #{i+1}", dress_path(dress) %></b>
-  <span class="thumbnail">
+  <span>
   <li><%= image_tag photo_dress_url(dress) %>
   </span>
-  <span class="text">
+  <span>
   <li>Brand: <%= dress.brand %></li>
   <li>Color: <%= dress.color %></li>
   <li>Size: <%= dress.size %></li>
