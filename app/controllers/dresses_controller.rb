@@ -30,12 +30,20 @@ class DressesController < ApplicationController
 
   def update
     @dress = Dress.find(params[:id])
+    if params[:dress][:photo_blob]
+      photo_file= params[:dress].delete(:photo_blob)
+      photo_blob = photo_file.nil? ? nil : photo_file.read
+      @dress.photo_blob = photo_blob
+    end
     @dress.update_attributes(params[:dress])
+
     if @dress.save
-      flash[:notices] = "Your dress has been updated."
-      redirect_to dress_path(@dress)
-    else
-      render 'edit'
+      if @dress.save
+        flash[:notices] = "Your dress has been updated."
+        redirect_to dress_path(@dress)
+      else
+        render 'edit'
+      end
     end
   end
 

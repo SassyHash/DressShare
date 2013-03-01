@@ -8,6 +8,7 @@ class RentalsController < ApplicationController
   end
 
   def create
+    @date = params[:rental].delete(:date_picker)
     @rental = Rental.new(params[:rental])
     @rental.dress_id = params[:dress_id]
     @rental.user_id = current_user.id

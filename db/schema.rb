@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301010731) do
+ActiveRecord::Schema.define(:version => 20130225214406) do
 
   create_table "body_type_dresses", :force => true do |t|
     t.integer  "body_type_id"

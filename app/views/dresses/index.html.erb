@@ -1,8 +1,10 @@
 <title>The Closet</title>
 
 <h1>The Closet</h1>
-
-<%= render :partial => 'shared/show_dresses', :locals => {:dresses => @dresses} %>
+<% if @dresses.empty? %>
+<% else %>
+  <%= render :partial => 'shared/show_dresses', :locals => {:dresses => @dresses} %>
+<% end%>
 
 </ul>
 
