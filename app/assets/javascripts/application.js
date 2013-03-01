@@ -14,4 +14,4 @@
 //= require jquery_ujs
 //= require_tree .
 
-cc= new Store.CartController();
+cc= new Store.RentalController();

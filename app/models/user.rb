@@ -11,9 +11,8 @@ class User < ActiveRecord::Base
 
   has_many :dresses, :foreign_key => :owner_id
   has_many :rentals
-  has_one :cart
-  has_many :cart_dresses, :through => :cart
-  has_many :borrowed_dresses, :through => :cart_dresses, :primary_key => :dress_id
+
+  has_many :borrowed_dresses, :through => :rentals, :source => :dresses
 
 
   validates :email, :presence => true, :uniqueness => {:case_sensitive => false},
@@ -31,7 +30,4 @@ class User < ActiveRecord::Base
     Mailer.create_and_deliver_password_change(@user, random_password)
   end
 
-  def add_to_cart(dress)
-    cart.add_product(dress)
-  end
 end

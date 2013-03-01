@@ -15,6 +15,9 @@ class RentalsController < ApplicationController
     if @rental.save
       flash[:notices] = "You have requested to rent this dress."
       redirect_to rental_path(@rental)
+    else
+      @dress = Dress.find(params[:dress_id])
+      render 'new'
     end
   end
 

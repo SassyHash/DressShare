@@ -12,9 +12,6 @@ class Dress < ActiveRecord::Base
   has_many :body_type_dresses
   has_many :body_types, :through => :body_type_dresses
 
-  has_many :cart_rentals
-  has_many :carts, :through => :cart_rentals
-
 
   SIZES = [0, 2, 4, 6, 8, 10, 12, 14, 16]
   def convert_dollars
@@ -32,6 +29,15 @@ class Dress < ActiveRecord::Base
   def cleanup_brand_and_color
     self.brand = brand.capitalize.chomp
     self.color = color.capitalize.chomp
+  end
+
+  def self.recent_five
+    Dress.order("updated_at DESC")
+      .limit(5)
+  end
+
+  def self.next_five
+    Dress.order("updated_at DESC")
   end
 
 end

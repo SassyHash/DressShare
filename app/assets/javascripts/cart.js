@@ -1,9 +1,9 @@
 var Store = (function () {
 
-  function CartController() {
+  function RentalController() {
     var self = this;
 
-    this.loadCart = function() {
+    this.loadRental = function() {
       $.get(
         '/users/1/cart',
         self.renderCart
@@ -31,6 +31,6 @@ var Store = (function () {
   };
 
   return {
-    CartController: CartController
+    RentalController: RentalController
   };
 })();
