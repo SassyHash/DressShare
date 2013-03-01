@@ -1,0 +1,15 @@
+Hi <%=@owner.first_name %>!
+===============================================
+Look at how popular you are!
+
+<%= @renter.first_name %> (<%= @renter.email %>) has sent you a rental request for a dress you own.
+
+Rental Details:
+  Start: <%= @rental.start_date %>
+  End: <%= @rental.end_date %>
+
+To accept or deny the request, click on this link: <%= @url %>
+
+
+xoxo
+{Sassy Hash} 2013

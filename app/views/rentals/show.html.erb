@@ -1,1 +1,14 @@
-<title>Your rental</title>
+<title>Your Rental</title>
+<h1>Your Rental </h1>
+<h3>looking good on nickels and dimes </h3>
+
+<%= render :partial => 'shared/show_dress', :locals => {:dress => @dress} %>
+
+Start Date: <%= @rental.start_date %>
+End Date: <%= @rental.end_date %>
+
+
+<%= link_to raw("<i class='icon-edit'></i> Edit"), edit_rental_path(@rental) %>
+<%= link_to raw("<i class='icon-trash'></i> Cancel"), rental_path(@rental), :method => 'delete',
+:confirm=>"Are you sure you want to cancel your rental request?" %>
+

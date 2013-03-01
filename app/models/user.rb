@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
 
   has_many :dresses, :foreign_key => :owner_id
   has_many :rentals
-
   has_many :borrowed_dresses, :through => :rentals, :source => :dresses
 
 

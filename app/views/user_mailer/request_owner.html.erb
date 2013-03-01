@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+
+<body>
+  <h1> Hi <%=@owner.first_name %>! </h1>
+
+<p>Look at how popular you are! <%= @renter.first_name%> (<%= @renter.email %>) has sent you a rental request for a dress you own.</p>
+<p>Rental Details:</p>
+<ul>
+  <li> Start: <%= @rental.start_date %></li>
+  <li> End: <%= @rental.end_date %></li>
+</ul>
+
+<p> To accept or deny the request, click on this link: <%= link_to "Rental", @url %> </p>
+
+<p>xoxo</p>
+<p>Sassy Hash Crew</p>
+
+  <footer>
+    <hr>
+    &copy; {Sassy Hash} 2013
+  </footer>
+</body>
+
+</html>

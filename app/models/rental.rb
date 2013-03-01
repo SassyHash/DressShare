@@ -9,6 +9,7 @@ class Rental < ActiveRecord::Base
 
   belongs_to :dress
   belongs_to :user
+  has_one :owner, :through => :dress
 
 private
   def start_date_and_end_date
@@ -19,7 +20,13 @@ private
 
   def rental_too_long
     if end_date > start_date
-      errors.add(:start_date, "Maximum rental length is five days.") if end_date-start_date > 5
+      errors.add(:start_date, "Maximum rental length is two days.") if end_date-start_date > 2
+    end
+  end
+
+  def dates_overlap(other)
+    if (start_date - other.end_date) * (other.start_date - end_date) >= 0
+      errors.add(:end_date, "This dress is already reserved from #{other.start_date} to #{other.end_date}")
     end
   end
 end
