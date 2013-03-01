@@ -8,7 +8,13 @@
 
   <%= render :partial => 'shared/show_dresses', :locals => {:dresses => current_user.dresses} %>
 <% end %>
-<div class= row>
-<%= link_to "Add A New Dress", new_dress_path %>
-<%= link_to "Rent A Dress", dresses_path %>
+
+<div class="row-fluid">
+    <div class="span4 offset1">
+      <p><%= link_to raw("<i class=\"icon-plus\"></i> Add A Dress"),
+      new_dress_path %></p>
+      <p><%= link_to raw("<i class=\"icon-heart\"></i> See All Dresses"),
+      dresses_path %></p>
+    </div>
+  </div>
 </div>

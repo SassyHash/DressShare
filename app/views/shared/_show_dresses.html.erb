@@ -1,28 +1,34 @@
 <ul>
 <% dresses.each_with_index do |dress, i| %>
-  <li><ul>
-  <%= link_to "Dress #{i+1}", dress_path(dress) %></b>
-  <span>
-  <li><%= image_tag photo_dress_url(dress) %>
-  </span>
-  <span>
-  <li>Brand: <%= dress.brand %></li>
-  <li>Color: <%= dress.color %></li>
-  <li>Size: <%= dress.size %></li>
-  <li>Flattering On: <%= dress.body_types_string %></li>
-  <li>Rental Price: <%= dress.rent %></li>
-  <li>Comments: <%= dress.notes %></li>
-  </span>
+  <li>
+    <ul>
+        <div class="row-fluid">
+          <div class="span4" style="margin-left: 10%; margin-righ:10%; margin-top: 20px">
+            <b><%= link_to "Dress #{i+1}", dress_path(dress) %></b>
+            <li><b>Brand: </b><%= dress.brand %></li>
+            <li><b>Color: </b><%= dress.color %></li>
+            <li><b>Size: </b><%= dress.size %></li>
+            <li><b>Flattering On: </b><%= dress.body_types_string %></li>
+            <li><b>Rental Price: </b><%= dress.rent %></li>
+            <li><b>Comments: </b><%= dress.notes %></li>
+            <li style="float:right">
+            <% if current_user %>
+              <% if current_user.id == dress.owner_id %>
+                <%= link_to raw("<i class=\"icon-edit\"></i> Edit"), edit_dress_path(dress) %>
 
-  <% if current_user %>
-    <% if current_user.id == dress.owner_id %>
-      <%= link_to "Edit Dress", edit_dress_path(dress) %>
-      <%= button_to "Delete This Dress", dress_path(dress), :method => :delete, :class => 'remote-delete', :remote => true, :confirm => "Do you want to stop making money off of this dress? Click OK only if you're very very sure." %>
-    <% else %>
-      <%= link_to "Rent This Dress!", new_dress_rental_path(dress) %>
-    <% end %>
-  <% end %>
-  </ul>
-</li>
+                <%= link_to raw("<i class=\"icon-trash\"></i> Delte"), dress_path(dress), :method => :delete, :confirm => "Do you want to stop making money off of this dress? Click OK only if you're very very sure." %>
+              <% else %>
+                <%= link_to raw("<i class=\"icon-shopping-cart\"></i> Rent!"), new_dress_rental_path(dress) %>
+              <% end %>
+            <% end %>
+          </li>
+          </div>
+        <div class="span4" style="margin-left: 15%;">
+          <%= image_tag photo_dress_url(dress), :class => "thumbnail-img" %>
+        </div>
+      </div>
+    </ul>
+  </li>
   <hr>
 <% end %>
+</ul>

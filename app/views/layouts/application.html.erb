@@ -6,6 +6,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
  <div class="container">
     <header class="navbar navbar-inverse">
@@ -20,35 +21,43 @@
             <li><%= link_to "Log-In", signin_path %></li>
             <li><%= link_to "Sign-Up", signup_path %></li>
           <%end%>
-
-          <li><%= link_to "Home", signin_path %></li>
-          <li><%= link_to "About Us", about_us_path %></li>
-          <li><%= link_to "Contact",  contact_us_path %></li>
-          <li><%= link_to "Our Story", our_story_path %></li>
-          <li><%= link_to "Legal Stuff", legal_stuff_path %></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"> About Us</a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <li><%= link_to "Contact",  contact_us_path %></li>
+              <li><%= link_to "Our Story", our_story_path %></li>
+              <li><%= link_to "Legal Stuff", legal_stuff_path %></li>
+            </ul>
+          </li>
           <li><%= link_to "The Closet", dresses_path %></li>
+          <li><%= link_to "Add A Dress", new_dress_path %></li>
 
         </ul>
       </div>
     </header>
 
+    <% if flash[:error] %>
+      <div class="alert alert-error">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
 
-  <% if flash[:error] %>
-  <div class="alert alert-error"><%= flash[:error] %></div>
-  <% end %>
+    <% if flash[:notices] %>
+      <div class="alert alert-success">
+        <%= flash[:notices] %>
+      </div>
+    <% end %>
 
-  <% if flash[:notices] %>
-  <div class="alert alert-success"><%= flash[:success] %></div>
-  <% end %>
+    <%= yield %>
 
-<%= yield %>
-
-  <footer>
-    <hr>
-    &copy; {Sassy Hash} 2013
-  </footer
-
-</div>
-
+    <footer>
+      <hr>
+      &copy; {Sassy Hash} 2013
+    </footer>
+  </div>
 </body>
 </html>
+
+<script type="text/javascript">
+  <script src="assets/javascripts/bootstrap-dropdown.js" type="text/javascript"></script>
+</script>

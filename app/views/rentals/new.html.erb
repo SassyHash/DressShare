@@ -1,15 +1,24 @@
 <title> Borrow A Dress From Our Closet </title>
 <h1>Borrow This Dress </h1>
-<h3> looking good on nickels and dimes </h3>
+<h3>looking good on nickels and dimes </h3>
 
 <%= render :partial => 'shared/show_dress', :locals => {:dress => @dress} %>
 
 <h2> Request to Rent </h2>
 <%= simple_form_for [@dress, @rental] do |f| %>
   <% if @rental.errors.any? %>
-    <% render :partial => "shared/error_messages", :locals => {:object => @rental} %>
+    <%= render :partial => "shared/error_messages", :locals => {:object => @rental} %>
   <% end %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.button :submit, "Request the owner" %>
+  <%= f.input :start_date, as: :date, start_year: Date.today.year, end_year: Date.today.year+1, order: [:day, :month, :year] %>
+  <%= f.input :end_date, as: :date, start_year: Date.today.year, start_day: Date.today.day+1, end_year: Date.today.year+1, order: [:day, :month, :year]  %>
+  <%= f.button :submit, "Add to Cart **", :class=> "btn-success", :remote=> true %><br><br>
+  <small> **You can only borrow the dress if you check out and the owner accepts your request. </small>
 <% end %>
+
+<script type="text/javascript">
+$(
+  $("btn-success").on('ajax:success', cc.renderCart )
+)
+
+
+</script>

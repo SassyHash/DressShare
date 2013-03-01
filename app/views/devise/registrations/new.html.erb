@@ -1,20 +1,26 @@
 <h2>Sign up</h2>
+  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
+    <div class="row-fluid">
+      <div class="form-inputs">
+        <div class="span4 offset3">
+          <%= f.input :email, :required => true, :autofocus => true, :placeholder => "email@dartmouth.edu" %>
+          <%= f.input :password, :required => true %>
+          <%= f.input :password_confirmation, :required => true %>
+        </div>
+        <div class="span4">
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :class_year, :collection => 2011..2020, :required => true %>
+        </div>
+      </div>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+      <div class=" span4 offset5">
+        <%= f.button :submit, "Sign up" %>
+      </div>
+  <% end %>
+    </div>
+      <%= render "devise/shared/links" %>
 
-  <div class="form-inputs">
-    <%= f.input :email, :required => true, :autofocus => true %>
-    <%= f.input :password, :required => true %>
-    <%= f.input :password_confirmation, :required => true %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :class_year, :required => true %>
-  </div>
+<div style="clear:both"></div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

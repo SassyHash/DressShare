@@ -1,16 +1,19 @@
 class RentalsController < ApplicationController
+  before_filter :authenticate_user!
+
   def new
     @dress = Dress.find(params[:dress_id])
     @rental = Rental.new
-    @rental.dress_id = @dress.id
-    @rental.user_id = current_user.id
+
   end
 
   def create
-    @rental = Rental.new(:params[:rental])
+    @rental = Rental.new(params[:rental])
+    @rental.dress_id = params[:dress_id]
+    @rental.user_id = current_user.id
+
     if @rental.save
-      flash[:notices] = [] unless flash[:notices]
-      flash[:notices] << "You have requested to rent this dress."
+      flash[:notices] = "You have requested to rent this dress."
       redirect_to rental_path(@rental)
     end
   end
@@ -28,7 +31,7 @@ class RentalsController < ApplicationController
   end
 
   def index
-    
+
   end
 
 end

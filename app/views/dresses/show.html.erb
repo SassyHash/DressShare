@@ -1,14 +1,15 @@
 <title> Dress Page</title>
-<h2>
-    <%= "Dress #{current_user.dresses.index(@dress)+1}" %>
-    </h2>
+<h1> It's All in the Details </h1>
 
+<div class="description">
 <%= render :partial => 'shared/show_dress', :locals => {:dress => @dress} %>
 
-    <p><%= link_to "Edit This Dress", edit_dress_path(@dress) %></p>
-    <p><%= link_to "Add A Dress", new_dress_path %></p>
-    <p><%= link_to "My Dresses", user_path(current_user) %></p>
-    <p><%= button_to "Delete This Dress", dress_path(@dress), :method => :delete,
+    <span class="span2"><%= link_to raw("<i class=\"icon-edit\"></i> Edit This Dress"), edit_dress_path(@dress) %>
+    </span>
+    <span class="span2"><%= link_to raw("<i class=\"icon-plus\"></i> Add A Dress"), new_dress_path %>
+    </span>
+    <span class="span2"><%= link_to raw("<i class=\"icon-home\"></i> My Dresses"), user_path(current_user) %></span>
+    <span class="span2"><%= link_to "<i class=\"icon-trash\"></i> Delete This Dress".html_safe, dress_path(@dress), :method => :delete,
         :class => 'remote-delete', :remote => true,
-        :confirm => "Do you want to stop making money off of this dress? Click OK only if you're very very sure." %></p>
+        :confirm => "Do you want to stop making money off of this dress? Click OK only if you're very very sure." %></span>
 </div>

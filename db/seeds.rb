@@ -15,12 +15,3 @@ renter.save
 LABELS = ["Petite", "Athletic", "Lean", "Busty", "Pear", "Tall", "Hourglass", "Tummy-Shaping", "Curvy", "Conservative"]
   LABELS.each { |label| BodyType.create(label: label) }
 
-Dress.create(brand: "Marchesa ", size: 4, color: "Peach ", owner_id: 1, rent: 5)
-Dress.create(brand: "Chanel", size: 4, color: "White", owner_id: 1, rent: 30)
-Dress.create(brand: "Forever 21", size: 2, color: "peach", owner_id: 2, rent: 50)
-
-BodyTypeDress.create(dress_id: 1, body_type_id: 1)
-BodyTypeDress.create(dress_id: 1, body_type_id: 2)
-BodyTypeDress.create(dress_id: 2, body_type_id: 3)
-BodyTypeDress.create(dress_id: 3, body_type_id: 1)
-

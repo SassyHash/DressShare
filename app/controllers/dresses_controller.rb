@@ -1,4 +1,6 @@
 class DressesController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :photo]
+
   def new
     @dress = Dress.new
   end
@@ -11,8 +13,7 @@ class DressesController < ApplicationController
     @dress.photo_blob = photo_blob
 
     if @dress.save
-      flash[:notices] = [] unless flash[:notices]
-      flash[:notices] << "Your dress is hung in our closet!"
+      flash[:notices] = "Your dress is hung in our closet!"
       redirect_to dress_path(@dress)
     else
       render 'new'
@@ -31,8 +32,7 @@ class DressesController < ApplicationController
     @dress = Dress.find(params[:id])
     @dress.update_attributes(params[:dress])
     if @dress.save
-      flash[:notices] = [] unless flash[:notices]
-      flash[:notices] << "Your dress has been updated."
+      flash[:notices] = "Your dress has been updated."
       redirect_to dress_path(@dress)
     else
       render 'edit'
@@ -41,19 +41,15 @@ class DressesController < ApplicationController
 
   def destroy
     @dress = Dress.find(params[:id])
-    @dress.delete
-    flash[:notices] = [] unless flash[:notices]
-    flash[:notices] << "You have removed your dress."
+    if @dress
+      @dress.destroy
+      flash[:error] = "You have removed a dress."
+      redirect_to user_path(current_user)
+    end
   end
 
   def index
     @dresses = Dress.all
-  end
-
-
-  def my_dresses
-    @dress = Dress.find_by_owner_id(current_user.id)
-    render 'index'
   end
 
   def photo

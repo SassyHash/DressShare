@@ -1,11 +1,16 @@
-<div><%= image_tag photo_dress_url(dress) %></div>
-  <ul>
-    <li>Brand: <%= dress.brand %></li>
-    <li>Color: <%= dress.color %></li>
-    <li>Size: <%= dress.size %></li>
-    <li>Flattering On: <%= dress.body_types_string %></li>
-    <li>Rental Price: <%= dress.rent %></li>
-    <li>Comments: <%= dress.notes %></li>
-  </ul>
+<div class="row-fluid">
+  <div class="span4" style="margin-left: 15%">
+    <%= image_tag photo_dress_url(dress), :class => "large-img" %>
+  </div>
+  <div class="span4" style="margin: 20px">
+    <ul>
+      <li><b>Brand: </b><%= dress.brand %></li>
+      <li><b>Color: </b><%= dress.color %></li>
+      <li><b>Size: </b><%= dress.size %></li>
+      <li><b>Flattering On: </b><%= dress.body_types_string %></li>
+      <li><b>Rental Price: </b><%= dress.rent %></li>
+      <li><b>Comments: </b><%= dress.notes %></li>
+    </ul>
   <hr>
-<div >
+  </div>
+</div>

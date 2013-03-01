@@ -31,4 +31,7 @@ class User < ActiveRecord::Base
     Mailer.create_and_deliver_password_change(@user, random_password)
   end
 
+  def add_to_cart(dress)
+    cart.add_product(dress)
+  end
 end

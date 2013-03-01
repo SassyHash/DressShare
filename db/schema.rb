@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130225214406) do
+ActiveRecord::Schema.define(:version => 20130301010731) do
 
   create_table "body_type_dresses", :force => true do |t|
     t.integer  "body_type_id"
@@ -22,19 +22,6 @@ ActiveRecord::Schema.define(:version => 20130225214406) do
 
   create_table "body_types", :force => true do |t|
     t.string   "label"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "cart_dresses", :force => true do |t|
-    t.integer  "cart_id"
-    t.integer  "dress_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "carts", :force => true do |t|
-    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
