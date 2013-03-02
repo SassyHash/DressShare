@@ -57,7 +57,7 @@ class DressesController < ApplicationController
   end
 
   def index
-    @dresses = Dress.recent_five
+    @dresses = Dress.recent_ten
   end
 
   def photo

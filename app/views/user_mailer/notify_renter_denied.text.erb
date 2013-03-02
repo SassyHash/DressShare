@@ -1,0 +1,23 @@
+Hi <%=@renter.first_name %>!
+
+===============================================
+
+I'm sorry. <%= @owner.first_name%> (<%= @owner.email %>) has denied your request to rent. But don't get the blues, there are plenty of dresses out there!
+
+Rental Details:
+  Dress:
+    Size: <%= @dress.size %>
+    Color: <%= @dress.color %>
+    Rent: <%= @dress.rent %>
+
+  Start: <%= @rental.start_date %>
+  End: <%= @rental.end_date %>
+
+To browse for other dresses, click on this link: 'sassyha.sh/dresses'
+
+xoxo
+Sassy Hash Crew
+
+===============================================
+
+{Sassy Hash} 2013

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130225214406) do
+ActiveRecord::Schema.define(:version => 20130301214814) do
 
   create_table "body_type_dresses", :force => true do |t|
     t.integer  "body_type_id"
@@ -46,8 +46,9 @@ ActiveRecord::Schema.define(:version => 20130225214406) do
     t.integer  "dress_id"
     t.date     "start_date"
     t.date     "end_date"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "accepted",   :default => false
   end
 
   add_index "rentals", ["dress_id"], :name => "index_rentals_on_dress_id"

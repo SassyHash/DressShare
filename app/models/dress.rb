@@ -40,4 +40,16 @@ class Dress < ActiveRecord::Base
     Dress.order("updated_at DESC")
   end
 
+  def self.search_by_body_types(body_types)
+  end
+
+  def self.search_by_size(size)
+    Dress.where('size = #{size}')
+      .order("updated_at DESC")
+  end
+
+  def self.price_low_to_high
+    Dress.order("rent")
+  end
+
 end

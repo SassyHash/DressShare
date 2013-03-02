@@ -1,5 +1,5 @@
 class Rental < ActiveRecord::Base
-  attr_accessible :dress_id, :end_date, :start_date, :user_id
+  attr_accessible :dress_id, :end_date, :start_date, :user_id, :accepted
 
   validates :end_date, :presence => true
   validates :start_date, :presence => true

@@ -1,0 +1,23 @@
+Hi <%=@renter.first_name %>!
+
+===============================================
+
+Great news! <%= @owner.first_name%> (<%= @owner.email %>) has accepted your request to rent a dress.</p>
+
+Rental Details:
+  Dress:
+    Size: <%= @dress.size %>
+    Color: <%= @dress.color %>
+    Rent: <%= @dress.rent %>
+
+  Start: <%= @rental.start_date %>
+  End: <%= @rental.end_date %>
+
+To pay for this rental online, click on this link: "Pay Online"
+
+xoxo
+Sassy Hash Crew
+
+===============================================
+
+{Sassy Hash} 2013

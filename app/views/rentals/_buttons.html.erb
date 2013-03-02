@@ -1,0 +1,38 @@
+<button class="accept-button"> <i class="icon-ok"></i>Accept Request </button>
+<button class="deny-button"> <i class="icon-remove"></i>Deny Request </button>
+
+<script type="text/javascript">
+  $(function(){
+    $(".accept-button").on("click",function(event){
+      $.post("/rentals/"+ <%=rental.id %> +".json", {
+        rental: {
+          accepted: true
+        },
+        "_method": "put"
+      }, function(data){
+        $('.deny-button').removeAttr('disabled');
+        $('.accept-button').addClass('disabled');
+        $('.accept-button').attr("disabled", "disabled");
+        console.log("okay");
+        // callback after data
+      });
+    });
+  });
+
+  $(function(){
+    $(".deny-button").on("click",function(event){
+      $.post("/rentals/"+ <%=rental.id %> +".json", {
+        rental: {
+          accepted: false
+        },
+        "_method": "put"
+      }, function(data){
+        $('.accept-button').removeAttr('disabled');
+        $('.deny-button').addClass('disabled');
+        $('.deny-button').attr("disabled", "disabled");
+        console.log("okay");
+        // callback after data
+      });
+    });
+  });
+</script>
