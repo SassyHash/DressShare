@@ -31,9 +31,8 @@ class Dress < ActiveRecord::Base
     self.color = color.capitalize.chomp
   end
 
-  def self.recent_five
+  def self.most_recent
     Dress.order("updated_at DESC")
-      .limit(5)
   end
 
   def self.next_five
