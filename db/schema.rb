@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301214814) do
+ActiveRecord::Schema.define(:version => 20130304055032) do
 
   create_table "body_type_dresses", :force => true do |t|
     t.integer  "body_type_id"
@@ -75,6 +75,9 @@ ActiveRecord::Schema.define(:version => 20130301214814) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.integer  "class_year"
+    t.integer  "failed_attempts",        :default => 0
+    t.string   "unlock_token"
+    t.time     "locked_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

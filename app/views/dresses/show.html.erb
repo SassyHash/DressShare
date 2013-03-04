@@ -1,6 +1,6 @@
 <title> Dress Page</title>
 <h1> It's All in the Details </h1>
-
+<button class="test-button"> <i class="icon-ok"></i>Accept Request </button>
 <div class="description">
 <%= render :partial => 'shared/show_dress', :locals => {:dress => @dress} %>
 
@@ -13,3 +13,12 @@
         :class => 'remote-delete', :remote => true,
         :confirm => "Do you want to stop making money off of this dress? Click OK only if you're very very sure." %></span>
 </div>
+
+<script type="text/javascript">
+$('.test-button').on("click", function(event) {
+  $.get('/dresses'
+    )
+}, function(){
+
+})
+</script>

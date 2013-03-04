@@ -57,7 +57,7 @@ class DressesController < ApplicationController
   end
 
   def index
-    @dresses = Dress.recent_ten
+    @dresses = Dress.most_recent
   end
 
   def photo
@@ -68,5 +68,4 @@ class DressesController < ApplicationController
       raise ActionController::RoutingError.new('Not Found')
     end
   end
-
 end
