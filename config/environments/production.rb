@@ -50,7 +50,17 @@ DressShare::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { :host => 'sassyha.sh' }
 
+  config.action_mailer.smtp_settings = {
+    :user_name => "binna.yoon@gmail.com",
+    :password => "changepassword",
+    :domain => "sassyha.sh",
+    :address => "smtp.sendgrid.net",
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
   # Enable threaded mode
   # config.threadsafe!
 
@@ -65,3 +75,6 @@ DressShare::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
+
+
+
