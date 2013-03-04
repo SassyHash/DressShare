@@ -36,6 +36,17 @@ class Dress < ActiveRecord::Base
     Dress.order("updated_at DESC")
   end
 
+  def self.search(search)
+    if search
+      dresses = []
+      dresses << Dress.search_by_size(search[:sizes])
+      # dresses << Dress.search_by_body_types[](search[:body_types] )
+      return dresses
+    else
+      Dress.most_recent
+    end
+  end
+
   def self.search_by_body_types(body_type_ids)
     dresses = []
     body_type_ids.each do |body_type|
@@ -58,5 +69,5 @@ class Dress < ActiveRecord::Base
     Dress.order("rent")
   end
 
-  def self.
+
 end

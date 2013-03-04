@@ -4,7 +4,9 @@
 <% if @dresses.empty? %>
 <% else %>
   <%= render :partial => 'shared/show_dresses', :locals => {:dresses => @dresses} %>
+  <%= render :partial => 'search', :locals => {:search => @search } %>
 <% end%>
+
 
 </ul>
 

@@ -34,8 +34,7 @@
 
         </ul>
       </div>
-      <div class="row-fluid">
-      </div>
+
     </header>
 
     <% if flash[:error] %>
@@ -52,11 +51,14 @@
 
     <%= yield %>
 
+<div class="row-fluid" %>
+  <div class="span12" %>
     <footer>
       <hr>
       &copy; {Sassy Hash} 2013
     </footer>
-
+  </div>
+</div>
 </body>
 </html>
 

@@ -5,6 +5,9 @@ DressShare::Application.routes.draw do
 
   resources :dresses do
     resources :rentals, :only => [:new, :create, :index]
+    collection do
+      get 'search'
+    end
     member do
       get "photo"
     end

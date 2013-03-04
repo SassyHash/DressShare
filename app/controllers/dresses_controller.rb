@@ -57,7 +57,8 @@ class DressesController < ApplicationController
   end
 
   def index
-    @dresses = Dress.most_recent
+    @search = Search.new
+    @dresses = Dress.search(params[:search])
   end
 
   def photo

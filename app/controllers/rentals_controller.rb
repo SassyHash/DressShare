@@ -8,15 +8,18 @@ class RentalsController < ApplicationController
   end
 
   def create
-    @date = params[:rental].delete(:date_picker)
+    start_date = params[:rental].delete(:start_date)
+    end_date = params[:rental].delete(:end_date)
+
     @rental = Rental.new(params[:rental])
-    @rental.dress_id = params[:dress_id]
-    @rental.user_id = current_user.id
+    @rental.dress_id, @rental.user_id = params[:dress_id], current_user.id
+    @rental.start_date, @rental.end_date = start_date, end_date
+
     @owner = @rental.owner
     if @rental.save
       UserMailer.request_owner(@owner, current_user, @rental).deliver
       flash[:notices] = "You have requested to rent this dress."
-      redirect_to rental_path(@rental)
+      redirect_to rental_url(@rental)
     else
       @dress = Dress.find(params[:dress_id])
       render 'new'
@@ -47,6 +50,12 @@ class RentalsController < ApplicationController
   end
 
   def destroy
+    @rental = Rental.find(params[:id])
+    if @rental
+      @rental.destroy
+      flash[:error] = "You have canceled your rental request."
+    end
+    redirect_to dresses_url
   end
 
   def show
@@ -70,4 +79,12 @@ class RentalsController < ApplicationController
 
   end
 
+  def change_jquery_date_format(date)
+    date.to_s.split("-")
+    month = date[2]
+    date[2]= date[1]
+    date[1]= month
+    date.join("-")
+    Date.parse(date)
+  end
 end

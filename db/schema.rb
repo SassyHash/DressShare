@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304055032) do
+ActiveRecord::Schema.define(:version => 20130304183903) do
 
   create_table "body_type_dresses", :force => true do |t|
     t.integer  "body_type_id"
@@ -54,6 +54,19 @@ ActiveRecord::Schema.define(:version => 20130304055032) do
   add_index "rentals", ["dress_id"], :name => "index_rentals_on_dress_id"
   add_index "rentals", ["user_id"], :name => "index_rentals_on_user_id"
 
+  create_table "searches", :force => true do |t|
+    t.string   "brand"
+    t.string   "color"
+    t.string   "sizes"
+    t.string   "body_type_ids"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "min_rent"
+    t.integer  "max_rent"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -82,5 +95,6 @@ ActiveRecord::Schema.define(:version => 20130304055032) do
 
   add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
 
 end
