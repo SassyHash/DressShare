@@ -3,21 +3,11 @@
 one:
   brand: MyString
   color: MyString
-  sizes: MyString
-  body_type_ids: MyString
-  start_date: 2013-03-04
-  end_date: MyString
-  : 2013-03-04
-  min_rent: 1
   max_rent: 1
+  min_rent: 1
 
 two:
   brand: MyString
   color: MyString
-  sizes: MyString
-  body_type_ids: MyString
-  start_date: 2013-03-04
-  end_date: MyString
-  : 2013-03-04
-  min_rent: 1
   max_rent: 1
+  min_rent: 1

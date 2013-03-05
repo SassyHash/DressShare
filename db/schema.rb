@@ -11,11 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304183903) do
+ActiveRecord::Schema.define(:version => 20130305185003) do
 
   create_table "body_type_dresses", :force => true do |t|
     t.integer  "body_type_id"
     t.integer  "dress_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "body_type_searches", :force => true do |t|
+    t.integer  "body_type_id"
+    t.integer  "search_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
@@ -54,17 +61,11 @@ ActiveRecord::Schema.define(:version => 20130304183903) do
   add_index "rentals", ["dress_id"], :name => "index_rentals_on_dress_id"
   add_index "rentals", ["user_id"], :name => "index_rentals_on_user_id"
 
-  create_table "searches", :force => true do |t|
-    t.string   "brand"
-    t.string   "color"
-    t.string   "sizes"
-    t.string   "body_type_ids"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.integer  "min_rent"
-    t.integer  "max_rent"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+  create_table "size_searches", :force => true do |t|
+    t.integer  "size"
+    t.integer  "search_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
