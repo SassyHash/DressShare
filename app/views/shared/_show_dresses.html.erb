@@ -1,6 +1,6 @@
 <ul>
 <% dresses.each_with_index do |dress, i| %>
-  <li>
+  <li class="dress">
     <ul>
         <div class="row-fluid">
           <div class="span4" style="margin-left: 10%; margin-righ:10%; margin-top: 20px">
@@ -16,7 +16,7 @@
               <% if current_user.id == dress.owner_id %>
                 <%= link_to raw("<i class=\"icon-edit\"></i> Edit"), edit_dress_path(dress) %>
 
-                <%= link_to raw("<i class=\"icon-trash\"></i> Delte"), dress_path(dress), :method => :delete, :confirm => "Do you want to stop making money off of this dress? Click OK only if you're very very sure." %>
+                <%= link_to raw("<i class=\"icon-trash\"></i> Delete"), dress_path(dress), :method => :delete, :remote => true, :confirm => "Do you want to stop making money off of this dress? Click OK only if you're very very sure.", :class => "delete-dress-button" %>
               <% else %>
                 <%= link_to raw("<i class=\"icon-shopping-cart\"></i> Rent!"), new_dress_rental_path(dress) %>
               <% end %>
@@ -29,6 +29,14 @@
       </div>
     </ul>
   </li>
-  <hr>
 <% end %>
 </ul>
+
+<script type="text/javascript">
+ $(function(){
+    $(".delete-dress-button").on("ajax:success", function(event) {
+      $(this).closest(".dress").hide("puff", 1000);
+  })
+})
+
+</script>

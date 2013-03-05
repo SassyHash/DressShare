@@ -52,13 +52,20 @@ class DressesController < ApplicationController
     if @dress
       @dress.destroy
       flash[:error] = "You have removed a dress."
+    end
+
+    if request.xhr?
+      render :nothing => true
+    else
       redirect_to user_path(current_user)
     end
   end
 
   def index
-    @search = Search.new
+    p params[:search]
+    p @search
     @dresses = Dress.search(params[:search])
+    # @dresses = Dress.search(params[:search])
   end
 
   def photo

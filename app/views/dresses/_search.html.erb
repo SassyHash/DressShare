@@ -1,19 +1,13 @@
 <%= simple_form_for(@search, :url => search_dresses_path, :method => :get,
 :remote => true, :class => 'search-form') do |f| %>
-
-  <%= f.input :brand %>
+  <%= f.input :brand  %>
   <%= f.input :color %>
-  <%= f.select :sizes, Dress::SIZES %>
-  <%= f.input :start_date, :as => :string, :input_html => {:class => "datepicker"} %>
-  <%= f.input :end_date, :input_html => {:class => "datepicker"} %>
+  <%= f.input :sizes, :collection => Dress::SIZES, :as => :check_boxes %>
+  <%= f.input :body_type_ids, :as => :check_boxes, :collection => BodyType.all, :label_method => :label %>
+  <%= f.input :min_rent, :label => "Minimum rent" %>
+  <%= f.input :min_rent, :label => "Maximum rent" %>
+  <%#= f.input :start_date, :as => :string, :input_html => {:id => "start_date"} %>
+  <%#= f.input :end_date, :as => :string, :input_html => {:id => "end_date"} %>
   <%= f.submit :search, :name => nil %>
 <% end %>
 
-<script type="text/javascript">
-
-$(function() {
-    $( ".datepicker" ).datepicker();
-    console.log($(".datepicker"));
-  });
-
-</script>

@@ -26,21 +26,3 @@
       <%= link_to raw("<i class='icon-trash'></i> Cancel"), rental_path(@rental), :method => "delete", :confirm => 'Are you sure you want to cancel this rental request?' %>
     </div>
 </div>
-
-<script type="text/javascript">
-//  $(function(){
-//     $("#cancel-button").on("click", function(event) {
-//       console.log("here");
-//       var message = confirm('Are you sure you want to cancel this rental request?');
-//         if (message) {
-//           $.ajax({
-//             url: "/rentals/"+<%= @rental.id %>+".json",
-//             type: "DELETE",
-//             success: function(data) {
-//                 $('.rental').hide( "puff", 1000 )
-//             }
-//           })
-//         };
-//       })
-// })
-</script>

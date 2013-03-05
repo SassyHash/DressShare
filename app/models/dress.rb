@@ -15,9 +15,13 @@ class Dress < ActiveRecord::Base
 
   SIZES = [0, 2, 4, 6, 8, 10, 12, 14, 16]
 
-  def convert_dollars
-    self.rent = rent*100
-  end
+  scope :by_size, lambda { |size| { :conditions => ["size = ?", size ] } }
+  scope :by_brand, lambda { |brand| { :conditions => ["brand = ?", brand.capitalize.chomp] } }
+  scope :by_color, lambda { |color| { :conditions => ["color = ?", color.capitalize.chomp ] } }
+
+  # def convert_dollars
+  #   self.rent = rent*100
+  # end
 
   def body_types_string
     labels = []
@@ -36,10 +40,10 @@ class Dress < ActiveRecord::Base
     Dress.order("updated_at DESC")
   end
 
-  def self.search(search)
-    if search
+  def self.search(search_params)
+    if search_params
       dresses = []
-      dresses << Dress.search_by_size(search[:sizes])
+      # dresses << Dress.search_by_size(search[:sizes])
       # dresses << Dress.search_by_body_types[](search[:body_types] )
       return dresses
     else
