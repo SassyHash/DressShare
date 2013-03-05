@@ -15,13 +15,14 @@ class Dress < ActiveRecord::Base
 
   SIZES = [0, 2, 4, 6, 8, 10, 12, 14, 16]
 
-  scope :by_size, lambda { |size| { :conditions => ["size = ?", size ] } }
-  scope :by_brand, lambda { |brand| { :conditions => ["brand = ?", brand.capitalize.chomp] } }
-  scope :by_color, lambda { |color| { :conditions => ["color = ?", color.capitalize.chomp ] } }
-
-  # def convert_dollars
-  #   self.rent = rent*100
-  # end
+  default_scope order('updated_at DESC')
+  scope :most_recent, order('updated_at DESC')
+  scope :by_sizes, lambda { |sizes| where(:size => sizes) }
+  scope :by_brand, lambda { |brand| where(:brand => brand) }
+  scope :by_color, lambda { |color| where(:color => color) }
+  scope :by_body_types, lambda { |body_type_ids| joins(:body_type_dresses)
+    .where(:body_type_dresses => {:body_type_id => body_type_ids})}
+  scope :price_low_high, order('rent')
 
   def body_types_string
     labels = []
@@ -36,41 +37,13 @@ class Dress < ActiveRecord::Base
     self.color = color.capitalize.chomp
   end
 
-  def self.most_recent
-    Dress.order("updated_at DESC")
-  end
-
-  def self.search(search_params)
-    if search_params
-      dresses = []
-      # dresses << Dress.search_by_size(search[:sizes])
-      # dresses << Dress.search_by_body_types[](search[:body_types] )
-      return dresses
-    else
-      Dress.most_recent
-    end
-  end
-
-  def self.search_by_body_types(body_type_ids)
-    dresses = []
-    body_type_ids.each do |body_type|
-      dresses << Dress.joins(:body_types)
-        .where("body_type_id = ?", body_type)
-    end
-    dresses
-    # dresses.sort! {|first, second| second.updated_at <=> first.updated_at}
-  end
-
-  def self.search_by_size(sizes)
-    dresses = []
-    sizes.each do |size|
-      dresses << Dress.where('size = ?', size)
-    end
-    dresses
-  end
-
-  def self.price_low_to_high
-    Dress.order("rent")
+  def self.search(params)
+    dresses = Dress
+    dresses = dresses.by_brand(params[:brand]) unless params[:brand].blank?
+    dresses = dresses.by_color(params[:color]) unless params[:color].blank?
+    dresses = dresses.by_sizes(params[:size_search_ids]) unless params[:sizes].blank?
+    dresses = dresses.by_body_types(params[:body_type_ids]) unless params[:body_type_ids].blank?
+    dresses.all
   end
 
 

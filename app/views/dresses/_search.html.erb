@@ -1,44 +1,14 @@
-<%= simple_form_for(@search, :url => search_dresses_path, :method => :get,
-:remote => true, :class => 'search-form') do |f| %>
-  <%= f.input :brand  %>
-  <%= f.input :color, :input_html => {:id => "#colors"} %>
-  <%= f.input :sizes, :collection => Dress::SIZES, :as => :check_boxes %>
-  <%= f.input :body_type_ids, :as => :check_boxes, :collection => BodyType.all, :label_method => :label %>
+<%= simple_form_for @search, :url => dresses_path, :method => :get,
+:class => 'search-form' do |f| %>
+  <%= f.input :brand, :as => :select, :collection => @brands %>
+  <%= f.input :color, :as => :select, :collection => @colors %>
+  <%= f.association :size_searches, :as => :check_boxes, :collection => Dress::SIZES %>
+  <%= f.association :body_types, :as => :check_boxes, :label_method => :label %>
   <%= f.input :min_rent, :label => "Minimum rent" %>
   <%= f.input :min_rent, :label => "Maximum rent" %>
+
   <%= f.submit :search, :name => nil %>
 <% end %>
 
-<script type="text/javascript">
- $(function() {
-    var availableColors = [
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
-    ];
-    $( "#colors" ).autocomplete({
-      source: availableColors
-    });
-  });
 
 
-</script>

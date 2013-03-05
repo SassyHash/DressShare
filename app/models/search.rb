@@ -5,6 +5,8 @@ class Search < ActiveRecord::Base
   has_many :body_type_searches
   has_many :body_types, :through => :body_type_searches
 
+  accepts_nested_attributes_for :size_searches
+  accepts_nested_attributes_for :body_type_searches
   # def initialize(options)
 
   # self.brand = options[:brand] if options[:brand]

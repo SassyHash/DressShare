@@ -1,30 +1,48 @@
-  <h2>About Your Dress</h2>
-  <p> * Marks mandatory fields. </p>
+<h2>About Your Dress</h2>
+<p> * Marks mandatory fields. </p>
 
-  <%= simple_form_for dress do |f| %>
-    <% if dress.errors.any? %>
-      <%= render :partial => "shared/error_messages", :locals => {:object => dress} %>
-    <% end %>
-    <div class="form-inputs">
-      <div class="row-fluid">
-        <div class="span4" style="margin-left:40px; margin-top: 10px" >
-        <%= f.input :brand %>
-        <%= f.input :color %>
-        <%= f.input :rent, :label => "Rent. (0 if free.)", :placeholder => "$ only. No Collis Baked Goods!" %>
-        <%= f.input :size, :label => "Size. (I wish Sisterhood of Traveling Pants existed too.)", :item_wrapper_class => 'inline', :collection => Dress::SIZES, :as => :radio_buttons%>
-        </div>
-        <div class="span4" style="margin:20px; margin-top: 10px">
-        <%= f.association :body_types, :label_method=> :label, :as => :check_boxes%>
-        </div>
-        <div class="span12" style="margin-left: 20px; margin-top:20px">
-        <%= f.input :photo_blob, :as => :file, :label => "Pics or it didn't happen" %>
-        <%= f.input :notes, :label => "Payment instructions. Notes. Memories about that time you wore this to formal and ... Nevermind.", :input_html => {:class => "span12"} %>
-        </div>
+<%= simple_form_for dress do |f| %>
+  <% if dress.errors.any? %>
+    <%= render :partial => "shared/error_messages", :locals => {:object => dress} %>
+  <% end %>
+  <div class="form-inputs">
+    <div class="row-fluid">
+      <div class="span4" style="margin-left:40px; margin-top: 10px" >
+      <%= f.input :brand, :input_html => {:id => "brands"} %>
+      <%= f.input :color, :input_html => {:id => "colors"} %>
+      <%= f.input :rent, :label => "Rent. (0 if free.)", :placeholder => "$ only. No Collis Baked Goods!" %>
+      <%= f.input :size, :label => "Size. (I wish Sisterhood of Traveling Pants existed too.)", :item_wrapper_class => 'inline', :collection => Dress::SIZES, :as => :radio_buttons%>
       </div>
+      <div class="span4" style="margin:20px; margin-top: 10px">
+      <%= f.association :body_types, :label_method=> :label, :as => :check_boxes%>
+      </div>
+      <div class="span12" style="margin-left: 20px; margin-top:20px">
+      <%= f.input :photo_blob, :as => :file, :label => "Pics or it didn't happen" %>
+      <%= f.input :notes, :label => "Payment instructions. Notes. Memories about that time you wore this to formal and ... Nevermind.", :input_html => {:class => "span12"} %>
+      </div>
+    </div>
     <div class="form-actions">
     <%= f.button :submit %>
     </div>
+  </div>
+<% end %>
 
-  <% end %>
-</div>
-</div>
+
+<script type="text/javascript">
+ $(function() {
+    var availableColors = <%= @colors.to_json.html_safe %>;
+
+    var availableBrands = <%= @brands.to_json.html_safe %>;
+
+    $( "#colors" ).autocomplete({
+      source: availableColors
+    });
+    $("#brands").autocomplete({
+      source: availableBrands
+    });
+    console.log($("#colors"));
+    console.log(availableColors)
+  });
+
+
+</script>

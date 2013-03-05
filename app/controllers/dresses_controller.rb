@@ -1,7 +1,10 @@
 class DressesController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :photo]
-
+  # autocomplete :brand, :on => :collection
+  # autocomplete :color, :on => :collection
   def new
+    @brands = Dress.pluck("brand").uniq
+    @colors = Dress.pluck("color").uniq
     @dress = Dress.new
   end
 
@@ -62,10 +65,32 @@ class DressesController < ApplicationController
   end
 
   def index
-    p params[:search]
-    p @search
-    @dresses = Dress.search(params[:search])
-    # @dresses = Dress.search(params[:search])
+    @search = Search.new
+    if params[:search]
+      params[:search][:size_search_ids].pop
+      params[:search][:body_type_ids].pop
+
+      @dresses = Dress.search(params[:search])
+
+      size_searches = params[:search].delete(:size_search_ids)
+      body_type_searches = params[:search].delete(:body_type_ids)
+
+      @search.update_attributes(params[:search])
+
+      size_searches.each do |size_string|
+        SizeSearch.create(:size => size_string.to_i, :search_id => @search.id)
+      end
+      body_type_searches.each do |body_type|
+        BodyTypeSearch.create(:body_type_id => body_type.to_i, :search_id => @search.id)
+      end
+    else
+      @dresses = Dress.all
+    end
+
+    @brands = Dress.pluck("brand").uniq
+    @colors = Dress.pluck("color").uniq
+
+
   end
 
   def photo

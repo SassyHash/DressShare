@@ -4,6 +4,8 @@ DressShare::Application.routes.draw do
   resources :rentals, :only => [:edit, :update, :show, :destroy]
 
   resources :dresses do
+    # get :autocomplete_brand, :on => :collection
+    # get :autocomplete_color, :on => :collection
     resources :rentals, :only => [:new, :create, :index]
     collection do
       get 'search'
