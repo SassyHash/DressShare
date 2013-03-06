@@ -1,15 +1,14 @@
 <div class="row-fluid" style="margin-left: auto; margin-right:auto">
   <title> Borrow A Dress From Our Closet </title>
-  <h1>Borrow This Dress </h1>
+  <h1>Change your rental request </h1>
   <h3>looking good on nickels and dimes </h3>
 
   <%= render :partial => 'shared/show_dress', :locals => {:dress => @dress} %>
 
   <h2> Request to Rent </h2>
   <div class="row-fluid" %>
-
-  <%= simple_form_for [@dress, @rental] do |f| %>
-       <% if @rental.errors.any? %>
+  <%= simple_form_for @rental do |f| %>
+    <% if @rental.errors.any? %>
       <%= render :partial => "shared/error_messages", :locals => {:object => @rental} %>
     <% end %>
 

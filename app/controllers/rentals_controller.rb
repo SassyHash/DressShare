@@ -27,13 +27,19 @@ class RentalsController < ApplicationController
   end
 
   def edit
+    @rental = Rental.find(params[:id])
+    @dress = Dress.find(@rental.dress_id)
   end
 
   def update
     @rental=Rental.find(params[:id])
+    @dress = Dress.find(@rental.dress_id)
     old_answer = @rental.accepted
-    p old_answer
-    @rental.update_attributes(params[:rental])
+
+    if @rental.update_attributes(params[:rental])
+      flash[:notices] = "You have updated your rental details."
+    end
+
     new_answer = @rental.accepted
     if old_answer != new_answer
 

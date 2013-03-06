@@ -3,7 +3,7 @@
   <li class="dress">
     <ul>
         <div class="row-fluid">
-          <div class="span4" style="margin-left: 10%; margin-righ:10%; margin-top: 20px">
+          <div class="span6" style ="margin:auto">
             <b><%= link_to "Dress #{i+1}", dress_path(dress) %></b>
             <li><b>Brand: </b><%= dress.brand %></li>
             <li><b>Color: </b><%= dress.color %></li>
@@ -23,7 +23,7 @@
             <% end %>
           </li>
           </div>
-        <div class="span4" style="margin-left: 15%;">
+        <div class="span6" style="margin-left: 20px; margin:auto">
           <%= image_tag photo_dress_url(dress), :class => "thumbnail-img" %>
         </div>
       </div>

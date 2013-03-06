@@ -1,24 +1,28 @@
 <title>The Closet</title>
 
 <h1>The Closet</h1>
-<% if @dresses.empty? %>
-<% else %>
-  <%= render :partial => 'shared/show_dresses', :locals => {:dresses => @dresses} %>
+
+<div class="row" style ="margin:auto">
+  <% if @dresses.empty? %>
+  <% else %>
+  <div class="span7">
+    <%= render :partial => 'shared/show_dresses', :locals => {:dresses => @dresses} %>
+  <% end%>
+  </div>
+  <div class="span4">
   <%= render :partial => 'search', :locals => {:search => @search } %>
-<% end%>
+  </div>
+</div>
 
-
-</ul>
+<div class="row-fluid">
 
 <% if user_signed_in? %>
 <hr>
-  <div class="row-fluid">
-    <div class="span4 offset1">
-      <p><%= link_to raw("<i class=\"icon-plus\"></i> Add A Dress"),
-      new_dress_path %></p>
-      <p><%= link_to raw("<i class=\"icon-home\"></i> My Dresses"),
-      user_path(current_user) %></p>
-    </div>
+  <div class="span4 offset1">
+    <p><%= link_to raw("<i class=\"icon-plus\"></i> Add A Dress"),
+    new_dress_path %></p>
+    <p><%= link_to raw("<i class=\"icon-home\"></i> My Dresses"),
+    user_path(current_user) %></p>
   </div>
 <% end %>
-
+</div>

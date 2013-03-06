@@ -1,0 +1,44 @@
+    <% if rental.errors.any? %>
+      <%= render :partial => "shared/error_messages", :locals => {:object => rental} %>
+    <% end %>
+
+    <div class="span8" style="margin: 20px" %>
+      <div class="span6 %>" %>
+        <%= f.input :start_date, :as => :string, :input_html => {:id => "start_date", :class => "datepicker"} %>
+      </div>
+      <div class="span6" %>
+        <%= f.input :end_date, :as => :string, :input_html => {:id => "end_date", :class => "datepicker"} %>
+      </div>
+    <div>
+    <%= f.button :submit, "Request to Rent **", :input_html => {:class=> "btn-js-success"}, :remote=> true %><br><br>
+    <small> **You can only borrow the dress if you check out and the owner accepts your request. </small>
+
+    <div id="dialogue">
+      <p> This is a rental request. The owner has the final say in letting you rent the dress. </p>
+    </div>
+
+    </div>
+
+<script type="text/javascript">
+
+$(function(){
+  $('#start_date').datepicker({
+    changeMonth: true,
+    changeYear: true,
+    numberOfMonths: 2,
+    showAnim: "slide",
+    dateFormat: "yy-mm-dd"
+  });
+
+  $("#end_date").datepicker({
+    defaultDate: "+1d",
+    changeMonth: true,
+    changeYear: true,
+    numberOfMonths: 2,
+    showAnim: "slide",
+    dateFormat: "yy-mm-dd"
+  });
+
+})
+
+</script>

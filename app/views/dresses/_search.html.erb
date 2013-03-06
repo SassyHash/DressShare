@@ -1,14 +1,21 @@
+
 <%= simple_form_for @search, :url => dresses_path, :method => :get,
 :class => 'search-form' do |f| %>
   <%= f.input :brand, :as => :select, :collection => @brands %>
   <%= f.input :color, :as => :select, :collection => @colors %>
+<div class="row-fluid">
+  <div class="span6">
   <%= f.association :size_searches, :as => :check_boxes, :collection => Dress::SIZES %>
+  </div>
+  <div class="span6">
   <%= f.association :body_types, :as => :check_boxes, :label_method => :label %>
+  </div>
+</div>
+
   <%= f.input :min_rent, :label => "Minimum rent" %>
-  <%= f.input :min_rent, :label => "Maximum rent" %>
+  <%= f.input :max_rent, :label => "Maximum rent" %>
 
   <%= f.submit :search, :name => nil %>
 <% end %>
-
 
 
