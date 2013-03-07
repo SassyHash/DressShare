@@ -16,6 +16,8 @@
  @import 'bootstrap';
 
 body {
+  width: 100%; 
+  height: 100%; 
   font-family: 'AlegreyaRegular';
 
   em {
@@ -29,8 +31,11 @@ body {
 }
 
 .background-image {
-  position: fixed; 
+  position: fixed;
+  top: 0;
+  left: 0; 
   width: 100%; 
+  min-width: 2048px; 
   height: 100%; 
   z-index: -10; 
 }
@@ -41,22 +46,20 @@ body {
 }
 
 .center-wrap {
-  border-width: 5px;
-  border-color: #ffff99;
   background-color: #ffffcc;
   width: 80%;
   margin: 0 auto;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;  
 }
 
 .box {
   margin: 20px;
   padding: 20px;
   border-width: 5px;
-  border-color: #ffff99;
+  border-color: #ff5057;
   background-color: #ffffcc;
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  border-radius: 7px;
 }
 
 header, footer, .media, table {
@@ -123,6 +126,22 @@ h1 {
   filter: Alpha(Opacity=50) !important;
 
   background-color: rgb(50, 50, 50) !important; 
+}
+
+.clearfooter {
+  height: 330px;
+  clear: both;
+}
+
+footer {
+  margin: 0; 
+  height: 120px;
+  position: relative;
+}
+
+.brown {
+  background-color: #310f16; 
+  color: white; 
 }
 
 @font-face {

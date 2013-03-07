@@ -12,61 +12,62 @@
   <div class="background-image">
     <img class="full-screen" src="/assets/pink_pearls.jpg"/>  
   </div>
-    <header class="navbar navbar-inverse">
-      <div class="navbar-inner">
 
-        <%= link_to "Dress Share", signin_path, class: "brand" %>
-        <ul class="nav">
+  <header class="navbar navbar-inverse">
+    <div class="navbar-inner">
+      <%= link_to "Dress Share", signin_path, class: "brand" %>
+      <ul class="nav">
+        <%if user_signed_in? %>
+          <li><%= link_to "Sign-Out", signout_path, method: :delete %></li>
+          <li><%= link_to "My Page", user_path(current_user)%></li>
+        <% else %>
+          <li><%= link_to "Log-In", signin_path %></li>
+          <li><%= link_to "Sign-Up", signup_path %></li>
+        <%end%>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"> About Us</a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <li><%= link_to "Contact",  contact_us_path %></li>
+            <li><%= link_to "Our Story", our_story_path %></li>
+            <li><%= link_to "Legal Stuff", legal_stuff_path %></li>
+          </ul>
+        </li>
+        <li><%= link_to "The Closet", dresses_path %></li>
+        <li><%= link_to "Add A Dress", new_dress_path %></li>
+      </ul>
+    </div>
+  </header>
 
-          <%if user_signed_in? %>
-            <li><%= link_to "Sign-Out", signout_path, method: :delete %></li>
-            <li><%= link_to "My Page", user_path(current_user)%></li>
-          <% else %>
-            <li><%= link_to "Log-In", signin_path %></li>
-            <li><%= link_to "Sign-Up", signup_path %></li>
-          <%end%>
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"> About Us</a>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-              <li><%= link_to "Contact",  contact_us_path %></li>
-              <li><%= link_to "Our Story", our_story_path %></li>
-              <li><%= link_to "Legal Stuff", legal_stuff_path %></li>
-            </ul>
-          </li>
-          <li><%= link_to "The Closet", dresses_path %></li>
-          <li><%= link_to "Add A Dress", new_dress_path %></li>
+  <% if flash[:error] %>
+    <div class="alert alert-error">
+      <%= flash[:error] %>
+    </div>
+  <% end %>
 
-        </ul>
-      </div>
+  <% if flash[:notices] %>
+    <div class="alert alert-success">
+      <%= flash[:notices] %>
+    </div>
+  <% end %>
 
-    </header>
+  <div class="center-wrap"> 
+    <div class="box">
+      <%= yield %>
+    </div>
+  </div> 
 
-    <% if flash[:error] %>
-      <div class="alert alert-error">
-        <%= flash[:error] %>
-      </div>
-    <% end %>
+  <div class="clearfooter"></div> 
 
-    <% if flash[:notices] %>
-      <div class="alert alert-success">
-        <%= flash[:notices] %>
-      </div>
-    <% end %>
 
-    <div class="center-wrap"> 
-      <div class="box">
-        <%= yield %>
-      </div>
-    </div> 
-
-<div class="row-fluid" %>
-  <div class="span12" %>
-    <footer>
-      <hr>
-      &copy; {Sassy Hash} 2013
-    </footer>
+  <div class="row-fluid">
+    <div class="span12" %>
+      <footer class="brown">
+        <hr>
+        &copy; {Sassy Hash} 2013
+      </footer>
+    </div>
   </div>
-</div>
+
 </body>
 </html>
 
