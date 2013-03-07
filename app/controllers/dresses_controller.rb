@@ -1,5 +1,6 @@
 class DressesController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :photo]
+  before_filter :dress_owner?, :only => [:edit, :destroy]
   # autocomplete :brand, :on => :collection
   # autocomplete :color, :on => :collection
   def new
@@ -99,6 +100,15 @@ class DressesController < ApplicationController
       send_data dress.photo_blob, :type => 'image/jpg', :disposition => 'inline'
     else
       raise ActionController::RoutingError.new('Not Found')
+    end
+  end
+
+  def dress_owner?
+    @dress = Dress.find(params[:id])
+    if current_user.id == @dress.owner_id
+    else
+      flash[:error] = "This dress is not yours. You are not authorized to modify it."
+      redirect_to dress_url(@dress)
     end
   end
 end

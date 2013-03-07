@@ -1,5 +1,6 @@
 class RentalsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :rental_owner?, :only => [:edit, :destroy]
 
   def new
     @dress = Dress.find(params[:dress_id])
@@ -35,6 +36,7 @@ class RentalsController < ApplicationController
     @rental=Rental.find(params[:id])
     @dress = Dress.find(@rental.dress_id)
     old_answer = @rental.accepted
+    old_start_date, old_end_date = @rental.start_date, @rental.end_date
 
     if @rental.update_attributes(params[:rental])
       flash[:notices] = "You have updated your rental details."
@@ -42,17 +44,19 @@ class RentalsController < ApplicationController
 
     new_answer = @rental.accepted
     if old_answer != new_answer
-
       UserMailer.notify_renter_denied(@rental.user, @rental).deliver if !new_answer
       UserMailer.notify_renter_accepted(@rental.user, @rental).deliver if new_answer
+    end
+
+    new_start_date, new_end_date = @rental.start_date, @rental.end_date
+    if new_start_date != old_start_date || new_end_date != old_end_date
+      UserMailer.notify_renter_owner_changes(@rental.user, @rental.owner, @rental)
     end
 
     respond_to do |format|
       format.html { render :show }
       format.json { render :json => @rental }
     end
-
-
   end
 
   def destroy
@@ -85,12 +89,12 @@ class RentalsController < ApplicationController
 
   end
 
-  def change_jquery_date_format(date)
-    date.to_s.split("-")
-    month = date[2]
-    date[2]= date[1]
-    date[1]= month
-    date.join("-")
-    Date.parse(date)
+  def rental_owner?
+    @rental = Rental.find(params[:id])
+    if current_user.id == @rental.user_id
+    else
+      flash[:error] = "You did not request this rental. You are not authorized to modify it."
+      redirect_to dresses_url
+    end
   end
 end
