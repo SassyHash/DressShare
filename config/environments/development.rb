@@ -14,19 +14,10 @@ DressShare::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.default_url_options = { :host => 'localhost' }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :user_name => "binna.yoon@gmail.com",
-    :password => "--------",
-    :domain => "sassyha.sh",
-    :address => "smtp.sendgrid.net",
-    :port => 587,
-    :authentication => :plain,
-    :enable_starttls_auto => true
-  }
+  config.action_mailer.delivery_method = :letter_opener
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -48,4 +39,4 @@ DressShare::Application.configure do
   config.assets.debug = true
 end
 
-Date::DATE_FORMATS.merge!(:default => "%Y-%d-%m")
+Date::DATE_FORMATS.merge!(:default => "%Y-%m-%d")

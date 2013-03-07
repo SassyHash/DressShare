@@ -1,0 +1,5 @@
+postgres=# CREATE ROLE dressshare SUPERUSER LOGIN; 
+CREATE ROLE
+postgres=# exit
+postgres-# \q
+
