@@ -3,7 +3,7 @@
   <div class="span7">
     <h1> It's All in the Details </h1>
   </div>
-  <div class="span5">
+  <div class="span4" style="margin-left: -20px;">
     <div class="rent-button">
       <%= link_to raw("<i class=\"icon-shopping-cart\"></i> Rent This!"), new_dress_rental_path(@dress) %>
     </div>
@@ -15,7 +15,7 @@
     <%= render :partial => 'shared/show_dress', :locals => {:dress => @dress} %>
   </div>
   <div class="row">
-    <span class="span2 offset4 dress-links"><%= link_to raw("<i class=\"icon-edit\"></i> Edit This Dress"), edit_dress_path(@dress) %>
+    <span class="span2 dress-links"><%= link_to raw("<i class=\"icon-edit\"></i> Edit This Dress"), edit_dress_path(@dress) %>
     </span>
     <span class="span2 dress-links"><%= link_to raw("<i class=\"icon-plus\"></i> Add A Dress"), new_dress_path %>
     </span>
