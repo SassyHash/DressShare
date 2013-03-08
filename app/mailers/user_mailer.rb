@@ -6,29 +6,28 @@ class UserMailer < ActionMailer::Base
     @url="http://sassyha.sh/rentals/#{rental.id}"
     @renter, @rental = renter, rental
     @dress = rental.dress
-    # dress_url = 'http://localhost:3000/dresses/#{@dress.id}/photo.jpg'
-    # attachments.inline['image.jpg'] = File.read(dress_url)
-    mail(:to => owner.email, :subject => "Someone Wants To Borrow Your Dress!").deliver
+    mail(:to => owner.email, :subject => "Someone Wants To Borrow Your Dress!")
   end
 
   def notify_renter_accepted(renter, rental)
     @renter, @rental = renter, rental
     @owner, @dress = rental.owner, rental.dress
     @url = "http://sassyha.sh/rentals/#{rental.id}"
-    mail(:to => renter.email, :subject => "Your Rental Request Has Been Accepted!").deliver
+    mail(:to => renter.email, :subject => "Your Rental Request Has Been Accepted!")
   end
 
   def notify_renter_denied(renter, rental)
     @renter, @rental = renter, rental
     @owner, @dress = rental.owner, rental.dress
     @url = "http://sassyha.sh/rentals/#{rental.id}"
-    mail(:to => renter.email, :subject => "Your Rental Request Has Been Denied.").deliver
+    mail(:to => renter.email, :subject => "Your Rental Request Has Been Denied.")
   end
 
   def notify_renter_owner_changes(renter, owner, rental)
     @renter, @owner = renter, owner
     @rental = rental
     @url = "http://sassyha.sh/rentals/#{rental.id}"
-    mail(:to => retnter.email), :subject
+    mail(:to => renter.email, :subject => "Your rental request has been changed.")
+    mail(:to => owner.email, :subject => "Rental request for your dress has been changed")
   end
 end

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+
+<body>
+  <h1> Hi <%= @renter.first_name %> and <%= @owner.first_name %>.</h1>
+
+<p> <%= @renter.first_name %>'s rental request for <%= @owner.first_name %>'s dress has been changed. </p>
+
+<p>Rental Details:</p>
+<ul>
+  <li> Dress:
+    <ul>
+      <li> Size: <%= @dress.size %></li>
+      <li> Color: <%= @dress.color %></li>
+      <li> Rent: <%= @dress.rent %></li>
+    </ul>
+  </li>
+  <li> Start: <%= @rental.start_date %></li>
+  <li> End: <%= @rental.end_date %></li>
+</ul>
+
+<p> For more rental details, click on this link: <%= link_to "This rental", rental_path(@rental) %> </p>
+
+<p>xoxo</p>
+<p>Sassy Hash Crew</p>
+
+  <footer>
+    <hr>
+    &copy; {Sassy Hash} 2013
+  </footer>
+</body>
+
+</html>

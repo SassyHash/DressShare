@@ -1,4 +1,4 @@
-
+<h1>Search For A Dress</h1>
 <%= simple_form_for @search, :url => dresses_path, :method => :get,
 :class => 'search-form' do |f| %>
   <%= f.input :brand, :as => :select, :collection => @brands %>

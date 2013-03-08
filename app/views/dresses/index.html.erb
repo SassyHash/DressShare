@@ -2,14 +2,14 @@
 
 <h1>The Closet</h1>
 
-<div class="row-fluid" style ="margin:auto">
+<div class="row" style ="margin:auto">
   <% if @dresses.empty? %>
   <% else %>
-  <div class="span7">
+  <div class="dresseswrap span8">
     <%= render :partial => 'shared/show_dresses', :locals => {:dresses => @dresses} %>
   <% end%>
   </div>
-  <div class="span4">
+  <div class="searchwrap span3">
   <%= render :partial => 'search', :locals => {:search => @search } %>
   </div>
 </div>

@@ -119,16 +119,16 @@ $inputHeight:                   $baseLineHeight + 10px; // base line-height + 8p
 
 // Dropdowns
 // -------------------------
-$dropdownBackground:            $white;
+$dropdownBackground:            #F4C2C2;
 $dropdownBorder:                rgba(0,0,0,.2);
 $dropdownDividerTop:            #e5e5e5;
 $dropdownDividerBottom:         $white;
 
 $dropdownLinkColor:             $grayDark;
-$dropdownLinkColorHover:        $white;
-$dropdownLinkColorActive:       $white;
+$dropdownLinkColorHover:        #f3f3c8;
+$dropdownLinkColorActive:       $dropdownLinkColorHover;
 
-$dropdownLinkBackgroundActive:  $linkColor;
+$dropdownLinkBackgroundActive:  #310f16;
 $dropdownLinkBackgroundHover:   $dropdownLinkBackgroundActive;
 
 
@@ -162,7 +162,7 @@ $placeholderText:         $grayLight;
 
 // Hr border color
 // -------------------------
-$hrBorder:                $grayLighter;
+$hrBorder:                #9f5671;
 
 
 // Horizontal forms & lists
@@ -199,11 +199,11 @@ $navbarInverseBackground:                $black;
 $navbarInverseBackgroundHighlight:       $black;
 $navbarInverseBorder:                    darken($navbarInverseBackground, 12%);
 
-$navbarInverseText:                      $white;
-$navbarInverseLinkColor:                 $grayLighter;
-$navbarInverseLinkColorHover:            #ffffcc;
+$navbarInverseText:                      #f4c2c2;
+$navbarInverseLinkColor:                 #F4C2C2;
+$navbarInverseLinkColorHover:            #f6f6cb;
 $navbarInverseLinkColorActive:           $navbarInverseLinkColorHover;
-$navbarInverseLinkBackgroundHover:       $purple;
+$navbarInverseLinkBackgroundHover:       #683640;
 $navbarInverseLinkBackgroundActive:      #49286D;
 
 $navbarInverseSearchBackground:          lighten($navbarInverseBackground, 25%);

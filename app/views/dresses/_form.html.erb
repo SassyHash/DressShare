@@ -6,24 +6,24 @@
     <%= render :partial => "shared/error_messages", :locals => {:object => dress} %>
   <% end %>
   <div class="form-inputs">
-    <div class="row-fluid">
-      <div class="span4" style="margin-left:10%; margin-top: 10px" >
+    <div class="row">
+      <div class="span5 offset1" style="margin-top: 10px" >
       <%= f.input :brand, :input_html => {:id => "brands"} %>
       <%= f.input :color, :input_html => {:id => "colors"} %>
       <%= f.input :rent, :label => "Rent. (0 if free.)", :placeholder => "$ only. No Collis Baked Goods!" %>
       <%= f.input :size, :label => "Size. (I wish Sisterhood of Traveling Pants existed too.)", :item_wrapper_class => 'inline', :collection => Dress::SIZES, :as => :radio_buttons%>
       </div>
-      <div class="span4" style="margin:10%; margin-top: 10px">
+      <div class="span4 offset1" style="margin-top: 10px">
       <%= f.association :body_types, :label_method=> :label, :as => :check_boxes%>
       </div>
-      <div class="span12" style="margin-left: 20px; margin-top:20px">
+    </div>
+    <div style="margin-top:20px; margin-left: 84px;">
       <%= f.input :photo_blob, :as => :file, :label => "Pics or it didn't happen" %>
-      <%= f.input :notes, :label => "Payment instructions. Notes. Memories about that time you wore this to formal and ... Nevermind.", :input_html => {:class => "span12"} %>
-      </div>
+      <%= f.input :notes, :label => "Payment instructions. Notes. Memories about that time you wore this to formal and ... Nevermind.", :input_html => {:style => "margin-right: auto; width: 600px; height: 150px; "} %>
     </div>
-    <div class="form-actions">
+  </div>
+  <div class="form-actions" style="margin-left: 70px;">
     <%= f.button :submit %>
-    </div>
   </div>
 <% end %>
 

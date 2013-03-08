@@ -1,12 +1,17 @@
 DressShare::Application.routes.draw do
   devise_for :users
+
   resources :static_pages
   resources :rentals, :only => [:edit, :update, :show, :destroy]
+
+  resources :users, :only => :index do
+    resources :rentals, :only => :index
+  end
 
   resources :dresses do
     # get :autocomplete_brand, :on => :collection
     # get :autocomplete_color, :on => :collection
-    resources :rentals, :only => [:new, :create, :index]
+    resources :rentals, :only => [:new, :create]
     collection do
       get 'search'
     end
