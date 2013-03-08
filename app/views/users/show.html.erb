@@ -1,20 +1,30 @@
 <title>Your Closet</title>
 <h1>Hi, <%= current_user.first_name %>. Welcome to DressShare.</h1>
 
-<% if current_user.dresses.empty? %>
-  <p> Your closet is empty. :( </p>
-<% else %>
-  <h4>  You have <%= pluralize(current_user.dresses.count, "dress") %> in your closet.</h4>
+<div class="row">
+  <div style="padding-left: 30px; padding-top: 10px;">
+  <% if current_user.dresses.empty? %>
+    <h4> Your closet is empty. :( </h4>
+  <% else %>
+    <h4>  You have <%= pluralize(current_user.dresses.count, "dress") %> in your closet.</h4>
+  </div>
 
-  <%= render :partial => 'shared/show_dresses', :locals => {:dresses => current_user.dresses} %>
-<% end %>
+  <div class="dresseswrap span8">
+    <%= render :partial => 'shared/show_dresses', :locals => {:dresses => current_user.dresses} %>
+  </div>
 
-<div class="row-fluid">
+  <div class="searchwrap span3 offset1">
+    <p><%= link_to raw("<i class=\"icon-plus\"></i> Add A Dress"),
+    new_dress_path %></p>
+    <p><%= link_to raw("<i class=\"icon-heart\"></i> See All Dresses"),
+    dresses_path %></p>
+  </div>
+  <% end %>
+</div>
+
+<div class="row">
     <div class="span4 offset1">
-      <p><%= link_to raw("<i class=\"icon-plus\"></i> Add A Dress"),
-      new_dress_path %></p>
-      <p><%= link_to raw("<i class=\"icon-heart\"></i> See All Dresses"),
-      dresses_path %></p>
+
     </div>
   </div>
 </div>

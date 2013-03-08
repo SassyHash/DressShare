@@ -1,28 +1,37 @@
 <title>Your Rental</title>
 
   <h1>Your Rental </h1>
-<div class="container-fluid">
-  <div class="row-fluid">
+  <div class="row">
     <div class="span6">
       <h3>looking good on nickels and dimes </h3>
     </div>
 
     <div class="span6">
-      <div class="span6">
-        <% if current_user == @dress.owner %>
-          <%= render :partial => 'buttons', :locals => {:rental => @rental} %>
-        <% end %>
+      <% if current_user == @dress.owner %>
+        <%= render :partial => 'buttons', :locals => {:rental => @rental} %>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <%= render :partial => 'shared/show_dress', :locals => {:dress => @dress} %>
+  </div>
+
+  <div class="row">
+    <div class="span6">
+      <div style="padding-left: 50px;">
+        <p>Start Date: <%= @rental.start_date %></p>
+      </div>
+    </div>
+    <div class="span6">
+      <div style="padding-left: 50px;">
+        <p>End Date: <%= @rental.end_date %></p>
       </div>
     </div>
   </div>
 
-  <div class="row-fluid rental">
-    <%= render :partial => 'shared/show_dress', :locals => {:dress => @dress} %>
-    <div class="span4" style="margin-left:15%">
-      <p>Start Date: <%= @rental.start_date %></p>
-      <p>End Date: <%= @rental.end_date %></p>
-
-      <%= link_to raw("<i class='icon-edit'></i> Edit"), edit_rental_path(@rental) %>
-      <%= link_to raw("<i class='icon-trash'></i> Cancel"), rental_path(@rental), :method => "delete", :confirm => 'Are you sure you want to cancel this rental request?' %>
-    </div>
+<div class="dress-links">
+  <%= link_to raw("<i class='icon-edit'></i> Edit"), edit_rental_path(@rental) %>
+  <%= link_to raw("<i class='icon-trash'></i> Cancel"), rental_path(@rental), :method => "delete", :confirm => 'Are you sure you want to cancel this rental request?' %>
 </div>

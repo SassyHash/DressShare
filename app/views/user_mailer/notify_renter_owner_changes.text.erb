@@ -1,0 +1,23 @@
+Hi <%= @renter.first_name %> and <%= @owner.first_name %>.
+----------------------------------------
+
+<%= @renter.first_name %>'s rental request for <%= @owner.first_name %>'s dress has been changed.
+
+Rental Details:
+
+ Dress:
+    Size: <%= @dress.size %>
+    Color: <%= @dress.color %>
+    Rent: <%= @dress.rent %>
+
+Start: <%= @rental.start_date %>
+End: <%= @rental.end_date %>
+
+For more rental details, click on this link: <%= link_to "This rental", rental_path(@rental) %>
+
+xoxo
+Sassy Hash Crew
+
+----------------------------------------
+(c) {Sassy Hash} 2013
+

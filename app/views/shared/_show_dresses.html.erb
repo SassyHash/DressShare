@@ -1,8 +1,7 @@
 <ul>
 <% dresses.each_with_index do |dress, i| %>
-  <li class="dresswrap">
-    <div class="row">
-      <div class="span4">
+  <li class="dresswrap" style="width: 700px;">
+      <div class="width: 400px">
         <div class="description">
           <strong><%= link_to "Dress #{i+1}", dress_path(dress) %></strong>
           <ul>
@@ -28,10 +27,9 @@
           </ul>
         </div>
       </div>
-      <div class="span3">
+      <div class="300">
         <%= image_tag photo_dress_url(dress), :class => "thumbnail-img" %>
       </div>
-    </div>
   </li>
   <% end %>
 </ul>

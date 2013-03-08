@@ -14,6 +14,7 @@
 
  @import 'bootstrap-styles';
  @import 'bootstrap';
+ @import 'bootstrap-responsive';
 
 html {
   height: 100%;
@@ -28,7 +29,7 @@ body {
   background-size: cover;
   height: 100%;
   font-family: 'AlegreyaRegular';
-  font-size: 16px;
+  font-size: 14px;
 
   em {
     font-family: 'AlegreyaItalic';
@@ -46,14 +47,25 @@ body {
   }
 }
 
-@media (max-width: 500px) and (orientation: portrait) {
+@media (max-width: 480px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 80%;
+  }
+}
 
+img {
+  max-width: 95%;
 }
 
 
 .everything {
   min-height: 100%;
-  margin-bottom: -80px;
+  margin-bottom: -100px;
 }
 
 .alert {
@@ -102,6 +114,10 @@ ul {
   list-style-type: none;
 
 }
+.row {
+  width: 940px;
+  padding-left: 40px;
+}
 
 .dress-show-wrap {
   padding-bottom: 20px;
@@ -122,8 +138,28 @@ ul {
   }
 }
 
+.buttons-wrap {
+  margin: 0 auto;
+  .accept-button {
+    padding-left: 10px;
+    margin: 20px;
+    text-align: center;
+  }
+  .deny-button {
+    padding-left: 10px;
+    margin: 20px;
+    text-align: center;
+  }
+}
 
-
+.rent-button {
+  padding-top: 5px;
+  font-size: 20px;
+  margin-top: 15px;
+  float:right;
+  margin-right: 50px;
+  font-family: 'AlegreyaBold'
+}
 h1, h2, h3, h4 {
   margin: auto;
 }
@@ -170,8 +206,13 @@ h1, h2, h3, h4 {
 
 footer {
   margin: 0;
-  height: 80px;
+  height: 100px;
   position: relative;
+
+  .footer-stuff {
+    margin-left: 100px;
+    margin-top: 20px;
+  }
 }
 
 .brown {
