@@ -1,6 +1,9 @@
 class DressesController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :photo]
   before_filter :dress_owner?, :only => [:edit, :destroy]
+  caches_action :index, :show
+  
+  cache_sweeper :dress_sweeper
   # autocomplete :brand, :on => :collection
   # autocomplete :color, :on => :collection
   def new
