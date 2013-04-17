@@ -38,34 +38,35 @@
       <a class="brand" href="#">DressShare</a>
       <div class="nav-collapse collapse">
         <ul class="nav">
+          <li class="dropdown">
+            <%= link_to "The Closet", dresses_path %>
+          </li>
 
-          <%if user_signed_in? %>
-            <li><%= link_to "Sign-Out", signout_path, method: :delete %></li>
-
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Page</a>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                <li><%= link_to "Dresses", user_path(current_user)%></li>
-                <li><%= link_to "Rentals", user_rentals_path(current_user)%></li>
-              </ul>
-            </li>
-
-          <% else %>
-            <li><%= link_to "Log-In", signin_path %></li>
-            <li><%= link_to "Sign-Up", signup_path %></li>
-          <%end%>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Page</a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <% if user_signed_in? %>
+              <li><%= link_to "Dresses", users_path(current_user)%></li>
+              <li><%= link_to "Rentals", users_path(current_user)%></li>
+              <% end %>
+            </ul>
+          </li>
 
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#"> About Us</a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
               <li><%= link_to "Contact",  contact_us_path %></li>
-              <li><%= link_to "Our Story", our_story_path %></li>
+              <li><%= link_to "Her Story", our_story_path %></li>
               <li><%= link_to "Legal Stuff", legal_stuff_path %></li>
             </ul>
-          </li>
+          </li>   
 
-          <li><%= link_to "Rent The Closet", dresses_path %></li>
-          <li><%= link_to "Add A Dress", new_dress_path %></li>
+          <%if user_signed_in? %>
+            <li><%= link_to "Sign-Out", signout_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Log-In", signin_path %></li>
+          <%end%>
+
         </ul>
         <ul class="nav pull-right" >
           <% if user_signed_in? %>
