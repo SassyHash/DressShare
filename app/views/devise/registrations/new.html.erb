@@ -3,15 +3,17 @@
     <%= f.error_notification %>
     <div class="row">
       <div class="form-inputs">
-        <div class="span4 offset2">
-          <%= f.input :email, :required => true, :autofocus => true, :placeholder => "email@dartmouth.edu" %>
-          <%= f.input :password, :required => true %>
-          <%= f.input :password_confirmation, :required => true %>
-        </div>
         <div class="span4">
-          <%= f.input :first_name %>
-          <%= f.input :last_name %>
-          <%= f.input :class_year, :collection => 2011..2020, :required => true %>
+          <%= f.input_field :first_name, :placeholder => "First Name", :autofocus => true %>
+          <%= f.input_field :last_name, :placeholder => "Last Name" %>
+          <%= f.association :school, :label => "School Information", :label_method => :name, 
+          :include_blank => false, :require => true %>
+          <%= f.input_field :class_year, :placeholder => "Class Year", :collection => (Date.today.year-8)..(Date.today.year+8), 
+          :required => true, include_blank: false %>
+
+          <%= f.input_field :email, :required => true, :placeholder => "School Email" %>
+          <%= f.input_field :password, :required => true, :placeholder => "Password" %>
+          <%= f.input_field :password_confirmation, :required => true, :placeholder => "Password confirmation" %>
         </div>
       </div>
     </div>
@@ -24,6 +26,4 @@
 
 <div style="clear:both"></div>
       <%= render "devise/shared/links" %>
-
-
 
