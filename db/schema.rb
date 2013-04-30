@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130417013718) do
+ActiveRecord::Schema.define(:version => 20130430162359) do
 
   create_table "body_type_dresses", :force => true do |t|
     t.integer  "body_type_id"
@@ -41,8 +41,12 @@ ActiveRecord::Schema.define(:version => 20130417013718) do
     t.text     "notes"
     t.integer  "rent"
     t.binary   "photo_blob"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "dresses", ["owner_id"], :name => "index_dresses_on_owner_id"

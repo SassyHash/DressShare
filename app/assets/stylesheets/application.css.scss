@@ -94,8 +94,6 @@ img {
   width: 900px;
   margin: 0 auto;
   -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  border-radius: 7px;
   padding: 20px;
 
   h1 {
@@ -108,7 +106,7 @@ img {
 
 
 header, .media, table {
-  margin: 30px 0;
+  // margin: 30px 0;
 }
 
 ul {
@@ -165,22 +163,25 @@ h1, h2, h3, h4 {
 }
 
 .navbar {
-  margin: 20px;
-  padding: 5px;
+  width: 100%;
+
   font-family: 'CACChampagneRegular';
   font-size: 25px;
   text-shadow: 0.1em 0.1em 0.2em #d9abcb;
+  position: fixed;
+  padding-right: 0;
+
+  .navbar-inverse {
+    padding: 0;
+  }
 
   .brand {
-      padding-right: 30px;
-      padding-left: 30px;
       font-weight: 230;
       font-size: 35px;
-      text-shadow: 0.1em 0.1em 0.2em #d9abcb;
+      text-shadow: 0.1em 0.1em 0.1em #310f16;
     }
 
   .nav{
-
     .current-user-name {
       margin-right: 18px;
       font-family: 'AlegreyaRegular';
@@ -607,7 +608,7 @@ footer {
       padding: 20px;
       width: 90%;
       .form-inputs {
-        padding: 10px;
+        padding: 5px;
       }
     }
   }

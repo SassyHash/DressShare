@@ -1,10 +1,10 @@
 class Dress < ActiveRecord::Base
-  attr_accessible :body_type_ids, :brand, :color, :notes, :owner_id, :photo_blob, :rent, :size, :updated_at
+  attr_accessible :body_type_ids, :brand, :color, :notes, :owner_id, :photo, :rent, :size, :updated_at
 
   validates :color, :presence => true
   validates :rent, :presence => true
   validates :size, :presence => true
-  validates :photo_blob, :presence => true
+  validates :photo, :presence => true
 
   # before_save :convert_dollars
   before_save :cleanup_brand_and_color
@@ -12,6 +12,7 @@ class Dress < ActiveRecord::Base
   has_many :body_type_dresses
   has_many :body_types, :through => :body_type_dresses
   belongs_to :owner, :class_name => 'User', :foreign_key => :owner_id
+  has_attached_file :photo, :styles => { :medium => "600x400>", :thumb => "300x200>" }, :default_url => "/images/:dress/missing.png"
 
   SIZES = [0, 2, 4, 6, 8, 10, 12, 14, 16]
 

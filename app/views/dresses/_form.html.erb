@@ -1,7 +1,7 @@
 <h2>About Your Dress</h2>
 <p> * Marks mandatory fields. </p>
 
-<%= simple_form_for dress do |f| %>
+<%= simple_form_for dress, :html => { :multipart => true } do |f| %>
   <% if dress.errors.any? %>
     <%= render :partial => "shared/error_messages", :locals => {:object => dress} %>
   <% end %>
@@ -18,7 +18,7 @@
       </div>
     </div>
     <div style="margin-top:20px; margin-left: 84px;">
-      <%= f.input :photo_blob, :as => :file, :label => "Pics or it didn't happen" %>
+      <%= f.input :photo, :as => :file, :label => "Pics or it didn't happen" %>
       <%= f.input :notes, :label => "Payment instructions. Notes. Memories about that time you wore this to formal and ... Nevermind.", :input_html => {:style => "margin-right: auto; width: 600px; height: 150px; "} %>
     </div>
   </div>
