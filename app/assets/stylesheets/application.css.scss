@@ -34,23 +34,39 @@ body {
   background-attachment: fixed;
   background-size: cover;
   height: 100%;
-  font-family: 'AlegreyaRegular';
-  font-size: 14px;
-
-  em {
-    font-family: 'AlegreyaItalic';
-    font-style: normal;
-  }
-  strong {
-    font-family: 'AlegreyaBold';
-    font-weight: normal;
-  }
 }
 
 @media (min-width: 980px) {
   .nav-collapse.collapse {
     height: auto !important;
     overflow: visible !important;
+  }
+}
+
+
+.navbar {
+  width: 100%;
+  position: fixed;
+  font-family: 'DubielPlainRegular';
+  font-size: 20px;
+  text-shadow: 0.03em 0.03em 0.08em #310f16;
+
+  .brand {
+    font-weight: 230;
+    font-size: 24px;
+    text-shadow: 0.1em 0.1em 0.2em #310f16;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .nav{
+    .current-user-name {
+      margin-right: 15px;
+      font-family: 'DubielPlainRegular';
+      color: #f6f6cb;
+      font-size: 15px;
+      font-weight: none;
+    }
   }
 }
 
@@ -61,22 +77,12 @@ img {
 .everything {
   min-height: 100%;
   padding-top: 60px;
-  // margin-bottom: -100px;
 }
 
 .alert {
-  margin: 20px;
+  margin: 0px;
   padding: 5px;
   color: #444;
-}
-.background-image {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  min-width: 2048px;
-  height: 100%;
-  z-index: -10;
 }
 
 .center-wrap {
@@ -86,19 +92,174 @@ img {
   margin: 0 auto;
   -webkit-border-radius: 7px;
   padding: 20px;
+  font-family: 'AlegreyaRegular';
+  font-size: 14px;
 
   h1 {
-  font-family: 'GreatVibesRegular';
-  text-shadow: 0.1em 0.2em 0.2em #b19d7c;
-  margin-top: 10px;
-  margin-bottom: 15px; 
+    font-family: 'GreatVibesRegular';
+    text-shadow: 0.1em 0.2em 0.2em #b19d7c;
+    margin-top: 10px;
+    margin-bottom: 10px; 
+  }
+
+  h2 {
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+
+  em {
+    font-family: 'AlegreyaItalic';
+    font-style: normal;
+  }
+
+  strong {
+    font-family: 'AlegreyaBold';
+    font-weight: normal;
+  }
+
+  .dress-show-wrap {
+    padding-bottom: 20px;
+    
+    .large-img {
+      margin: 10px;
+      margin-top: 20px;
+      height: auto;
+      box-shadow: 0.2em 0.2em 0.2em #b19d7c;
+      width: 100%;
+    }
+    .description {
+      margin-top: 20px;
+
+    }
+    .dress-links {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .buttons-wrap {
+    margin: 0 auto;
+    }
+
+    .accept-button {
+      padding-left: 10px;
+      margin: 20px;
+      text-align: center;
+    }
+    .deny-button {
+      padding-left: 10px;
+      margin: 20px;
+      text-align: center;
+    }
+
+    .rent-button {
+      padding-top: 5px;
+      font-size: 20px;
+      margin-top: 15px;
+      float:right;
+      margin-right: 50px;
+      font-family: 'AlegreyaBold'
+    }
+  }
+
+  h1, h2, h3, h4 {
+    margin: auto;
+  }
+
+  .ui-multiselect {
+    font-family: 'AlegreyaRegular';
+  }
+
+  .ui-widget-overlay {
+    opacity: .50 !important;
+    filter: Alpha(Opacity=50) !important;
+
+    background-color: rgb(50, 50, 50) !important;
+  }
+
+  .spacefooter {
+    height: 100px;
+  }
+
+  footer {
+    margin: 0;
+    height: 100px;
+    position: relative;
+
+    .footer-stuff {
+      margin-left: 100px;
+      margin-top: 20px;
+    }
+  }
+
+  .brown {
+    background-color: #310f16;
+    color: white;
+  }
+
+  .form-actions {
+    background-color: transparent;
+  }
+
+  .dresseswrap {
+    margin-right: 25px;
+
+    ul, li {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .dresswrap {
+      background: #ffffcc;
+      border-color: #9f5671;
+      border-width: 3px;
+      border-style: dotted;
+      -webkit-border-radius: 7px;
+      -moz-border-radius: 7px;
+      border-radius: 7px;
+      box-shadow: 0.2em 0.2em 0.2em #b19d7c;
+      overflow: hidden;
+      padding: 25px 15px;
+      
+      .thumbnail-img {
+        height: auto;
+        width: 70%;
+        box-shadow: 0.2em 0.2em 0.2em #b19d7c;
+        float: right; 
+      }
+
+      .description {
+        font-size: 1.1em; 
+
+        strong {
+          font-size: 1.3em; 
+        }
+
+        .icons {
+          padding-top: 30px;
+          width: auto;
+        }
+      }
+    }
+
+
+    .searchwrap {
+    margin: 0 auto;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    box-shadow: 0.2em 0.2em 0.2em #b19d7c;
+    padding: 15px;
+    background: #c492a5;
+    /*#e1cca8;*/
+      h1 {
+        font-size: 25px;
+        text-shadow: 0.1em 0.2em 0.2em #c7adb7;
+        text-align: center;
+      }
+    }
   }
 }
 
-
-header, .media, table {
-  // margin: 30px 0;
-}
 
 ul {
   list-style-type: none;
@@ -108,178 +269,7 @@ ul {
   width: 940px;
 }
 
-.dress-show-wrap {
-  padding-bottom: 20px;
-  .large-img {
-    margin: 10px;
-    margin-top: 20px;
-    height: auto;
-    box-shadow: 0.2em 0.2em 0.2em #b19d7c;
-    width: 100%;
-  }
-  .description {
-    margin-top: 20px;
 
-  }
-  .dress-links {
-    margin-top: 20px;
-    text-align: center;
-  }
-}
-
-.buttons-wrap {
-  margin: 0 auto;
-  .accept-button {
-    padding-left: 10px;
-    margin: 20px;
-    text-align: center;
-  }
-  .deny-button {
-    padding-left: 10px;
-    margin: 20px;
-    text-align: center;
-  }
-}
-
-.rent-button {
-  padding-top: 5px;
-  font-size: 20px;
-  margin-top: 15px;
-  float:right;
-  margin-right: 50px;
-  font-family: 'AlegreyaBold'
-}
-h1, h2, h3, h4 {
-  margin: auto;
-}
-
-.navbar {
-  width: 100%;
-  font-family: 'DubielPlainRegular';
-  font-size: 20px;
-  text-shadow: 0.03em 0.03em 0.08em #310f16;
-  position: fixed;
-
-  .height-adjust {
-        height: 30px;
-      }
-  .navbar-inverse {
-   .navbar-fixed-top {
-    .navbar-inner {
-      
-    }
-   }
-  }
-
-  .brand {
-      font-weight: 230;
-      font-size: 24px;
-      text-shadow: 0.1em 0.1em 0.2em #310f16;
-      margin-left: 5px;
-      margin-right: 5px;
-    }
-
-  .nav{
-    .current-user-name {
-      margin-right: 15px;
-      font-family: 'AlegreyaRegular';
-      color: #f6f6cb;
-      font-size: 15px;
-      font-weight: none;
-
-    }
-  }
-}
-
-.ui-widget-overlay
-{
-  opacity: .50 !important;
-  filter: Alpha(Opacity=50) !important;
-
-  background-color: rgb(50, 50, 50) !important;
-}
-
-.spacefooter {
-  height: 100px;
-}
-
-footer {
-  margin: 0;
-  height: 100px;
-  position: relative;
-
-  .footer-stuff {
-    margin-left: 100px;
-    margin-top: 20px;
-  }
-}
-
-.brown {
-  background-color: #310f16;
-  color: white;
-}
-
-.form-actions {
-  background-color: transparent;
-}
-
-.dresseswrap {
-  margin-right: 25px;
-
-  ul, li {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .dresswrap {
-    background: #ffffcc;
-    border-color: #9f5671;
-    border-width: 3px;
-    border-style: dotted;
-    -webkit-border-radius: 7px;
-    -moz-border-radius: 7px;
-    border-radius: 7px;
-    box-shadow: 0.2em 0.2em 0.2em #b19d7c;
-    overflow: hidden;
-    padding: 25px 15px;
-    
-    .thumbnail-img {
-      height: auto;
-      width: 70%;
-      box-shadow: 0.2em 0.2em 0.2em #b19d7c;
-      float: right; 
-    }
-
-    .description {
-      font-size: 1.1em; 
-
-      strong {
-        font-size: 1.3em; 
-      }
-
-      .icons {
-        padding-top: 30px;
-        width: auto;
-      }
-    }
-  }
-}
-
-.searchwrap {
-  margin: 0 auto;
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  border-radius: 7px;
-  box-shadow: 0.2em 0.2em 0.2em #b19d7c;
-  padding: 15px;
-  background: #c492a5;
-  /*#e1cca8;*/
-  h1 {
-    font-size: 25px;
-    text-shadow: 0.1em 0.2em 0.2em #c7adb7;
-    text-align: center;
-  }
-}
 
 
 @font-face {
@@ -625,11 +615,10 @@ footer {
     }
 
     .span3 {
-        margin: 0px;
-        padding: 0px;
-        width: auto;
-
-      }
+      margin: 0px;
+      padding: 0px;
+      width: auto;
+    }
 
     .searchwrap {
       margin: 0 auto;
@@ -673,9 +662,9 @@ footer {
     }
     
     h1{
-      font-size:20px;
-      line-height: 20px;
-    font-family: 'AlegreyaRegular';
+      font-size:24px;
+      line-height: 24px;
+
     }
 
     .form-inputs {
@@ -686,9 +675,6 @@ footer {
       line-height: 20px;
     }
   }
-
-  
-
 }
 
 

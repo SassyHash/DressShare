@@ -11,31 +11,30 @@
       <%= f.input_field :brand, :input_html => {:id => "brands"}, :autofocus => true, :placeholder => "*Brand" %>
       <%= f.input_field :color, :input_html => {:id => "colors"}, :placeholder => "*Color" %>
       <%= f.input_field :rent, :placeholder => "*Rent. (0 If Free)", :as => :integer %>
-   
         <%= select_tag("size[]", 
           options_for_select(
              Dress::SIZES.collect { |ff| ["Size #{ff}", ff] }, 
              Dress::SIZES),
          {:multiple=>false, :id => "sizeselect"}) %>
-        
+
         <%= select_tag("body_types[]", 
           options_for_select(
             @body_types.collect { |ff| [ff.label, ff.id] }, @dress.body_types.collect { |fs| fs.id }),
          {:multiple=>true, :id => "bodytypeselect"}) %>
-
-      <%= f.input :photo1, :as => :file, :label => "Photo 1*" %>
-      <%= f.input :photo2, :as => :file, :label => "Photo 2" 
-      # :wrapper_html => {:hidden => :true} 
-      %>
-      <%= f.input :photo3, :as => :file, :label => "Photo 3"
-      # :wrapper_html => {:hidden => :true} 
-      %>
+      </div>
+      <div class="span4 offset1">
+        <%= f.input :photo1, :as => :file, :label => "Photo 1*" %>
+        <%= f.input :photo2, :as => :file, :label => "Photo 2" 
+        # :wrapper_html => {:hidden => :true} 
+        %>
+        <%= f.input :photo3, :as => :file, :label => "Photo 3"
+        # :wrapper_html => {:hidden => :true} 
+        %>
       </div>
         
     </div>
     <div>
-
-      <%= f.input :notes, :label => "Special instructions. Memories about that time you wore this to formal and ... Nevermind.", :input_html => {:style => "margin: 0 auto; width: 95%; height: 100px; "} %>
+      <%= f.input :notes, :placeholder => "Special instructions. Memories about that time you wore this to formal and ... Nevermind.", :input_html => {:style => "margin: 0 auto; width: 95%; height: 100px; "} %>
     </div>
   </div>
   <div class="form-actions" style="margin-left: 70px;">
@@ -56,21 +55,28 @@
     $("#brands").autocomplete({
       source: availableBrands
     });
-    console.log($("#colors"));
-    console.log(availableColors)
   });
 
   $(document).ready(function() {
-        $("#sizeselect").multiselect({
-          selectedText: "# of # selected",
-
-        })
-        $("#bodytypeselect").multiselect({
-          selectedText: "# of # selected",
-
-        });
-
+    $("#sizeselect").multiselect({
+      selectedText: "*Size",
+      noneSelectedText: "*Size",
+      show: ["slide", 300],
+      header: false
     });
+
+    $("#bodytypeselect").multiselect({
+      selectedText: "# of # selected",
+      noneSelectedText: "*Flattering On",
+      show: ["slide", 200],
+      header: false
+    });
+    
+    $("#sizeselect").multiselect("getButton").css("width", "220px");
+    $("#sizeselect").multiselect("getButton").css("margin-bottom", "10px");
+    $("#bodytypeselect").multiselect("getButton").css("width", "220px");
+
+  });
 
   $(function () {
     $('#fileupload').fileupload({

@@ -20,6 +20,7 @@ class DressesController < ApplicationController
     @dress.owner_id = current_user.id
     @dress.photo_blob = photo_blob
     @dress.body_types << BodyType.find(params[:body_types]) unless params[:body_types].nil? 
+    @dress.size = params[:sizes] unless params[:sizes].nil?
 
     if @dress.save
       flash[:notices] = "Your dress is hung in our closet!"
