@@ -7,19 +7,35 @@
   <% end %>
   <div class="form-inputs">
     <div class="row">
-      <div class="span5 offset1" style="margin-top: 10px" >
-      <%= f.input :brand, :input_html => {:id => "brands"} %>
-      <%= f.input :color, :input_html => {:id => "colors"} %>
-      <%= f.input :rent, :label => "Rent. (0 if free.)", :placeholder => "$ only. No Collis Baked Goods!" %>
-      <%= f.input :size, :label => "Size. (I wish Sisterhood of Traveling Pants existed too.)", :item_wrapper_class => 'inline', :collection => Dress::SIZES, :as => :radio_buttons%>
+      <div class="span4 offset1" >
+      <%= f.input_field :brand, :input_html => {:id => "brands"}, :autofocus => true, :placeholder => "*Brand" %>
+      <%= f.input_field :color, :input_html => {:id => "colors"}, :placeholder => "*Color" %>
+      <%= f.input_field :rent, :placeholder => "*Rent. (0 If Free)", :as => :integer %>
+   
+        <%= select_tag("size[]", 
+          options_for_select(
+             Dress::SIZES.collect { |ff| ["Size #{ff}", ff] }, 
+             Dress::SIZES),
+         {:multiple=>false, :id => "sizeselect"}) %>
+        
+        <%= select_tag("body_types[]", 
+          options_for_select(
+            @body_types.collect { |ff| [ff.label, ff.id] }, @dress.body_types.collect { |fs| fs.id }),
+         {:multiple=>true, :id => "bodytypeselect"}) %>
+
+      <%= f.input :photo1, :as => :file, :label => "Photo 1*" %>
+      <%= f.input :photo2, :as => :file, :label => "Photo 2" 
+      # :wrapper_html => {:hidden => :true} 
+      %>
+      <%= f.input :photo3, :as => :file, :label => "Photo 3"
+      # :wrapper_html => {:hidden => :true} 
+      %>
       </div>
-      <div class="span4 offset1" style="margin-top: 10px">
-      <%= f.association :body_types, :label_method=> :label, :as => :check_boxes%>
-      </div>
+        
     </div>
-    <div style="margin-top:20px; margin-left: 84px;">
-      <%= f.input :photo, :as => :file, :label => "Pics or it didn't happen" %>
-      <%= f.input :notes, :label => "Payment instructions. Notes. Memories about that time you wore this to formal and ... Nevermind.", :input_html => {:style => "margin-right: auto; width: 600px; height: 150px; "} %>
+    <div>
+
+      <%= f.input :notes, :label => "Special instructions. Memories about that time you wore this to formal and ... Nevermind.", :input_html => {:style => "margin: 0 auto; width: 95%; height: 100px; "} %>
     </div>
   </div>
   <div class="form-actions" style="margin-left: 70px;">
@@ -44,5 +60,26 @@
     console.log(availableColors)
   });
 
+  $(document).ready(function() {
+        $("#sizeselect").multiselect({
+          selectedText: "# of # selected",
 
+        })
+        $("#bodytypeselect").multiselect({
+          selectedText: "# of # selected",
+
+        });
+
+    });
+
+  $(function () {
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        // done: function (e, data) {
+        //     $.each(data.result.files, function (index, file) {
+        //         $('<p/>').text(file.name).appendTo(document.body);
+        //     });
+        // }
+    });
+});
 </script>

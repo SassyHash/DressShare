@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130430162359) do
+ActiveRecord::Schema.define(:version => 20130505011258) do
 
   create_table "body_type_dresses", :force => true do |t|
     t.integer  "body_type_id"
@@ -41,16 +41,46 @@ ActiveRecord::Schema.define(:version => 20130430162359) do
     t.text     "notes"
     t.integer  "rent"
     t.binary   "photo_blob"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "photo1_file_name"
+    t.string   "photo1_content_type"
+    t.integer  "photo1_file_size"
+    t.datetime "photo1_updated_at"
+    t.string   "photo2_file_name"
+    t.string   "photo2_content_type"
+    t.integer  "photo2_file_size"
+    t.datetime "photo2_updated_at"
+    t.string   "photo3_file_name"
+    t.string   "photo3_content_type"
+    t.integer  "photo3_file_size"
+    t.datetime "photo3_updated_at"
   end
 
   add_index "dresses", ["owner_id"], :name => "index_dresses_on_owner_id"
   add_index "dresses", ["size"], :name => "index_dresses_on_size"
+
+  create_table "pool_dresses", :force => true do |t|
+    t.integer  "dress_id"
+    t.integer  "pool_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "pool_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "pool_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "pools", :force => true do |t|
+    t.string   "name"
+    t.integer  "admin_id"
+    t.integer  "school_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "rentals", :force => true do |t|
     t.integer  "user_id"

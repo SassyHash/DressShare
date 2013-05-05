@@ -10,6 +10,7 @@ class DressesController < ApplicationController
     @brands = Dress.pluck("brand").uniq
     @colors = Dress.pluck("color").uniq
     @dress = Dress.new
+    @body_types = BodyType.all
   end
 
   def create
@@ -18,6 +19,7 @@ class DressesController < ApplicationController
     @dress = Dress.new(params[:dress])
     @dress.owner_id = current_user.id
     @dress.photo_blob = photo_blob
+    @dress.body_types << BodyType.find(params[:body_types]) unless params[:body_types].nil? 
 
     if @dress.save
       flash[:notices] = "Your dress is hung in our closet!"

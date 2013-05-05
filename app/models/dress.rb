@@ -1,20 +1,30 @@
 class Dress < ActiveRecord::Base
-  attr_accessible :body_type_ids, :brand, :color, :notes, :owner_id, :photo, :rent, :size, :updated_at
+  attr_accessible :body_type_ids, :brand, :color, :notes, :owner_id, :photo1, :photo2, :photo3, :rent, :size, :updated_at
 
   validates :color, :presence => true
   validates :rent, :presence => true
   validates :size, :presence => true
-  validates :photo, :presence => true
+  validates_attachment_presence :photo1
 
-  # before_save :convert_dollars
   before_save :cleanup_brand_and_color
 
   has_many :body_type_dresses
   has_many :body_types, :through => :body_type_dresses
   belongs_to :owner, :class_name => 'User', :foreign_key => :owner_id
-  has_attached_file :photo, :styles => { :medium => "600x400>", :thumb => "300x200>" }, :default_url => "/images/:dress/missing.png"
+  
+  photos = [:photo1, :photo2, :photo3]
 
-  SIZES = [0, 2, 4, 6, 8, 10, 12, 14, 16]
+  photos.each do |photo_attr|
+    has_attached_file photo_attr, 
+      :styles => {:medium => "500x500>",  
+                  :small => "300x300>", 
+                  :thumb => "150x150>" }, 
+      :default_url => "/images/:dress/#{photo_attr}.png"
+    validates_attachment_size photo_attr, :less_than => 5.megabytes
+    validates_attachment_content_type photo_attr, :content_type => ['image/jpeg', 'image/png']
+  end
+
+  SIZES = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
 
   default_scope order('updated_at DESC')
   scope :most_recent, order('updated_at DESC')

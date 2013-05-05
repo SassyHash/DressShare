@@ -10,10 +10,16 @@
  *
  *= require_self
  *= require jquery.ui.all
+ *= require jquery.fileupload-ui
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
+ *= require jquery.multiselect
+ *= require jquery.multiselect.filter
  */
 
  @import 'bootstrap-styles';
  @import 'bootstrap';
+
  /*@import 'bootstrap-responsive';*/
 
 html {
@@ -48,24 +54,14 @@ body {
   }
 }
 
-@media (max-width: 480px) {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6, body {
-    font-size: 80%;
-  }
-}
-
 img {
   max-width: 95%;
 }
 
 .everything {
   min-height: 100%;
-  margin-bottom: -100px;
+  padding-top: 60px;
+  // margin-bottom: -100px;
 }
 
 .alert {
@@ -81,11 +77,6 @@ img {
   min-width: 2048px;
   height: 100%;
   z-index: -10;
-}
-
-.full-screen {
-  min-width: 100%;
-  min-height: 100%;
 }
 
 .center-wrap {
@@ -169,15 +160,13 @@ h1, h2, h3, h4 {
   text-shadow: 0.03em 0.03em 0.08em #310f16;
   position: fixed;
 
-  .navbar-inverse {
-        height: 30px;
-   .navbar-fixed-top {
-    height: 30px;
-    .navbar-inner {
-      height: 30px;
-      .height-adjust {
+  .height-adjust {
         height: 30px;
       }
+  .navbar-inverse {
+   .navbar-fixed-top {
+    .navbar-inner {
+      
     }
    }
   }
@@ -407,6 +396,10 @@ footer {
   body {
     padding-top: 0;
   }
+
+  .everything {
+    padding-top: 0px;
+  }
   .navbar-fixed-top,
   .navbar-fixed-bottom {
     position: static;
@@ -556,7 +549,7 @@ footer {
   }
 
   .center-wrap {
-    max-width: 92%
+    max-width: 90%
 
   }
 
@@ -648,4 +641,54 @@ footer {
     }
   }
 }
+
+@media (min-width: 480px) and (max-width:800px) {
+  .center-wrap {
+    width: 90%;
+  }
+}
+
+
+@media (max-width: 479px) {
+  .everything {
+    padding-top: 5px;
+    padding-left:10px;
+    padding-right:10px;
+  }
+  .center-wrap {
+    margin: 0;
+
+    .box{
+      width: 100%;
+      padding: 0px;
+    }
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6, body, em, small {
+      font-size: 14px;
+      line-height: 20px;
+    }
+    
+    h1{
+      font-size:20px;
+      line-height: 20px;
+    font-family: 'AlegreyaRegular';
+    }
+
+    .form-inputs {
+      margin-left: 5px;
+      padding-left: 0px;
+      padding-right: 0px;
+      text-align: left;
+      line-height: 20px;
+    }
+  }
+
+  
+
+}
+
 

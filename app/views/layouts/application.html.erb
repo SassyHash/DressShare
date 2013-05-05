@@ -18,17 +18,19 @@
 
 
   <meta name="google-site-verification" content="DvfPkdaWryOQDHSNe9gXCNTwDx8sdKq5g7v1Et3fzTg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>DressShare</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "jquery.multiselect." + I18n.locale.to_s %> <%= javascript_include_tag "jquery.multiselect.filter." + I18n.locale.to_s %>
   <%= csrf_meta_tags %>
 </head>
 
 <body>
   <div class="everything">
-  <header class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner height-adjust">
+  <header class="navbar navbar-inverse navbar-fixed-top" >
+    <div class="navbar-inner height-adjust" style="max-height: 30px;">
 
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
         <span class="icon-bar"></span>

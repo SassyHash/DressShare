@@ -34,13 +34,17 @@ group :assets do
 end
 
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
-gem 'jquery-ui-rails'
 gem 'jquery-rails'
-# gem 'rails3-jquery-autocomplete'
+gem 'jquery-ui-rails'
+gem "jquery-fileupload-rails"
+gem 'jquery-multiselect-rails', :git => 'git://github.com/arojoal/jquery-multiselect-rails.git'
+gem 'rails3-jquery-autocomplete'
+
 gem 'underscore-rails'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'devise'
+gem 'omniauth-facebook'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

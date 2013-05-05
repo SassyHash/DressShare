@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  dress_id: 1
+  pool_id: 1
+
+two:
+  dress_id: 1
+  pool_id: 1

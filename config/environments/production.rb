@@ -22,6 +22,10 @@ DressShare::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  # jQuery multiselect
+  config.assets.precompile += %w( jquery.multiselect*.js ) 
+  config.assets.precompile += %w( jquery.multiselect*.css )
+  
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
