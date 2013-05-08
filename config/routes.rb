@@ -27,6 +27,7 @@ DressShare::Application.routes.draw do
     delete "/signout", :to => "devise/sessions#destroy"
     get "/signup", :to => "devise/registrations#new"
     match '/confirm/:confirmation_token', :to => "devise/confirmations#show", :as => "user_confirm", :only_path => false
+    get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end
 
   resources :users, :only=> :show

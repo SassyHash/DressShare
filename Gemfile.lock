@@ -188,6 +188,7 @@ DEPENDENCIES
   jquery-ui-rails
   launchy (~> 2.2.0)
   letter_opener
+  omniauth
   omniauth-facebook
   paperclip!
   pg
