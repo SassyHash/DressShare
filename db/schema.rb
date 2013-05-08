@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130505011258) do
+ActiveRecord::Schema.define(:version => 20130506015831) do
 
   create_table "body_type_dresses", :force => true do |t|
     t.integer  "body_type_id"
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(:version => 20130505011258) do
     t.integer  "size"
     t.text     "notes"
     t.integer  "rent"
-    t.binary   "photo_blob"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.string   "photo1_file_name"

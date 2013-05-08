@@ -4,7 +4,7 @@
     <div class="dresswrap">
       <div class="span4">
           <div class="description">
-            <strong><%= link_to "Dress #{i+1}", dress_path(dress) %></strong>
+            <strong><%= link_to "#{dress.owner.first_name}'s Dress", dress_path(dress) %></strong>
             <ul>
               <li><strong>Brand: &nbsp</strong><%= dress.brand %></li>
               <li><strong>Color:  &nbsp</strong><%= dress.color %></li>
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="span3">
-          <%= image_tag dress.photo.url(:small) %>
+          <%= image_tag dress.photo1.url(:small) %>
       </div>
     </div>
   </li>

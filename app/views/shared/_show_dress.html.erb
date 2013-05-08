@@ -1,5 +1,7 @@
 <div class="span5 offset1">
-  <%= image_tag dress.photo.url(:medium), :class => "large-img" %>
+  <%= image_tag dress.photo1.url(:medium), :id => "photo1" %>
+  <%= image_tag dress.photo2.url(:medium), :id => "photo2" unless dress.photo2_file_name.nil? %>
+  <%= image_tag dress.photo3.url(:medium), :id => "photo3" unless dress.photo3_file_name.nil? %>
 </div>
 <div class="span5 description">
   <ul>
@@ -11,3 +13,9 @@
     <li><strong> Comments: &nbsp</strong> <%= dress.notes %></li>
   </ul>
 </div>
+
+<script type="text/javascript">
+	$("#photo2").click(function(){
+
+	});
+</script>

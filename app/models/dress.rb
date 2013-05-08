@@ -24,7 +24,7 @@ class Dress < ActiveRecord::Base
     validates_attachment_content_type photo_attr, :content_type => ['image/jpeg', 'image/png']
   end
 
-  SIZES = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+  SIZES = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18 ]
 
   default_scope order('updated_at DESC')
   scope :most_recent, order('updated_at DESC')

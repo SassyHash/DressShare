@@ -24,22 +24,22 @@
       </div>
       <div class="span4 offset1">
         <%= f.input :photo1, :as => :file, :label => "Photo 1*" %>
-        <%= f.input :photo2, :as => :file, :label => "Photo 2" 
-        # :wrapper_html => {:hidden => :true} 
-        %>
-        <%= f.input :photo3, :as => :file, :label => "Photo 3"
-        # :wrapper_html => {:hidden => :true} 
-        %>
+        <%= f.input :photo2, :as => :file, :label => "Photo 2"  %>
+        <%= f.input :photo3, :as => :file, :label => "Photo 3"  %>
+      </div>  
+    </div>
+    <div class="row">
+      <div class="offset1">
+      <%= f.input :notes, :placeholder => "Special instructions. Memories about that time you wore this to formal and ... Nevermind.", :input_html => {:class => "notes" } %>
       </div>
-        
-    </div>
-    <div>
-      <%= f.input :notes, :placeholder => "Special instructions. Memories about that time you wore this to formal and ... Nevermind.", :input_html => {:style => "margin: 0 auto; width: 95%; height: 100px; "} %>
     </div>
   </div>
-  <div class="form-actions" style="margin-left: 70px;">
-    <%= f.button :submit %>
+  <div class="row">
+    <div class="offset1 form-actions">
+      <%= f.button :submit %>
+    </div>
   </div>
+
 <% end %>
 
 
@@ -61,22 +61,28 @@
     $("#sizeselect").multiselect({
       selectedText: "*Size",
       noneSelectedText: "*Size",
-      show: ["slide", 300],
+      show: ["slide", 50],
       header: false
     });
 
     $("#bodytypeselect").multiselect({
       selectedText: "# of # selected",
       noneSelectedText: "*Flattering On",
-      show: ["slide", 200],
+      show: ["slide", 50],
       header: false
     });
     
-    $("#sizeselect").multiselect("getButton").css("width", "220px");
-    $("#sizeselect").multiselect("getButton").css("margin-bottom", "10px");
-    $("#bodytypeselect").multiselect("getButton").css("width", "220px");
-
+    var buttons = new Array ("#sizeselect", "#bodytypeselect");
+    for (var i=0; i<buttons.length; i++) {
+    $(buttons[i]).multiselect("getButton").css("width", "220px");
+    $(buttons[i]).multiselect("getButton").css("margin-bottom", "10px");
+    };
   });
+
+
+  // $("#dress_photo_1").click(function(){
+  //   console.log("clicked");
+  // });
 
   $(function () {
     $('#fileupload').fileupload({

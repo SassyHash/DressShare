@@ -1,8 +1,15 @@
-<h1>Search For A Dress</h1>
+<h4>Search</h4>
 <%= simple_form_for @search, :url => dresses_path, :method => :get,
 :class => 'search-form' do |f| %>
-  <%= f.input :brand, :as => :select, :collection => @brands %>
-  <%= f.input :color, :as => :select, :collection => @colors %>
+  <%= select_tag("brand[]", 
+          options_for_select(
+             @brands, @brands),
+         {:multiple=>false, :id => "brandselect"}) %>
+  <%= select_tag("color[]", 
+          options_for_select(
+             @colors, @colors),
+         {:multiple=>false, :id => "colorselect"}) %>
+
 <div class="row-fluid">
   <div class="span6">
   <%= f.association :size_searches, :as => :check_boxes, :collection => Dress::SIZES %>

@@ -14,16 +14,15 @@ class DressesController < ApplicationController
   end
 
   def create
-    photo_file= params[:dress].delete(:photo_blob)
-    photo_blob = photo_file.nil? ? nil : photo_file.read
     @dress = Dress.new(params[:dress])
     @dress.owner_id = current_user.id
-    @dress.photo_blob = photo_blob
     @dress.body_types << BodyType.find(params[:body_types]) unless params[:body_types].nil? 
-    @dress.size = params[:sizes] unless params[:sizes].nil?
+    @dress.size = params[:size][0].to_i unless params[:size].nil?
+    @dress.photo2 = nil unless params[:dress][:photo2]
+    @dress.photo3 = nil unless params[:dress][:photo3]
 
     if @dress.save
-      flash[:notices] = "Your dress is hung in our closet!"
+      flash[:notices] = "Your dress is hung in the Closet!"
       redirect_to dress_path(@dress)
     else
       render 'new'
@@ -35,25 +34,23 @@ class DressesController < ApplicationController
   end
 
   def edit
+    @body_types = BodyType.all
     @dress = Dress.find(params[:id])
   end
 
   def update
     @dress = Dress.find(params[:id])
-    if params[:dress][:photo_blob]
-      photo_file= params[:dress].delete(:photo_blob)
-      photo_blob = photo_file.nil? ? nil : photo_file.read
-      @dress.photo_blob = photo_blob
-    end
     @dress.update_attributes(params[:dress])
+    @dress.body_types << BodyType.find(params[:body_types]) unless params[:body_types].nil? 
+    @dress.size = params[:size][0].to_i unless params[:size].nil?
+    @dress.photo2 = nil unless params[:dress][:photo2]
+    @dress.photo3 = nil unless params[:dress][:photo3]
 
     if @dress.save
-      if @dress.save
-        flash[:notices] = "Your dress has been updated."
-        redirect_to dress_path(@dress)
-      else
-        render 'edit'
-      end
+      flash[:notices] = "Your dress has been updated."
+      redirect_to dress_path(@dress)
+    else
+      render 'edit'
     end
   end
 
@@ -94,8 +91,8 @@ class DressesController < ApplicationController
       @dresses = Dress.all
     end
 
-    @brands = Dress.pluck("brand").uniq
-    @colors = Dress.pluck("color").uniq
+    @brands = Dress.pluck("brand").uniq.sort!
+    @colors = Dress.pluck("color").uniq.sort!
 
 
   end
