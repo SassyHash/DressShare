@@ -28,7 +28,7 @@ html {
 
 
 body {
-  background-image: asset_url('pink_pearls.jpg', image);
+  background-color: #cc5751;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
@@ -42,7 +42,6 @@ body {
     overflow: visible !important;
   }
 }
-
 
 .navbar {
   width: 100%;
@@ -60,14 +59,23 @@ body {
   }
 
   .nav{
+
     .current-user-name {
-      margin-right: 15px;
+      margin: 0;
+      margin-right: 10px;
       font-family: 'DubielPlainRegular';
       color: #f6f6cb;
       font-size: 15px;
       font-weight: none;
+      padding: 0;
     }
   }
+}
+
+.form-box {
+  margin: 5px;
+  padding-left: 40px;
+  max-width: 300px;
 }
 
 img {
@@ -86,8 +94,8 @@ img {
 }
 
 .center-wrap {
-  background-color: #d9c9cf;
-  border-color: #ff5057;
+  background-color: #fef7e2;
+  border-color: #e5aba8;
   width: 900px;
   margin: 0 auto;
   -webkit-border-radius: 7px;
@@ -99,7 +107,8 @@ img {
     font-family: 'GreatVibesRegular';
     text-shadow: 0.1em 0.1em 0.1em #b19d7c;
     margin-top: 10px;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
+    padding-left: 10px; 
   }
 
   h2 {

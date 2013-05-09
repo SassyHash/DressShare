@@ -1,28 +1,26 @@
 <h4>Search</h4>
 <%= simple_form_for @search, :url => dresses_path, :method => :get,
 :class => 'search-form' do |f| %>
+<div class="form-inputs">
   <%= select_tag("brand[]", 
           options_for_select(
              @brands, @brands),
          {:multiple=>false, :id => "brandselect"}) %>
+
   <%= select_tag("color[]", 
           options_for_select(
              @colors, @colors),
          {:multiple=>false, :id => "colorselect"}) %>
 
-<div class="row-fluid">
-  <div class="span6">
-  <%= f.association :size_searches, :as => :check_boxes, :collection => Dress::SIZES %>
-  </div>
-  <div class="span6">
+  <%= f.association :size_searches, :collection => Dress::SIZES %>
   <%= f.association :body_types, :as => :check_boxes, :label_method => :label %>
-  </div>
-</div>
-
   <%= f.input :min_rent, :label => "Minimum rent" %>
   <%= f.input :max_rent, :label => "Maximum rent" %>
-
+</div>
+<div class="form-action">
   <%= f.submit :search, :name => nil %>
+</div>
 <% end %>
+
 
 

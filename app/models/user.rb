@@ -21,7 +21,6 @@ class User < ActiveRecord::Base
             :format => {:with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, :message => "Invalid E-mail" }
   validates :last_name, :presence => true
   validates :first_name, :presence => true
-  validates :school_id, :presence => true
 
   before_save :lower_case_email
 
@@ -35,6 +34,28 @@ class User < ActiveRecord::Base
 
   def lower_case_email
     self.email = self.email.chomp.downcase
+  end
+
+  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    unless user
+      user = User.create(first_name:auth.extra.raw_info.first_name,
+                        last_name: auth.extra.raw_info.last_name,
+                        provider:auth.provider,
+                        uid:auth.uid,
+                        email:auth.info.email,
+                        password:Devise.friendly_token[0,20]
+                        )
+    end
+    user
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
   end
 
 end
