@@ -5,7 +5,7 @@ DressShare::Application.routes.draw do
   resources :static_pages
   resources :rentals, :only => [:edit, :update, :show, :destroy]
 
-  resources :users, :only => :index do
+  resources :users, :only => :show do
     resources :rentals, :only => :index
   end
 

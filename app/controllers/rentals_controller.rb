@@ -86,7 +86,7 @@ class RentalsController < ApplicationController
   end
 
   def index
-
+    @rentals = current_user.rentals
   end
 
   def rental_owner?

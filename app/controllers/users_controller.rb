@@ -17,6 +17,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if current_user != @user
+      flash[:error] = "You are not authorized to view this page."
+    else
+      @dresses = Dress.find_by_owner_id(params[:id])
+    end
   end
 
   def edit

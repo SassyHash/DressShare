@@ -1,0 +1,21 @@
+<%= image_tag dress.photo1.url(:small) %>
+<%= render :partial => 'shared/description', :locals => {:dress => dress} %>
+<ul>
+  <li> 
+<!--     <div style="padding-left: 50px;"> -->
+      <p>Start Date: <%= rental.start_date %></p>
+  </li>
+<!--     </div> -->
+  <li>
+    <!-- <div style="padding-left: 50px;"> -->
+      <p>End Date: <%= rental.end_date %></p>
+  </li><!-- </div> -->
+  <li>
+    
+  </li>
+
+<div class="dress-links">
+<%= link_to raw("<i class='icon-edit'></i> Edit"), edit_rental_path(rental) %>
+<%= link_to raw("<i class='icon-trash'></i> Cancel"), rental_path(rental), :method => "delete", :confirm => 'Are you sure you want to cancel this rental request?' %>
+<%= link_to raw("<i class='icon-eye-open'></i> Dress"), dress_path(dress) %>
+</div>

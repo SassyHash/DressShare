@@ -4,18 +4,5 @@
   <%= image_tag dress.photo3.url(:medium), :id => "photo3" unless dress.photo3_file_name.nil? %>
 </div>
 <div class="span5 description">
-  <ul>
-    <li><strong> Brand: &nbsp</strong> <%= dress.brand %></li>
-    <li><strong> Color: &nbsp</strong> <%= dress.color %></li>
-    <li><strong> Size: &nbsp</strong> <%= dress.size %></li>
-    <li><strong> Flattering On: &nbsp</strong> <%= dress.body_types_string %></li>
-    <li><strong> Rental Price: &nbsp</strong> <%= dress.rent %></li>
-    <li><strong> Comments: &nbsp</strong> <%= dress.notes %></li>
-  </ul>
+  <%= render :partial => 'shared/description', :locals => {:dress => dress} %>
 </div>
-
-<script type="text/javascript">
-	$("#photo2").click(function(){
-
-	});
-</script>

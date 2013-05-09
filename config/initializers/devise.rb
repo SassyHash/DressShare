@@ -34,9 +34,16 @@ Devise.setup do |config|
   # config.request_keys = []
 
   #facebook config
+  # OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development? 
+  # config.omniauth :facebook, "583452738346072", "c51f1dd5164389f8223b06558bf5cfe9", 
+  # :strategy_class => OmniAuth::Strategies::Facebook
+
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development? 
-  config.omniauth :facebook, "583452738346072", "c51f1dd5164389f8223b06558bf5cfe9", 
-  :strategy_class => OmniAuth::Strategies::Facebook
+  #Rails.application.config.middleware.use OmniAuth::Builder do
+  config.omniauth :facebook, '583452738346072', 'c51f1dd5164389f8223b06558bf5cfe9',
+    :scope => 'email, user_birthday, user_education_history', 
+    :strategy_class => OmniAuth::Strategies::Facebook
+  #end
 
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
@@ -220,6 +227,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
+
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

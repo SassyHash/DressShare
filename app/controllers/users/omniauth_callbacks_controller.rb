@@ -1,3 +1,5 @@
+OmniAuth.config.logger = Rails.logger
+
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
  def facebook

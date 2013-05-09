@@ -5,33 +5,11 @@
     <div class="span6">
       <h3>looking good on nickels and dimes </h3>
     </div>
-
-    <div class="span6">
+    <span style ="float:right; margin-right: 20px;">
       <% if current_user == @dress.owner %>
         <%= render :partial => 'buttons', :locals => {:rental => @rental} %>
       <% end %>
-    </div>
+    </span>
   </div>
 
-
-  <div class="row">
-    <%= render :partial => 'shared/show_dress', :locals => {:dress => @dress} %>
-  </div>
-
-  <div class="row">
-    <div class="span6">
-      <div style="padding-left: 50px;">
-        <p>Start Date: <%= @rental.start_date %></p>
-      </div>
-    </div>
-    <div class="span6">
-      <div style="padding-left: 50px;">
-        <p>End Date: <%= @rental.end_date %></p>
-      </div>
-    </div>
-  </div>
-
-<div class="dress-links">
-  <%= link_to raw("<i class='icon-edit'></i> Edit"), edit_rental_path(@rental) %>
-  <%= link_to raw("<i class='icon-trash'></i> Cancel"), rental_path(@rental), :method => "delete", :confirm => 'Are you sure you want to cancel this rental request?' %>
-</div>
+  <%= render :partial => "shared/show_rental", :locals => {:rental => @rental, :dress => @dress} %>
