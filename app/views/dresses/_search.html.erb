@@ -2,16 +2,17 @@
 :class => 'search-form' do |f| %>
 <div class="form-inputs">
 
-  <%= select_tag("sizes[]", 
+  <%= select_tag("size_searches[]", 
           options_for_select(
              Dress::SIZES.collect { |ff| ["Size #{ff}", ff] }, 
              Dress::SIZES),
          {:multiple=>true, :id => "sizeselect"}) %>
 
-  <%= select_tag("body_types[]", 
+  <%= select_tag("body_type_searchs[]", 
           options_for_select(
-            @body_types.collect { |ff| [ff.label, ff.id] }, @search.body_types.collect { |fs| fs.id }),
+            @body_types.collect { |ff| [ff.label, ff.id] }, @body_types.collect { |fs| fs.id }),
             {:multiple=>true, :id => "bodytypeselect"}) %>
+
   <%= select_tag("brand[]", 
           options_for_select(
              @brands, @brands),
@@ -63,6 +64,7 @@ $(document).ready(function() {
 
   var buttons = new Array ("#sizeselect", "#bodytypeselect", "#brandselect", "#colorselect");
   for (var i=0; i<buttons.length; i++) {
+  $(buttons[i]).multiselect("uncheckAll");
   $(buttons[i]).multiselect("getButton").css("width", "120px");
   $(buttons[i]).multiselect("getButton").css("margin-bottom", "10px");
   };

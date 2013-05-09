@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130508022702) do
+ActiveRecord::Schema.define(:version => 20130509193106) do
 
   create_table "body_type_dresses", :force => true do |t|
     t.integer  "body_type_id"
@@ -108,8 +108,10 @@ ActiveRecord::Schema.define(:version => 20130508022702) do
     t.string   "color"
     t.integer  "max_rent"
     t.integer  "min_rent"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "size_searches"
+    t.string   "body_type_searches"
   end
 
   create_table "size_searches", :force => true do |t|

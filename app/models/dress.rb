@@ -55,8 +55,8 @@ class Dress < ActiveRecord::Base
     dresses = Dress
     dresses = dresses.by_brand(params[:brand]) unless params[:brand].blank?
     dresses = dresses.by_color(params[:color]) unless params[:color].blank?
-    dresses = dresses.by_sizes(params[:sizes]) unless params[:sizes].blank?
-    dresses = dresses.by_body_types(params[:body_types]) unless params[:body_types].blank?
+    dresses = dresses.by_sizes(params[:size_searches]) unless params[:size_searches].blank?
+    dresses = dresses.by_body_types(params[:body_type_searches]) unless params[:body_type_searches].blank?
     dresses = dresses.by_min_rent(params[:min_rent]) unless params[:min_rent].blank?
     dresses = dresses.by_max_rent(params[:max_rent]) unless params[:max_rent].blank?
     dresses.all
