@@ -45,7 +45,7 @@ gem 'underscore-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '1.4.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

@@ -25,9 +25,12 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user.school_id = School.find(params[:school])
+    @user.year = params[:year]
   end
 
 end

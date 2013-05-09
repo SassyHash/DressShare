@@ -8,6 +8,7 @@ DressShare::Application.routes.draw do
   resources :users, :only => :show do
     resources :rentals, :only => :index
   end
+  resources :users, :only => :edit
 
   resources :dresses do
     # get :autocomplete_brand, :on => :collection
