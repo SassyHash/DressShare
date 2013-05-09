@@ -70,29 +70,29 @@ class DressesController < ApplicationController
 
   def index
     @search = Search.new
-    if params[:search]
-      params[:search][:size_search_ids].pop
-      params[:search][:body_type_ids].pop
+    @body_types = BodyType.all    
+    @brands = Dress.pluck("brand").uniq.sort!
+    @colors = Dress.pluck("color").uniq.sort!
 
+    if params[:search]
+      params[:search][:sizes] = params[:sizes]
+      params[:search][:body_types] = params[:body_types].collect {|a| a.to_i}
       @dresses = Dress.search(params[:search])
 
-      size_searches = params[:search].delete(:size_search_ids)
-      body_type_searches = params[:search].delete(:body_type_ids)
+      # size_searches = params[:search].delete(:size_search_ids)
+      # body_type_searches = params[:search].delete(:body_type_ids)
 
-      @search.update_attributes(params[:search])
+      # @search.update_attributes(params[:search])
 
-      size_searches.each do |size_string|
-        SizeSearch.create(:size => size_string.to_i, :search_id => @search.id)
-      end
-      body_type_searches.each do |body_type|
-        BodyTypeSearch.create(:body_type_id => body_type.to_i, :search_id => @search.id)
-      end
+      # size_searches.each do |size_string|
+      #   SizeSearch.create(:size => size_string.to_i, :search_id => @search.id)
+      # end
+      # body_type_searches.each do |body_type|
+      #   BodyTypeSearch.create(:body_type_id => body_type.to_i, :search_id => @search.id)
+      # end
     else
       @dresses = Dress.all
     end
-
-    @brands = Dress.pluck("brand").uniq.sort!
-    @colors = Dress.pluck("color").uniq.sort!
 
 
   end
