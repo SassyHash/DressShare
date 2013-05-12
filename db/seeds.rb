@@ -13,3 +13,4 @@ School.create(:town => "Hanover", :state => "NH", :domain =>"dartmouth.edu", :na
 	School.create(:town => "Lakeville", :state => "CT", :domain =>"hotchkiss.org", :name => "Hotchkiss School");
 School.create(:town => "Middlebury", :state => "VT", :domain =>"middlebury.edu", :name => "Middlebury College");
 School.create(:town => "Berkeley", :state => "CA", :domain =>"berkeley.edu", :name => "UC Berkeley");
+School.create(:town => "New York City", :state => "NYC", :domain =>"nyu.edu", :name => "NYU");
