@@ -28,8 +28,9 @@ html {
 
 
 body {
-  background-color: #cc5751;
-  background-repeat: no-repeat;
+  // background-color: #cc5751;
+  background-image: asset_url('img.png', image);
+  background-repeat: repeat;
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
