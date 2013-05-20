@@ -223,9 +223,12 @@ img {
       margin: 0;
       padding: 0;
     }
-    
+
     .dresswrap {
-      margin-bottom: 15px;
+      display: inline;
+      width: 250px;
+      float: left;
+      margin-bottom: 10px;
       background: #fdefc5;
       border-color: #e5aba8;
       border-width: 2px;
@@ -236,13 +239,6 @@ img {
       // box-shadow: 0.2em 0.2em 0.2em #e5aba8;
       overflow: hidden;
       padding: 10px 10px;
-      
-      .thumbnail-img {
-        height: auto;
-        width: 70%;
-        box-shadow: 0.2em 0.2em 0.2em #b19d7c;
-        float: right; 
-      }
 
       .description {
         font-size: 1.1em; 
