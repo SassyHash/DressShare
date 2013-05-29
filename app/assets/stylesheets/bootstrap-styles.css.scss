@@ -5,6 +5,7 @@
 // Global values
 // --------------------------------------------------
 // palette!
+$tealDark:      #1f4978;
 $navyBlue:  			#28296b;
 $navyBlueMedium: 		#525388;
 $navyBlueLight: 		#9394b5;
@@ -205,7 +206,7 @@ $navbarBrandColor:                $navbarLinkColor;
 
 // Inverted navbar
 $navbarInverseBackground:                $navyBlue;
-$navbarInverseBackgroundHighlight:       lighten($navyBlue, 10%);
+$navbarInverseBackgroundHighlight:       lighten($navbarInverseBackground, 10%);
 $navbarInverseBorder:                    darken($navbarInverseBackground, 12%);
 
 $navbarInverseText:                      $white;

@@ -58,12 +58,25 @@
   });
 
   $(document).ready(function() {
+    <% if dress.size? %> 
+      $('#sizeselect').val(<%= dress.size %>);
+    <% else %>
+      $('#sizeselect').val(null);
+    <% end %>
+
     $("#sizeselect").multiselect({
-      selectedText: "*Size",
+      selectedText: function(numSelected, numBoxes, elements) {
+        var sizes = [];         
+        for (var e in elements) {
+          sizes.push(elements[e].value); 
+        }
+        return sizes.join(' '); 
+      },
       noneSelectedText: "*Size",
       show: ["slide", 50],
       multiple: false,
       header: false
+
     });
 
     $("#bodytypeselect").multiselect({

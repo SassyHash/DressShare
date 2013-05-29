@@ -4,4 +4,6 @@ class BodyTypeDress < ActiveRecord::Base
   belongs_to :dress
   belongs_to :body_type
 
+  validates :body_type_id, :uniqueness => {:scope => :dress_id}
+
 end

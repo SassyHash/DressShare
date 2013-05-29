@@ -1,23 +1,27 @@
 <title>Your Closet</title>
-<h1>Hi, <%= current_user.first_name %>. Welcome to DressShare.</h1>
+<h1><%= current_user.first_name %>'s Dresses</h1>
 
   <div style="padding-left: 30px; padding-top: 10px;">
   <% if current_user.dresses.empty? %>
     <h4> Your closet is empty. :( </h4>
   <% else %>
-    <h4>  You have <%= pluralize(current_user.dresses.count, "dress") %> in your closet.</h4>
+    <h4>  You have shared <%= pluralize(current_user.dresses.count, "dress") %>.</h4>
   </div>
+
+  <div style="float:right">
+    <span><%= link_to raw("<i class=\"icon-plus\"></i> Add A Dress"),
+    new_dress_path %></span>
+    <span><%= link_to raw("<i class=\"icon-heart\"></i> See All Dresses"),
+    dresses_path %></span>
+  </div>
+
+  <div style="clear:both;"></div>
 
   <div class="dresseswrap">
     <%= render :partial => 'shared/show_dresses', :locals => {:dresses => current_user.dresses} %>
   </div>
 
-  <div class="searchwrap">
-    <p><%= link_to raw("<i class=\"icon-plus\"></i> Add A Dress"),
-    new_dress_path %></p>
-    <p><%= link_to raw("<i class=\"icon-heart\"></i> See All Dresses"),
-    dresses_path %></p>
-  </div>
+
   <% end %>
 
 <div class="row">

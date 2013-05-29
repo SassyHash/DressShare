@@ -28,65 +28,6 @@
 </head>
 
 <body>
-  <div class="everything">
-  <header class="navbar navbar-inverse navbar-fixed-top" >
-    <div class="navbar-inner">
-
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-
-      <a class="brand" href="/dresses"> DressShare</a>
-      <div class="nav-collapse collapse">
-        <ul class="nav">
-          <li>
-            <%= link_to "The Closet", dresses_path %>
-          </li>
-
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Page</a>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-              <% if user_signed_in? %>
-              <li><%= link_to "Dresses", user_path(current_user)%></li>
-              <li><%= link_to "Rentals", user_rentals_path(current_user)%></li>
-              <% end %>
-            </ul>
-          </li>
-
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"> About Us</a>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-              <li><%= link_to "Contact",  contact_us_path %></li>
-              <li><%= link_to "Her Story", our_story_path %></li>
-              <li><%= link_to "Legal Stuff", legal_stuff_path %></li>
-            </ul>
-          </li>   
-        </ul>
-        <ul class="nav pull-right" >
-          <% if user_signed_in? %>
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                Hi, <%= current_user.first_name %>
-              </a>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                <li> <%= link_to "My Page", user_path(current_user) %>
-                </li>
-                <li> <%= link_to "Sign Out", signout_path, method: :delete %>
-                </li>
-              </ul>
-            </li>
-          <% else %>
-            <li>
-              <%= link_to "You aren't signed in. :(", signin_path %> 
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </header>
-
   <% if flash[:error] %>
     <div class="alert alert-error">
       <%= flash[:error] %>
@@ -98,20 +39,87 @@
       <%= flash[:notices] %>
     </div>
   <% end %>
+  
+  <div class="everything">
+    <header class="navbar navbar-inverse navbar-fixed-top" >
+      <div class="navbar-inner">
 
-  <div class="center-wrap">
-    <div class="box">
-      <%= yield %>
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+
+        <a class="brand" href="/dresses"> DressShare</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Find A Dress</a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li> <%= link_to "Free", dresses_path %></li>
+                <li> <%= link_to "Rent", dresses_path%></li>
+                <li> <%= link_to "Buy", dresses_path%></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Page</a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <% if user_signed_in? %>
+                  <li><%= link_to "Dresses", user_path(current_user)%></li>
+                  <li><%= link_to "Rentals", user_rentals_path(current_user)%></li>
+                <% else %>
+                  <li><%= link_to "Sign-In", signin_path %> </li>
+                <% end %>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav pull-right" >
+            <% if user_signed_in? %>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  Hi, <%= current_user.first_name %>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                  <li> <%= link_to "My Page", user_path(current_user) %>
+                  </li>
+                  <li> <%= link_to "Sign Out", signout_path, method: :delete %>
+                  </li>
+                </ul>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to "You aren't signed in. :(", signin_path %> 
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <div class="center-wrap">
+      <div class="box">
+        <%= yield %>
+      </div>
     </div>
-  </div>
-</div>
 
   <footer>
     <div class="footer-stuff">
       &copy; {Sassy Hash} 2013
+      <span>  
+        <%= link_to "Her Story", our_story_path, :class=> 'about-us' %>
+      </span>
+      <span>
+        <%= link_to "Legal Stuff", legal_stuff_path, :class => 'about-us' %>  
+      </span>
+       <span>
+        <%= link_to "Contact Us",  contact_us_path, :class => 'about-us' %>
+      </span>
+      <div style="clear:both"></div>
     </div>
-  </footer>
 
+  </footer>
+</div>
 
 </body>
 </html>

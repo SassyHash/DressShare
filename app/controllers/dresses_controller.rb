@@ -41,8 +41,8 @@ class DressesController < ApplicationController
   def update
     @dress = Dress.find(params[:id])
     @dress.update_attributes(params[:dress])
-    @dress.body_types << BodyType.find(params[:body_types]) unless params[:body_types].nil? 
-    @dress.size = params[:size][0].to_i unless params[:size].nil?
+    @dress.body_types = BodyType.find(params[:body_types]) unless params[:body_types].nil? 
+    @dress.size = params[:size][0] unless params[:size].nil?
     @dress.photo2 = nil unless params[:dress][:photo2]
     @dress.photo3 = nil unless params[:dress][:photo3]
 

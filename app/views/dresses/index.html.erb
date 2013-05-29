@@ -9,11 +9,11 @@
       user_path(current_user) %>
     </span>
   <% end %>
-  <h1>The Closet</h1>
+  <!-- <h1>DressShare</h1> -->
 </div>
 
 <div class="searchwrap">
-<%= render :partial => 'search', :locals => {:search => @search } %>
+  <%= render :partial => 'search', :locals => {:search => @search } %>
 </div>
   
 <% if @dresses.empty? %>
@@ -22,5 +22,6 @@
     <%= render :partial => 'shared/show_dresses', :locals => {:dresses => @dresses} %>
   </div>
 <% end%>
+<div style="clear:both"></div>
 
 
