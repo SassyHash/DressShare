@@ -1,35 +1,35 @@
-<%= simple_form_for @search, :url => dresses_path, :method => :get,
-:class => 'search-form' do |f| %>
-<div class="form-inputs">
+<%= simple_form_for @search, :url => dresses_path, :method => :get do |f| %>
 
-  <%= select_tag("size_searches[]", 
+  <%= select_tag("sizes[]", 
           options_for_select(
              Dress::SIZES.collect { |ff| ["Size #{ff}", ff] }, 
              Dress::SIZES),
          {:multiple=>true, :id => "sizeselect"}) %>
 
-  <%= select_tag("body_type_searchs[]", 
+  <%= select_tag("body_types[]", 
           options_for_select(
             @body_types.collect { |ff| [ff.label, ff.id] }, @body_types.collect { |fs| fs.id }),
             {:multiple=>true, :id => "bodytypeselect"}) %>
 
-  <%= select_tag("brand[]", 
+  <%= select_tag("brands[]", 
           options_for_select(
              @brands, @brands),
          {:multiple=>true, :id => "brandselect"}) %>
 
-  <%= select_tag("color[]", 
+  <%= select_tag("colors[]", 
           options_for_select(
              @colors, @colors),
          {:multiple=>true, :id => "colorselect"}) %>
 
-  <%= f.input_field :min_rent, :placeholder => "Minimum rent", :style => "width: 100px;" %>
+  <%= f.input_field :min_rent, :placeholder => "Minimum rent", :style => "width: 100px; " %>
   <%= f.input_field :max_rent, :placeholder => "Maximum rent", :style => "width: 100px;" %>
-<span class="form-action input-append">
-  <%= f.submit :search, :name => nil, :style => "margin-left: 20px;" %>
+<span class="form-action">
+  <%= f.submit :search, :name => nil %>
 </span>
-</div>
 <% end %>
+
+
+
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -37,28 +37,32 @@ $(document).ready(function() {
     selectedText: "Size",
     noneSelectedText: "*Size",
     show: ["slide", 50],
-    header: false
+    header: false,
+    classes: "myClass"
   });
 
   $("#bodytypeselect").multiselect({
-    selectedText: "# of # selected",
+    selectedText: "# selected",
     noneSelectedText: "Body Types",
     show: ["slide", 50],
-    header: false
+    header: false,
+    classes: "myClass"
   });
   
   $("#brandselect").multiselect({
-    selectedText: "# of # selected",
+    selectedText: "# selected",
     noneSelectedText: "Brands",
     show:["slide",50],
-    header: false
+    header: false,
+    classes: "myClass"
   });
 
   $("#colorselect").multiselect({
-    selectedText: "# of # selected",
+    selectedText: "# selected",
     noneSelectedText: "Colors",
     show:["slide",50],
-    header: false
+    header: false,
+    classes: "myClass"
   });
 
 
@@ -66,8 +70,11 @@ $(document).ready(function() {
   for (var i=0; i<buttons.length; i++) {
   $(buttons[i]).multiselect("uncheckAll");
   $(buttons[i]).multiselect("getButton").css("width", "120px");
-  $(buttons[i]).multiselect("getButton").css("margin-bottom", "10px");
+  $(buttons[i]).multiselect("getButton").removeClass('ui-widget ui-state-default ui-corner-all');
   };
+
+  $('#search_min_rent').css('height','16px');
+  $('#search_max_rent').css('height','16px');
 });
 
 

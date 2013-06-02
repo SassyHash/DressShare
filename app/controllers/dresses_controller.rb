@@ -73,28 +73,20 @@ class DressesController < ApplicationController
     @body_types = BodyType.all    
     @brands = Dress.pluck("brand").uniq.sort!
     @colors = Dress.pluck("color").uniq.sort!
-    params[:search][:body_type_searches] = params[:body_types_searches].join(", ") unless params[:body_types_searches].nil? 
-    params[:search][:size_searches] = params[:size_searches].join(", ") unless params[:size_searches].nil?
+    params[:search][:body_types] = params[:body_types] unless params[:body_types].nil? 
+    params[:search][:sizes] = params[:sizes] unless params[:sizes].nil?
     
     if params[:search]
       @dresses = Dress.search(params[:search])
-
-      # size_searches = params[:search].delete(:size_search_ids)
-      # body_type_searches = params[:search].delete(:body_type_ids)
-
       @search.update_attributes(params[:search])
-      @search.save!
-      # size_searches.each do |size_string|
-      #   SizeSearch.create(:size => size_string.to_i, :search_id => @search.id)
-      # end
-      # body_type_searches.each do |body_type|
-      #   BodyTypeSearch.create(:body_type_id => body_type.to_i, :search_id => @search.id)
-      # end
+      @search.save
     else
       @dresses = Dress.all
     end
+  end
 
-
+  def free
+    redirect_to index
   end
 
   def photo

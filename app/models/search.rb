@@ -1,6 +1,5 @@
 class Search < ActiveRecord::Base
-  attr_accessible :brand, :color, :max_rent, :min_rent, 
-  :size_searches, :body_type_searches
+  attr_accessible :brands, :colors, :sizes, :body_types, :max_rent, :min_rent 
   # has_many :size_searches
   # has_many :body_type_searches
   # has_many :body_types, :through => :body_type_searches

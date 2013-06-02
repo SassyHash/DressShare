@@ -28,9 +28,9 @@ class Dress < ActiveRecord::Base
 
   default_scope order('updated_at DESC')
   scope :most_recent, order('updated_at DESC')
-  scope :by_sizes, lambda { |sizes| where(:size => sizes) }
-  scope :by_brand, lambda { |brand| where(:brand => brand) }
-  scope :by_color, lambda { |color| where(:color => color) }
+  scope :by_size, lambda { |size| where(:size => size) }
+  scope :by_brands, lambda { |brand| where(:brands => brand) }
+  scope :by_colors, lambda { |color| where(:colors => color) }
   scope :by_body_types, lambda { |body_type_ids| joins(:body_type_dresses)
     .where(:body_type_dresses => {:body_type_id => body_type_ids})}
   scope :by_min_rent, lambda { |min_rent| where('rent >= ?', min_rent)}
@@ -53,10 +53,13 @@ class Dress < ActiveRecord::Base
 
   def self.search(params)
     dresses = Dress
-    dresses = dresses.by_brand(params[:brand]) unless params[:brand].blank?
-    dresses = dresses.by_color(params[:color]) unless params[:color].blank?
-    dresses = dresses.by_sizes(params[:size_searches]) unless params[:size_searches].blank?
-    dresses = dresses.by_body_types(params[:body_type_searches]) unless params[:body_type_searches].blank?
+    # params[:size].each {|s| s.to_i}
+    dresses = dresses.by_brands(params[:brands]) unless params[:brands].blank?
+    dresses = dresses.by_colors(params[:colors]) unless params[:colors].blank?
+    
+    dresses = dresses.by_body_types(params[:body_types]) unless params[:body_types].blank?
+    dresses = dresses.by_size(params[:sizes]) unless params[:sizes].blank?
+    # params[:sizes].each {|size| dresses.by_sizes(size.to_i)}
     dresses = dresses.by_min_rent(params[:min_rent]) unless params[:min_rent].blank?
     dresses = dresses.by_max_rent(params[:max_rent]) unless params[:max_rent].blank?
     dresses.all

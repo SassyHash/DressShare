@@ -28,20 +28,8 @@
 </head>
 
 <body>
-  <% if flash[:error] %>
-    <div class="alert alert-error">
-      <%= flash[:error] %>
-    </div>
-  <% end %>
-
-  <% if flash[:notices] %>
-    <div class="alert alert-success">
-      <%= flash[:notices] %>
-    </div>
-  <% end %>
-  
   <div class="everything">
-    <header class="navbar navbar-inverse navbar-fixed-top" >
+    <header class="navbar" >
       <div class="navbar-inner">
 
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -54,13 +42,15 @@
         <div class="nav-collapse collapse">
           <ul class="nav">
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Find A Dress</a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                 <li> <%= link_to "Free", dresses_path %></li>
                 <li> <%= link_to "Rent", dresses_path%></li>
                 <li> <%= link_to "Buy", dresses_path%></li>
               </ul>
             </li>
+
+            <li><%= link_to "Add", new_dress_path %> </li>
 
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Page</a>
@@ -89,18 +79,27 @@
               </li>
             <% else %>
               <li>
-                <%= link_to "You aren't signed in. :(", signin_path %> 
+                <%= link_to "Sign In", signin_path %> 
               </li>
             <% end %>
           </ul>
         </div>
       </div>
-    </header>
+    <% if flash[:error] %>
+      <div class="alert alert-error">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+
+    <% if flash[:notices] %>
+      <div class="alert alert-success">
+        <%= flash[:notices] %>
+      </div>
+    <% end %>
+  </header>
 
     <div class="center-wrap">
-      <div class="box">
         <%= yield %>
-      </div>
     </div>
 
   <footer>

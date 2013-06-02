@@ -1,27 +1,51 @@
 <title>The Closet</title>
-
-<div class="row">
-  <% if user_signed_in? %>
-    <span class="link-box">
+<div class="searchwrap">
+  <div class="searchbox">
+    <%= render :partial => 'search', :locals => {:search => @search } %>
+  </div>
+    <% if user_signed_in? %>
+    <span class="link-box" style="float:right">
       <%= link_to raw("<i class=\"icon-plus\"></i> Add A Dress"),
       new_dress_path %>
       <%= link_to raw("<i class=\"icon-home\"></i> My Dresses"),
       user_path(current_user) %>
     </span>
   <% end %>
-  <!-- <h1>DressShare</h1> -->
-</div>
-
-<div class="searchwrap">
-  <%= render :partial => 'search', :locals => {:search => @search } %>
 </div>
   
+<div class="clear:both;"></div>
+
 <% if @dresses.empty? %>
 <% else %>
-  <div class="dresseswrap">
-    <%= render :partial => 'shared/show_dresses', :locals => {:dresses => @dresses} %>
+  <div class="box">
+    <div class="dresseswrap">
+      <%= render :partial => 'shared/show_dresses', :locals => {:dresses => @dresses} %>
+    </div>
   </div>
 <% end%>
 <div style="clear:both"></div>
 
+<script type="text/javascript">
+$(document).ready(function() {
+  $('.link-box').css('visibility','hidden');
+    var location = $('.searchwrap').position().top ;
+    $(window).scroll(function() {
+      if(location <= $(window).scrollTop()) {
+        if($('.searchwrap').css('position','relative')) {
+          $('.searchwrap').css('top', '0');
+          $('.searchwrap').css('position','fixed');
+          $('.link-box').css('visibility', 'visible')
+                console.log("removed");
+            }
+        } else { 
+            if(!$('.searchwrap').css('position', 'relative') &
+                !$('.link-box').css('visibility','hidden')) {
+                $('.searchwrap').css('position', 'fixed');
+                $('.link-box').css('visibility', 'hidden');
+                console.log("added");
+            }
+        }
+    });
+});
 
+ </script>

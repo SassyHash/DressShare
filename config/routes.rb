@@ -38,4 +38,6 @@ DressShare::Application.routes.draw do
   get "/our_story", :to => "static_pages#story"
   get "/legal_stuff", :to => "static_pages#legal"
 
+  get '/free' => 'dresses#free', :as => 'free_dresses'
+
 end

@@ -129,16 +129,16 @@ $inputHeight:                   $baseLineHeight + 10px; // base line-height + 8p
 
 // Dropdowns
 // -------------------------
-$dropdownBackground:            $maroon;
-$dropdownBorder:                rgba(0,0,0,.2);
-$dropdownDividerTop:            #e5e5e5;
-$dropdownDividerBottom:         $white;
+$dropdownBackground:            #ede7ee;
+$dropdownBorder:                none;
+$dropdownDividerTop:            none;
+$dropdownDividerBottom:         none;
 
-$dropdownLinkColor:             $cream;
-$dropdownLinkColorHover:        #f3f3c8;
+$dropdownLinkColor:             $navyBlue;
+$dropdownLinkColorHover:        white;
 $dropdownLinkColorActive:       $dropdownLinkColorHover;
 
-$dropdownLinkBackgroundActive:  #310f16;
+$dropdownLinkBackgroundActive:  $gray;
 $dropdownLinkBackgroundHover:   $dropdownLinkBackgroundActive;
 
 
@@ -190,31 +190,32 @@ $wellBackground:                  #f5f5f5;
 $navbarCollapseWidth:             979px;
 $navbarCollapseDesktopWidth:      $navbarCollapseWidth + 1;
 
-$navbarHeight:                    35px;
-$navbarBackgroundHighlight:       #ffffff;
-$navbarBackground:                darken($navbarBackgroundHighlight, 5%);
-$navbarBorder:                    darken($navbarBackground, 12%);
+$navbarHeight:                    60px;
+$navbarBackgroundHighlight:       white;
+$navbarBackground:                $navbarBackgroundHighlight;
+$navbarBorder:                    $navbarBackgroundHighlight;
 
 $navbarText:                      #777;
 $navbarLinkColor:                 #777;
 $navbarLinkColorHover:            $gray;
 $navbarLinkColorActive:           $white;
-$navbarLinkBackgroundHover:       transparent;
-$navbarLinkBackgroundActive:      darken($navbarBackground, 5%);
+$navbarLinkBackgroundHover:       #cccbc6;
+$navbarLinkBackgroundActive:      #b6b1a3;
 
-$navbarBrandColor:                $navbarLinkColor;
+$navbarBrandColor:                white;
+$navbarBrandColorActive:          $navbarLinkBackgroundActive;
 
 // Inverted navbar
-$navbarInverseBackground:                $navyBlue;
-$navbarInverseBackgroundHighlight:       lighten($navbarInverseBackground, 10%);
-$navbarInverseBorder:                    darken($navbarInverseBackground, 12%);
+$navbarInverseBackground:                $navbarBackgroundHighlight;
+$navbarInverseBackgroundHighlight:       $navbarInverseBackground;
+$navbarInverseBorder:                    $navbarInverseBackground;
 
-$navbarInverseText:                      $white;
-$navbarInverseLinkColor:                 $white;
-$navbarInverseLinkColorHover:            $cream;
-$navbarInverseLinkColorActive:           darken($navbarInverseLinkColorHover, 10%);
-$navbarInverseLinkBackgroundHover:       $navyBlueMedium;
-$navbarInverseLinkBackgroundActive:      darken($navbarInverseLinkBackgroundHover, 10%);
+$navbarInverseText:                      #605a4a;
+$navbarInverseLinkColor:                 #605a4a;
+$navbarInverseLinkColorHover:            $navyBlue;
+$navbarInverseLinkColorActive:           $navbarInverseLinkColorHover;
+$navbarInverseLinkBackgroundHover:       $navbarBackground;
+$navbarInverseLinkBackgroundActive:      $navbarBackground;
 
 $navbarInverseSearchBackground:          lighten($navbarInverseBackground, 25%);
 $navbarInverseSearchBackgroundFocus:     $white;
@@ -222,7 +223,7 @@ $navbarInverseSearchBorder:              $navbarInverseBackground;
 $navbarInverseSearchPlaceholderColor:    #ccc;
 
 $navbarInverseBrandColor:                $navbarInverseLinkColor;
-
+$navbarInverseBrandColorHover:           $navbarInverseLinkColorHover;
 
 // Pagination
 // -------------------------

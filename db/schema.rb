@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509193106) do
+ActiveRecord::Schema.define(:version => 20130601210543) do
 
   create_table "body_type_dresses", :force => true do |t|
     t.integer  "body_type_id"
@@ -104,14 +104,14 @@ ActiveRecord::Schema.define(:version => 20130509193106) do
   end
 
   create_table "searches", :force => true do |t|
-    t.string   "brand"
-    t.string   "color"
+    t.string   "brands"
+    t.string   "colors"
     t.integer  "max_rent"
     t.integer  "min_rent"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "size_searches"
-    t.string   "body_type_searches"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "sizes"
+    t.string   "body_types"
   end
 
   create_table "size_searches", :force => true do |t|
