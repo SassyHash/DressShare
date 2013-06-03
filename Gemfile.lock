@@ -58,6 +58,7 @@ GEM
     bootstrap-sass (2.2.2.0)
       sass (~> 3.2)
     builder (3.0.4)
+    choice (0.1.6)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
@@ -134,6 +135,11 @@ GEM
       activesupport (= 3.2.11)
       bundler (~> 1.0)
       railties (= 3.2.11)
+    rails-erd (1.1.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      choice (~> 0.1.6)
+      ruby-graphviz (~> 1.0.4)
     rails3-jquery-autocomplete (1.0.11)
       rails (~> 3.0)
     railties (3.2.11)
@@ -146,6 +152,7 @@ GEM
     rake (10.0.3)
     rdoc (3.12.1)
       json (~> 1.4)
+    ruby-graphviz (1.0.9)
     sass (3.2.6)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -193,6 +200,7 @@ DEPENDENCIES
   paperclip!
   pg
   rails (= 3.2.11)
+  rails-erd
   rails3-jquery-autocomplete
   sass-rails (~> 3.2.3)
   simple_form
