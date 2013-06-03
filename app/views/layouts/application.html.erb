@@ -1,110 +1,110 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <script type="text/javascript">
+  <head>
+    <script type="text/javascript">
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-40080208-1']);
-  _gaq.push(['_setDomainName', 'sassyha.sh']);
-  _gaq.push(['_trackPageview']);
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40080208-1']);
+    _gaq.push(['_setDomainName', 'sassyha.sh']);
+    _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
 
-  </script>
+    </script>
 
+    <meta name="google-site-verification" content="DvfPkdaWryOQDHSNe9gXCNTwDx8sdKq5g7v1Et3fzTg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="google-site-verification" content="DvfPkdaWryOQDHSNe9gXCNTwDx8sdKq5g7v1Et3fzTg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DressShare</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "jquery.multiselect." + I18n.locale.to_s %> <%= javascript_include_tag "jquery.multiselect.filter." + I18n.locale.to_s %>
+    <%= csrf_meta_tags %>
+  </head>
 
-  <title>DressShare</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "jquery.multiselect." + I18n.locale.to_s %> <%= javascript_include_tag "jquery.multiselect.filter." + I18n.locale.to_s %>
-  <%= csrf_meta_tags %>
-</head>
+  <body>
+    <div class="everything">
+      <header class="navbar" >
+        <div class="navbar-inner">
 
-<body>
-  <div class="everything">
-    <header class="navbar" >
-      <div class="navbar-inner">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
 
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-
-        <a class="brand" href="/dresses"> DressShare</a>
-        <div class="nav-collapse collapse">
-          <ul class="nav">
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop</a>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                <li> <%= link_to "Free", free_dresses_path %></li>
-                <li> <%= link_to "Rent", rent_dresses_path%></li>
-                <li> <%= link_to "Buy", sale_dresses_path%></li>
-              </ul>
-            </li>
-
-            <li><%= link_to "Add", new_dress_path %> </li>
-
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Page</a>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                <% if user_signed_in? %>
-                  <li><%= link_to "Dresses", user_path(current_user)%></li>
-                  <li><%= link_to "Rentals", user_rentals_path(current_user)%></li>
-                <% else %>
-                  <li><%= link_to "Sign-In", signin_path %> </li>
-                <% end %>
-              </ul>
-            </li>
-          </ul>
-          <ul class="nav pull-right" >
-            <% if user_signed_in? %>
+          <a class="brand" href="/dresses"> DressShare</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
               <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  Hi, <%= current_user.first_name %>
-                </a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop</a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                  <li> <%= link_to "My Page", user_path(current_user) %>
-                  </li>
-                  <li> <%= link_to "Sign Out", signout_path, method: :delete %>
-                  </li>
+                  <li> <%= link_to "Free", free_dresses_path %></li>
+                  <li> <%= link_to "Rent", rent_dresses_path%></li>
+                  <li> <%= link_to "Buy", sale_dresses_path%></li>
                 </ul>
               </li>
-            <% else %>
-              <li>
-                <%= link_to "Sign In", signin_path %> 
+
+              <li><%= link_to "Add", new_dress_path %> </li>
+
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Page</a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                  <% if user_signed_in? %>
+                    <li><%= link_to "Dresses", user_path(current_user)%></li>
+                    <li><%= link_to "Rentals", user_rentals_path(current_user)%></li>
+                  <% else %>
+                    <li><%= link_to "Sign-In", signin_path %> </li>
+                  <% end %>
+                </ul>
               </li>
-            <% end %>
-          </ul>
+            </ul>
+            <ul class="nav pull-right" >
+              <% if user_signed_in? %>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Hi, <%= current_user.first_name %>
+                  </a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li> <%= link_to "My Page", user_path(current_user) %>
+                    </li>
+                    <li> <%= link_to "Sign Out", signout_path, method: :delete %>
+                    </li>
+                  </ul>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to "Sign In", signin_path %> 
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
-      </div>
-    <% if flash[:error] %>
-      <div class="alert alert-error">
-        <%= flash[:error] %>
-      </div>
-    <% end %>
 
-    <% if flash[:notices] %>
-      <div class="alert alert-success">
-        <%= flash[:notices] %>
+        <% if flash[:error] %>
+        <div class="alert alert-error">
+          <%= flash[:error] %>
+        </div>
+      <% end %>
+
+      <% if flash[:notices] %>
+        <div class="alert alert-success">
+          <%= flash[:notices] %>
+        </div>
+      <% end %>
+    </header>
+      <div class="center-wrap">
+          <%= yield %>
       </div>
-    <% end %>
-  </header>
-    <div class="center-wrap">
-        <%= yield %>
+      
+      <div class="push"></div>
     </div>
-    
-  <div class="push"></div>
-</div>
 
-  <footer>
+    <footer>
       &copy; {Sassy Hash} 2013
       <span>  
         <%= link_to "Her Story", our_story_path, :class=> 'about-us' %>
@@ -116,34 +116,13 @@
         <%= link_to "Contact Us",  contact_us_path, :class => 'about-us' %>
       </span>
       <div style="clear:both"></div>
-  </footer>
-
-
-</body>
+    </footer>
+  </body>
 </html>
 
 <script type="text/javascript">
 $(document).ready(function() {
-  $('.link-box').css('visibility','hidden');
-    var location = $('.sticker').position().top ;
-    console.log($(".sticker").position().top);
-    $(window).scroll(function() {
-      if(location <= $(window).scrollTop()) {
-        if($('.sticker').css('position','relative')) {
-          $('.sticker').css('top', '0');
-          $('.sticker').css('position','fixed');
-          $('.link-box').css('visibility', 'visible')
-                console.log("removed");
-            }
-        } else { 
-          if(!$('.sticker').css('position', 'relative') & 
-            !$('.link-box').css('visibility','hidden')) 
-              { $('.sticker').css('position', 'fixed');
-                $('.link-box').css('visibility', 'hidden');
-                console.log("added");
-              }
-            }
-    });
+
 });
 
  </script>

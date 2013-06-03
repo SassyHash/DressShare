@@ -1,14 +1,17 @@
 <title>Your Closet</title>
-<h1><%= current_user.first_name %>'s Dresses</h1>
+<div class="sticker">
+  <div class="page-title">
+    <h2><%= current_user.first_name %>'s Dresses</h2>
+  </div>
+</div>
 
-  <div style="padding-left: 30px; padding-top: 10px;">
+<div class="box">
   <% if current_user.dresses.empty? %>
     <h4> Your closet is empty. :( </h4>
   <% else %>
     <h4>  You have shared <%= pluralize(current_user.dresses.count, "dress") %>.</h4>
-  </div>
 
-  <div style="float:right">
+  <div class="dress-links">
     <span><%= link_to raw("<i class=\"icon-plus\"></i> Add A Dress"),
     new_dress_path %></span>
     <span><%= link_to raw("<i class=\"icon-heart\"></i> See All Dresses"),
@@ -21,12 +24,5 @@
     <%= render :partial => 'shared/show_dresses', :locals => {:dresses => current_user.dresses} %>
   </div>
 
-
   <% end %>
-
-<div class="row">
-    <div class="span4 offset1">
-
-    </div>
-  </div>
 </div>

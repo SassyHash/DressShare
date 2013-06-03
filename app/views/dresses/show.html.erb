@@ -1,29 +1,30 @@
 <title> Dress Page</title>
-<div class="row">
-  <div class="span7">
-    <h1> About This Dress </h1>
+
+<div class="sticker">
+  <div class="page-title">
+    <h2> About This Dress </h2>
   </div>
-  <div class="span4" style="margin-left: -20px;">
+</div>
+<div class='box'>
+  <% if current_user != @dress.owner %>
     <div class="rent-button">
       <%= link_to raw("<i class=\"icon-shopping-cart\"></i> Rent This!"), new_dress_rental_path(@dress) %>
     </div>
-  </div>
-</div>
+    <div style="clear: both"></div>
+  <% end %>
 
-<div class="dress-show-wrap">
-  <div class="row">
-    <%= render :partial => 'shared/show_dress', :locals => {:dress => @dress} %>
+  <div class="dress-show-wrap">
+      <%= render :partial => 'shared/show_dress', :locals => {:dress => @dress} %>
+      
+      <div class="dress-links">
+      <%= link_to raw("<i class=\"icon-plus\"></i> Add Another"), new_dress_path %>
+      <%= link_to raw("<i class=\"icon-home\"></i> My Dresses"), user_path(current_user) %>
+      <%= link_to raw("<i class=\"icon-edit\"></i> Edit"), edit_dress_path(@dress) %>
+      <%= link_to "<i class=\"icon-trash\"></i> Delete".html_safe, dress_path(@dress), :method => :delete,
+          :class => 'remote-delete',
+          :confirm => "Do you want to delete this dress? (and stop making money??) Click OK only if you're very very sure." %>
+      </div>
   </div>
-  <div class="row">
-    <span class="span2 dress-links"><%= link_to raw("<i class=\"icon-edit\"></i> Edit This Dress"), edit_dress_path(@dress) %>
-    </span>
-    <span class="span2 dress-links"><%= link_to raw("<i class=\"icon-plus\"></i> Add A Dress"), new_dress_path %>
-    </span>
-    <span class="span2 dress-links"><%= link_to raw("<i class=\"icon-home\"></i> My Dresses"), user_path(current_user) %></span>
-    <span class="span2 dress-links"><%= link_to "<i class=\"icon-trash\"></i> Delete This Dress".html_safe, dress_path(@dress), :method => :delete,
-        :class => 'remote-delete',
-        :confirm => "Do you want to delete this dress? (and stop making money??) Click OK only if you're very very sure." %></span>
-  </div>
-</div>
 
-<div class="clear:both"></div>
+  <div class="clear:both"></div>
+</div>

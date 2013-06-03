@@ -1,14 +1,18 @@
 <title>Your Rentals</title>
-<h1>Hi, <%= current_user.first_name %>. Welcome to DressShare.</h1>
+<div class="sticker">
+  <div class="page-title">
+    <h2> <%= current_user.first_name %>'s Rentals </h2>
+  </div>
+</div>
 
-  <div style="padding-left: 30px; padding-top: 10px;">
+<div class="box">
   <% if current_user.rentals.empty? %>
     <h4> You have no rental history. :( </h4>
   <% else %>
     <h4>  You have <%= pluralize(current_user.rentals.count, "rental") %>.</h4>
     <% current_user.rentals.each do |rental, i| %>
-    <%= render :partial => "shared/show_rental", :locals => {:rental => rental, :dress => rental.dress} %>
+      <%= render :partial => "shared/show_rental", :locals => {:rental => rental, :dress => rental.dress} %>
     <% end %>
   <% end %>
-  </div>
+</div>
 

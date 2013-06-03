@@ -3,7 +3,7 @@ class Dress < ActiveRecord::Base
   :owner_id, :photo1, :photo2, :photo3,
   :rent, :size, :updated_at, :rental, :sale
 
-  attributes = [:color, :rent, :size, :rental, :sale]
+  attributes = [:color, :rent, :size]
   
   attributes.each do |a|
     validates a, :presence => true

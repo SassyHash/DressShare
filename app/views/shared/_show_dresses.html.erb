@@ -1,7 +1,9 @@
 <% dresses.each_with_index do |dress, i| %>
   <span>
     <div class="dresswrap">
-      <%= image_tag dress.photo1.url(:small) %>
+      <div class="dresswrap-image">
+        <%= image_tag dress.photo1.url(:small) %>
+      </div>
       <span class="description">
         <ul>
           <li><%= link_to "#{dress.color} #{dress.brand} dress", dress_path(dress) %></li>

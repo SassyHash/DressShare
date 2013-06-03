@@ -1,8 +1,9 @@
-<div class="span5 offset1">
+  <span class="dress-image">
   <%= image_tag dress.photo1.url(:medium), :id => "photo1" %>
   <%= image_tag dress.photo2.url(:medium), :id => "photo2" unless dress.photo2_file_name.nil? %>
   <%= image_tag dress.photo3.url(:medium), :id => "photo3" unless dress.photo3_file_name.nil? %>
-</div>
-<div class="span5 description">
-  <%= render :partial => 'shared/description', :locals => {:dress => dress} %>
-</div>
+  </span>
+  <span class="dress-description">
+    <%= render :partial => 'shared/description', :locals => {:dress => dress} %>
+  </span>
+  <div style="clear:both;"></div>

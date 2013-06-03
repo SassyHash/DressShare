@@ -1,6 +1,6 @@
 <div class="sticker">
   <div class="page-title">
-    <h2> Add A Dress</h2>
+    <h2> Share A Dress</h2>
   </div>
 </div>
   <%= form_for dress, :html => { :multipart => true } do |f| %>
@@ -12,10 +12,10 @@
     <span style="float: left">
       <div class="input-group">
         <div>
-           <%= f.check_box :rental %> Lend out this Dress
+           <%= f.check_box :rental %> Lend this dress
         </div>
         <div>
-          <%= f.check_box :sale %> Sell away This Dress 
+          <%= f.check_box :sale %> Sell this dress
         </div>
         <div>
           <%= f.text_field :brand, :input_html => {:id => "brands"}, :autofocus => true, :placeholder => "*Brand" %>
@@ -37,27 +37,28 @@
         <div style="margin-top: 10px">
           <%= select_tag("body_types[]", 
           options_for_select(
-            @body_types.collect { |ff| [ff.label, ff.id] }, @dress.body_types.collect { |fs| fs.id }),
+            BodyType.all.collect{ |ff| [ff.label, ff.id] }, dress.body_types.collect{ |fs| fs.id }),
            {:multiple=>true, :id => "bodytypeselect"}) %>
         </div>
-        <div style="margin-top: 10px">
+        <div class="file-field">
           <%= f.file_field :photo1, :as => :file, :label => "Photo 1*" %>
         </div>
-        <div style="margin-top: 10px">
+        <div class="file-field">
           <%= f.file_field :photo2, :as => :file, :label => "Photo 2"  %>
         </div>
-        <div style="margin-top: 10px">
+        <div class="file-field">
           <%= f.file_field :photo3, :as => :file, :label => "Photo 3"  %>
         </div>
       </div>
     </span>
     <span style="float:left">
       <div class="input-group">
+        <%= f.label "Notes" %>
         <%= f.text_area :notes, :placeholder => "Special instructions. Memories about that magical time you wore the dress and the world changed ... ", :input_html => {:class => "notes" } %>
       </div>
     </span>
     <div style="clear:both"></div>
-    <div>
+    <div style="padding-left: 10px">
       <%= f.button :submit %>
     </div>
   </div>
@@ -89,7 +90,7 @@
       selectedText: function(numSelected, numBoxes, elements) {
         var sizes = [];         
         for (var e in elements) {
-          sizes.push(elements[e].value); 
+          sizes.push("Size "+ elements[e].value); 
         }
         return sizes.join(' '); 
       },
@@ -110,8 +111,7 @@
     
     var buttons = new Array ("#sizeselect", "#bodytypeselect");
     for (var i=0; i<buttons.length; i++) {
-    $(buttons[i]).multiselect("getButton").css("width", "185px");
-    $(buttons[i]).multiselect("getButton").css("margin-bottom", "10px");
+    $(buttons[i]).multiselect("getButton").css("width", "245px");
     $(buttons[i]).multiselect("getButton").removeClass('ui-widget ui-state-default ui-corner-all');
     };
   });

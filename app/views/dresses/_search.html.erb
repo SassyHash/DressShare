@@ -41,7 +41,7 @@
 $(document).ready(function() {
   $("#sizeselect").multiselect({
     selectedText: "Size",
-    noneSelectedText: "*Size",
+    noneSelectedText: "Size",
     show: ["slide", 50],
     header: false,
     classes: "myClass"
@@ -81,6 +81,27 @@ $(document).ready(function() {
 
   $('#search_min_rent').css('height','16px');
   $('#search_max_rent').css('height','16px');
+
+  $('.link-box').css('visibility','hidden');
+    var location = $('.sticker').position().top ;
+    console.log($(".sticker").position().top);
+    $(window).scroll(function() {
+      if(location <= $(window).scrollTop()) {
+        if($('.sticker').css('position','relative')) {
+          $('.sticker').css('top', '0');
+          $('.sticker').css('position','fixed');
+          $('.link-box').css('visibility', 'visible')
+                console.log("removed");
+            }
+        } else { 
+          if(!$('.sticker').css('position', 'relative') & 
+            !$('.link-box').css('visibility','hidden')) 
+              { $('.sticker').css('position', 'fixed');
+                $('.link-box').css('visibility', 'hidden');
+                console.log("added");
+              }
+            }
+    });
 });
 
 
