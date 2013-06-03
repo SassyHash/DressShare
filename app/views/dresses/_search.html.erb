@@ -25,7 +25,6 @@
           options_for_select(
              @colors, @colors),
          {:multiple=>true, :id => "colorselect"}) %>
-
   <%= f.number_field :min_rent, :placeholder => "Minimum rent"%>
   <%= f.number_field :max_rent, :placeholder => "Maximum rent" %>
 
@@ -49,7 +48,7 @@ $(document).ready(function() {
 
   $("#bodytypeselect").multiselect({
     selectedText: "# selected",
-    noneSelectedText: "Body Types",
+    noneSelectedText: "Body",
     show: ["slide", 50],
     header: false,
     classes: "myClass"

@@ -101,6 +101,10 @@ body {
     font-weight: bold;
   }
 
+  select {
+    border-radius: 0px;
+    font-family: 'AlegreyaRegular';
+  }
   input[type=file] {
     margin: 0.5em 0; 
     font-size: 1em; 
@@ -688,17 +692,6 @@ ul {
     padding-left: 10px;
   }
 
-  .center-wrap {
-    .offset1, .offset2, .offset3{
-      margin: 0px;
-    }
-    .notes {
-      margin: 0px;
-      padding: 0px; 
-      height: 80px; 
-    }
-  }
-
   .form-horizontal .control-group > label {
         float: none;
         width: auto;
@@ -727,81 +720,60 @@ ul {
       padding-right: 10px;
       text-align: left;
       font-family: 'AlegreyaRegular'; 
-  }
-  
-  .row {
-    margin: 0;
-    max-width: 100%;
+  }  
+
+  .everything {
+    .center-wrap{
+      .dresseswrap {
+        width: 100%;
+        .dresswrap {
+          width: 40%;;
+          padding: 10px;
+          img {
+            padding: 10px;
+          }
+        }
+          .description {
+            margin: 0 auto;
+        }
+      }
     
-    .dresseswrap {
-      width: 90%;
-
-      .dresswrap {
-        width: 400px;
+      .box{
+        width: 100%;
       }
-
-      .span4 {
-        margin: 0px;
-        padding: 0px;
-        width: 55%;
-      }
-
-      .span3{
-        margin: 0px;
-        padding: 0px;
-        max-width: 30%;
-      }
-
-      .dresswrap {
-        font-size: 80%;
-        padding: 10px;
-        margin: 10px;
-          
-        .description {
-          margin: 0 auto;
-        }
-
-        .thumbnail-img {
-          margin: 0px;
+      .sticker{
+        width: 100%;
+        height: auto;
+        padding: 0;
+        margin: 0;
+        .searchbox {
+          width: 100%;
+          margin: 0;
+          padding: 0;
           height: auto;
-          width: auto;
-          margin: 0 auto;
+          padding-left: 10px; 
         }
-      }
-    }
-
-    .span3 {
-      margin: 0px;
-      padding: 0px;
-      width: auto;
-    }
-
-    .searchwrap {
-      margin: 0 auto;
-      padding: 30px;
-      .form-inputs {
+        .page-title {
+          width: 100%;
+          margin-left: 10px;
+        }
       }
     }
   }
 }
 
 @media (min-width: 480px) and (max-width:800px) {
-  .center-wrap {
-    width: 90%;
-  }
+
 }
 
 
 @media (max-width: 479px) {
   .everything {
-    padding-top: 5px;
-    padding-left:10px;
-    padding-right:10px;
+    width: 100%;
 
   }
   .center-wrap {
     margin: 0;
-    min-height: 800px;
 
     .box{
       width: 100%;
@@ -822,22 +794,12 @@ ul {
     }
 
     h2 {
-      font-size: 18px;
+      font-size: 24px;
       line-height: 20px;
     }
 
-    .form-inputs {
-      margin-left: 5px;
-      padding-left: 0px;
-      padding-right: 0px;
-      text-align: left;
-      line-height: 20px;
-    }
   }
 
-  .span8 {
-    width: 100%;
-  }
 }
 
 

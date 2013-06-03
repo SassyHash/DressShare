@@ -1,7 +1,7 @@
 class DressesController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :photo]
   before_filter :dress_owner?, :only => [:edit, :destroy]
-  caches_action :index, :show
+  # caches_action :index, :show
   
   cache_sweeper :dress_sweeper
   # autocomplete :brand, :on => :collection
@@ -75,7 +75,9 @@ class DressesController < ApplicationController
     @colors = Dress.pluck("color").uniq.sort!
     params[:search][:body_types] = params[:body_types] unless params[:body_types].nil? 
     params[:search][:sizes] = params[:sizes] unless params[:sizes].nil?
-
+    params[:search][:brands] = params[:brands] unless params[:brands].nil?
+    params[:search][:colors] = params[:colors] unless params[:colors].nil?
+    
     if params[:search]
       @search.update_attributes(params[:search])
       @dresses = Dress.search(params[:search])

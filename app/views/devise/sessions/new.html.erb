@@ -5,8 +5,7 @@
 </div>
 
 <div class="box">
-  <%= button_to "Sign in \nwith Facebook", omniauth_authorize_path(resource_name, :facebook) %>
-  <hr>
+
   <div class="input-group">
     <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
       <div>
@@ -17,15 +16,27 @@
         <%= f.input_field :remember_me, inline_label: 'Remember me', label: false, :as => :boolean if devise_mapping.rememberable? %>
       </div>
   </div>
-  <div class="input-group">
-    <span style="float:left">
+    <span style="float:left margin-right: 10px; height: 27px;">
       <%= f.button :submit, "Sign in" %>
     </span>
-  </div>
-  <% end %>
-    
-      <div style="clear:both"></div>
-    <%= render "devise/shared/links" %>
-  </div>
+     <span>
+      <%= button_to "Facebook Log-In", omniauth_authorize_path(resource_name, :facebook) %>
+    </span>
+  <% end %>  
+  <div style="clear:both"></div>
+</div>  
+
+<div class="box">
+  <hr>
+  <%= render "devise/shared/links" %>
 </div>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#user_email").css("width", "200px");
+    $("#user_password").css("width", "200px");
+
+  })
+</script>
 

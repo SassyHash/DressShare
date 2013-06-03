@@ -1,15 +1,19 @@
 <title>Your Rental</title>
-
-  <h1>Your Rental </h1>
-  <div class="row">
-    <div class="span6">
-      <h3>looking good on nickels and dimes </h3>
-    </div>
-    <span style ="float:right; margin-right: 20px;">
-      <% if current_user == @dress.owner %>
-        <%= render :partial => 'buttons', :locals => {:rental => @rental} %>
-      <% end %>
-    </span>
+<div class="sticker">
+  <div class="page-title">
+    <h2>Your Rental </h2>
   </div>
+</div>
 
+<div class="box">
+  <span style ="float:right;">
+    <% if current_user == @dress.owner %>
+      <%= render :partial => 'buttons', :locals => {:rental => @rental} %>
+    <% end %>
+  </span>
+
+
+<div style="clear:both"></div>
   <%= render :partial => "shared/show_rental", :locals => {:rental => @rental, :dress => @dress} %>
+
+</div>

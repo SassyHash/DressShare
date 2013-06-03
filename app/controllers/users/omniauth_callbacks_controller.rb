@@ -10,7 +10,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
         flash[:notice] = "You have successfully logged in with Facebook." if is_navigational_format?
       else
-        sign_in_and_redirect(@user)
+        sign_in_and_redirect @user
         flash[:notice] = "Please provide your school and year information." 
       end
     else

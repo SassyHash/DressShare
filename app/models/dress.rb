@@ -35,16 +35,15 @@ class Dress < ActiveRecord::Base
 
   default_scope order('updated_at DESC')
   scope :most_recent, order('updated_at DESC')
-  scope :by_size, lambda { |size| where(:size => size) }
-  scope :by_brands, lambda { |brand| where(:brands => brand) }
-  scope :by_colors, lambda { |color| where(:colors => color) }
+  scope :by_sizes, lambda { |size| where(:size => size) }
+  scope :by_brands, lambda { |brands| where(:brand => brands * ",") }
+  scope :by_colors, lambda { |colors| where(:color => colors * ",") }
   scope :by_body_types, lambda { |body_type_ids| joins(:body_type_dresses)
     .where(:body_type_dresses => {:body_type_id => body_type_ids})}
   scope :by_min_rent, lambda { |min_rent| where('rent >= ?', min_rent)}
   scope :by_max_rent, lambda { |max_rent| where('rent <= ?', max_rent)}
   scope :price_low_high, order('rent')
-  scope :rentals, lambda { where(:rental => true)}
-  scope :sales, lambda {where(:sale => true)}
+  scope :rentals_and_sales, lambda { |rental, sales| where("rental = ? OR sale = ?", rental, sales) }
 
   def body_types_string
     labels = []
@@ -61,17 +60,16 @@ class Dress < ActiveRecord::Base
 
   def self.search(params)
     dresses = Dress
-    # params[:size].each {|s| s.to_i}
+
     dresses = dresses.by_brands(params[:brands]) unless params[:brands].blank?
     dresses = dresses.by_colors(params[:colors]) unless params[:colors].blank?
     
     dresses = dresses.by_body_types(params[:body_types]) unless params[:body_types].blank?
-    dresses = dresses.by_size(params[:sizes]) unless params[:sizes].blank?
+    dresses = dresses.by_sizes(params[:sizes]) unless params[:sizes].blank?
     # params[:sizes].each {|size| dresses.by_sizes(size.to_i)}
     dresses = dresses.by_min_rent(params[:min_rent]) unless params[:min_rent].blank?
     dresses = dresses.by_max_rent(params[:max_rent]) unless params[:max_rent].blank?
-    dresses = dresses.rentals if params[:rental]
-    dresses = dresses.sales if params[:sales]
+    dresses = dresses.rentals_and_sales(params[:rental],params[:sale]) if params[:rental] == true
     dresses.all
   end
 

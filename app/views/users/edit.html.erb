@@ -1,7 +1,12 @@
- <h1>Add Your School </h1>
-  <h2 ><small style="font-size: 20px; margin: 20px;"> ID Validation helps our community! yay real people. </small></h2>
+<div class="sticker">
+  <div class="page-title">
+    <h2>Add Your School </h2>
+  </div>
+</div>
 
-    <%= simple_form_for @user do |f| %>
+<div class="box">
+  <%= simple_form_for @user do |f| %>
+    <div class="input-group">
       <% if @user.errors.any? %>
         <%= render :partial => "shared/error_messages", :locals => {:object => @user} %>
       <% end %>
@@ -10,5 +15,9 @@
           :include_blank => false, :require => true %>
       <%= f.input_field :class_year, :placeholder => "Class Year", :collection => (Date.today.year-8)..(Date.today.year+8), 
           :required => true, include_blank: false %>    
+    </div>
+    <div class="input-group">
       <%= f.button :submit, "Sign up" %>
     <% end %>
+  </div>
+</div>

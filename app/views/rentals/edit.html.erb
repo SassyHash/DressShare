@@ -1,38 +1,35 @@
 <title> Borrow A Dress From Our Closet </title>
-<div class="dress-show-wrap">
-  <h1>Borrow This Dress </h1>
-  <h2 ><small style="font-size: 20px; margin: 20px;">looking good on nickels and dimes </small></h2>
-  <div class="row" %>
+<div class="sticker">
+  <div class="page-title">
+    <h2>Change Your Rental Request</h2>
+  </div>
+</div>
+
+<div class="box">
+  <p style="float: right;"> **You will be notified if the owner accepts your request. </p>
+  <div style="clear: both"></div>
+  <div class="dress-show-wrap">
   <%= render :partial => 'shared/show_dress', :locals => {:dress => @dress} %>
   </div>
 
-
-  <div class="row" %>
-  <h2 style="margin: 30px;"> Change Your Rental Request </h2>
-
-
-    <%= simple_form_for [@dress, @rental] do |f| %>
+    <%= simple_form_for [@dress, @rental], :url => rental_path do |f| %>
       <% if @rental.errors.any? %>
         <%= render :partial => "shared/error_messages", :locals => {:object => @rental} %>
       <% end %>
 
-    <div class="span6">
-      <div style="padding-left: 50px;">
-      <%= f.input :start_date, :as => :string, :input_html => {:id => "start_date", :class => "datepicker"} %>
-      </div>
-    </div>
-    <div class="span6">
-      <div style="padding-left: 50px;">
-      <%= f.input :end_date, :as => :string, :input_html => {:id => "end_date", :class => "datepicker"} %>
-      </div>
-    </div>
-  </div>
 
-    <div style="margin-left: 50px; margin-bottom: 10px;">
-    <%= f.button :submit, "Request to Rent **", :input_html => {:class=> "btn-js-success"}, :remote=> true %>
-    </div>
+      <div class="input-group">
+        <%= f.input :start_date, :as => :string, :input_html => {:id => "start_date", :class => "datepicker"} %>
 
-  <p style="float: right;"> **Please note that this is a request. You will be notified if the owner accepts your request. </p>
+        <%= f.input :end_date, :as => :string, :input_html => {:id => "end_date", :class => "datepicker"} %>
+      </div>
+
+      <div class="input-group">
+        <%= f.button :submit, "Request to Rent **", :input_html => {:class=> "btn-js-success"}, :remote=> true %>
+      </div>
+
+    
+
 </div>
 
 <script type="text/javascript">

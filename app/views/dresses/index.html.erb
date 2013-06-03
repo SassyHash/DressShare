@@ -11,9 +11,9 @@
       user_path(current_user) %>
     </span>
   <% end %>
+  <div class="clear:both;"></div>
 </div>
-  
-<div class="clear:both;"></div>
+
 
 <% if @dresses.empty? %>
 <% else %>
@@ -26,6 +26,12 @@
 <div style="clear:both"></div>
 
 <script type="text/javascript">
+  if ($(window).width() < 870) {
+  $(".sticker").css('height','80px');
+  } else if ($(window).width() < 480) {
+  $(".sticker").css('height','120px');
+  } else {
   $(".sticker").css('height','40px');
+  }
   
 </script>
