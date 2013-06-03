@@ -1,12 +1,19 @@
 class Dress < ActiveRecord::Base
-  attr_accessible :body_type_ids, :brand, :color, :notes, :owner_id, :photo1, :photo2, :photo3, :rent, :size, :updated_at
+  attr_accessible :body_type_ids, :brand, :color, :notes, 
+  :owner_id, :photo1, :photo2, :photo3,
+  :rent, :size, :updated_at, :rental, :sale
 
-  validates :color, :presence => true
-  validates :rent, :presence => true
-  validates :size, :presence => true
+  attributes = [:color, :rent, :size, :rental, :sale]
+  
+  attributes.each do |a|
+    validates a, :presence => true
+  end
   validates_attachment_presence :photo1
 
   before_save :cleanup_brand_and_color
+
+  has_many :rentals
+  has_many :sales
 
   has_many :body_type_dresses
   has_many :body_types, :through => :body_type_dresses
@@ -36,7 +43,8 @@ class Dress < ActiveRecord::Base
   scope :by_min_rent, lambda { |min_rent| where('rent >= ?', min_rent)}
   scope :by_max_rent, lambda { |max_rent| where('rent <= ?', max_rent)}
   scope :price_low_high, order('rent')
-
+  scope :rentals, lambda { where(:rental => true)}
+  scope :sales, lambda {where(:sale => true)}
 
   def body_types_string
     labels = []
@@ -62,6 +70,8 @@ class Dress < ActiveRecord::Base
     # params[:sizes].each {|size| dresses.by_sizes(size.to_i)}
     dresses = dresses.by_min_rent(params[:min_rent]) unless params[:min_rent].blank?
     dresses = dresses.by_max_rent(params[:max_rent]) unless params[:max_rent].blank?
+    dresses = dresses.rentals if params[:rental]
+    dresses = dresses.sales if params[:sales]
     dresses.all
   end
 

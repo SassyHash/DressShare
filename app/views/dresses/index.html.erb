@@ -1,5 +1,5 @@
 <title>The Closet</title>
-<div class="searchwrap">
+<div class="sticker">
   <div class="searchbox">
     <%= render :partial => 'search', :locals => {:search => @search } %>
   </div>
@@ -26,26 +26,6 @@
 <div style="clear:both"></div>
 
 <script type="text/javascript">
-$(document).ready(function() {
-  $('.link-box').css('visibility','hidden');
-    var location = $('.searchwrap').position().top ;
-    $(window).scroll(function() {
-      if(location <= $(window).scrollTop()) {
-        if($('.searchwrap').css('position','relative')) {
-          $('.searchwrap').css('top', '0');
-          $('.searchwrap').css('position','fixed');
-          $('.link-box').css('visibility', 'visible')
-                console.log("removed");
-            }
-        } else { 
-            if(!$('.searchwrap').css('position', 'relative') &
-                !$('.link-box').css('visibility','hidden')) {
-                $('.searchwrap').css('position', 'fixed');
-                $('.link-box').css('visibility', 'hidden');
-                console.log("added");
-            }
-        }
-    });
-});
-
- </script>
+  $(".sticker").css('height','40px');
+  
+</script>

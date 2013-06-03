@@ -1,28 +1,34 @@
-<%= simple_form_for @search, :url => dresses_path, :method => :get do |f| %>
+<%= form_for @search, :url => dresses_path, :method => :get do |f| %>
+  <span class="custom-checkbox-label">
+    Borrow
+    <%= f.check_box :rental %>
+  </span>
+  <span class="custom-checkbox-label">
+    Buy
+    <%= f.check_box :sale %>
+  </span>
 
   <%= select_tag("sizes[]", 
           options_for_select(
              Dress::SIZES.collect { |ff| ["Size #{ff}", ff] }, 
              Dress::SIZES),
          {:multiple=>true, :id => "sizeselect"}) %>
-
   <%= select_tag("body_types[]", 
           options_for_select(
             @body_types.collect { |ff| [ff.label, ff.id] }, @body_types.collect { |fs| fs.id }),
             {:multiple=>true, :id => "bodytypeselect"}) %>
-
   <%= select_tag("brands[]", 
           options_for_select(
              @brands, @brands),
          {:multiple=>true, :id => "brandselect"}) %>
-
   <%= select_tag("colors[]", 
           options_for_select(
              @colors, @colors),
          {:multiple=>true, :id => "colorselect"}) %>
 
-  <%= f.input_field :min_rent, :placeholder => "Minimum rent", :style => "width: 100px; " %>
-  <%= f.input_field :max_rent, :placeholder => "Maximum rent", :style => "width: 100px;" %>
+  <%= f.number_field :min_rent, :placeholder => "Minimum rent"%>
+  <%= f.number_field :max_rent, :placeholder => "Maximum rent" %>
+
 <span class="form-action">
   <%= f.submit :search, :name => nil %>
 </span>
@@ -69,7 +75,7 @@ $(document).ready(function() {
   var buttons = new Array ("#sizeselect", "#bodytypeselect", "#brandselect", "#colorselect");
   for (var i=0; i<buttons.length; i++) {
   $(buttons[i]).multiselect("uncheckAll");
-  $(buttons[i]).multiselect("getButton").css("width", "120px");
+  $(buttons[i]).multiselect("getButton").css("width", "100px");
   $(buttons[i]).multiselect("getButton").removeClass('ui-widget ui-state-default ui-corner-all');
   };
 

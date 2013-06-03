@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601210543) do
+ActiveRecord::Schema.define(:version => 20130602212216) do
 
   create_table "body_type_dresses", :force => true do |t|
     t.integer  "body_type_id"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(:version => 20130601210543) do
     t.string   "photo3_content_type"
     t.integer  "photo3_file_size"
     t.datetime "photo3_updated_at"
+    t.boolean  "rental"
+    t.boolean  "sale"
   end
 
   add_index "dresses", ["owner_id"], :name => "index_dresses_on_owner_id"
@@ -94,6 +96,14 @@ ActiveRecord::Schema.define(:version => 20130601210543) do
   add_index "rentals", ["dress_id"], :name => "index_rentals_on_dress_id"
   add_index "rentals", ["user_id"], :name => "index_rentals_on_user_id"
 
+  create_table "sales", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "dress_id"
+    t.boolean  "accepted",   :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
   create_table "schools", :force => true do |t|
     t.string   "town"
     t.string   "state"
@@ -112,6 +122,8 @@ ActiveRecord::Schema.define(:version => 20130601210543) do
     t.datetime "updated_at", :null => false
     t.string   "sizes"
     t.string   "body_types"
+    t.boolean  "rental"
+    t.boolean  "sale"
   end
 
   create_table "size_searches", :force => true do |t|

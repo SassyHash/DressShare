@@ -75,10 +75,10 @@ class DressesController < ApplicationController
     @colors = Dress.pluck("color").uniq.sort!
     params[:search][:body_types] = params[:body_types] unless params[:body_types].nil? 
     params[:search][:sizes] = params[:sizes] unless params[:sizes].nil?
-    
+
     if params[:search]
-      @dresses = Dress.search(params[:search])
       @search.update_attributes(params[:search])
+      @dresses = Dress.search(params[:search])
       @search.save
     else
       @dresses = Dress.all
@@ -86,7 +86,15 @@ class DressesController < ApplicationController
   end
 
   def free
-    redirect_to index
+    redirect_to dresses_path("search"=>{"min_rent"=>"0", "max_rent"=>"0"})
+  end
+
+  def rent
+    redirect_to dresses_path("search"=>{"rental"=>true})
+  end
+
+  def sale
+    redirect_to dresses_path("search"=>{"sale"=>true})
   end
 
   def photo

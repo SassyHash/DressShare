@@ -1,44 +1,66 @@
-
-
-<%= simple_form_for dress, :html => { :multipart => true } do |f| %>
-  <% if dress.errors.any? %>
-    <%= render :partial => "shared/error_messages", :locals => {:object => dress} %>
-  <% end %>
-  <div class="form-inputs">
-    <div class="row">
-      <div class="span4 offset1" >
-      <%= f.input_field :brand, :input_html => {:id => "brands"}, :autofocus => true, :placeholder => "*Brand" %>
-      <%= f.input_field :color, :input_html => {:id => "colors"}, :placeholder => "*Color" %>
-      <%= f.input_field :rent, :placeholder => "*Rent. (0 If Free)", :as => :integer %>
-        <%= select_tag("size[]", 
+<div class="sticker">
+  <div class="page-title">
+    <h2> Add A Dress</h2>
+  </div>
+</div>
+  <%= form_for dress, :html => { :multipart => true } do |f| %>
+    <% if dress.errors.any? %>
+      <%= render :partial => "shared/error_messages", :locals => {:object => dress} %>
+    <% end %>
+  <div class="box">
+    <div class="form-inputs">
+    <span style="float: left">
+      <div class="input-group">
+        <div>
+           <%= f.check_box :rental %> Lend out this Dress
+        </div>
+        <div>
+          <%= f.check_box :sale %> Sell away This Dress 
+        </div>
+        <div>
+          <%= f.text_field :brand, :input_html => {:id => "brands"}, :autofocus => true, :placeholder => "*Brand" %>
+        </div>
+        <div>
+          <%= f.text_field :color, :input_html => {:id => "colors"}, :placeholder => "*Color" %>
+        </div>
+        <div>
+          <%= f.number_field :rent, :placeholder => "*Rent. (0 If Free)", :as => :integer %>
+        </div>
+      
+        <div style="margin-top: 10px">
+          <%= select_tag("size[]", 
           options_for_select(
              Dress::SIZES.collect { |ff| ["Size #{ff}", ff] }, 
              Dress::SIZES),
-         {:multiple=>false, :id => "sizeselect"}) %>
-
-        <%= select_tag("body_types[]", 
+           {:multiple=>false, :id => "sizeselect"}) %>
+        </div>
+        <div style="margin-top: 10px">
+          <%= select_tag("body_types[]", 
           options_for_select(
             @body_types.collect { |ff| [ff.label, ff.id] }, @dress.body_types.collect { |fs| fs.id }),
-         {:multiple=>true, :id => "bodytypeselect"}) %>
+           {:multiple=>true, :id => "bodytypeselect"}) %>
+        </div>
+        <div style="margin-top: 10px">
+          <%= f.file_field :photo1, :as => :file, :label => "Photo 1*" %>
+        </div>
+        <div style="margin-top: 10px">
+          <%= f.file_field :photo2, :as => :file, :label => "Photo 2"  %>
+        </div>
+        <div style="margin-top: 10px">
+          <%= f.file_field :photo3, :as => :file, :label => "Photo 3"  %>
+        </div>
       </div>
-      <div class="span4 offset1">
-        <%= f.input :photo1, :as => :file, :label => "Photo 1*" %>
-        <%= f.input :photo2, :as => :file, :label => "Photo 2"  %>
-        <%= f.input :photo3, :as => :file, :label => "Photo 3"  %>
-      </div>  
-    </div>
-    <div class="row">
-      <div class="offset1">
-      <%= f.input :notes, :placeholder => "Special instructions. Memories about that magical time you wore the dress and the world changed ... ", :input_html => {:class => "notes" } %>
+    </span>
+    <span style="float:left">
+      <div class="input-group">
+        <%= f.text_area :notes, :placeholder => "Special instructions. Memories about that magical time you wore the dress and the world changed ... ", :input_html => {:class => "notes" } %>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="offset1 form-actions">
+    </span>
+    <div style="clear:both"></div>
+    <div>
       <%= f.button :submit %>
     </div>
   </div>
-
 <% end %>
 
 
@@ -74,21 +96,23 @@
       noneSelectedText: "*Size",
       show: ["slide", 50],
       multiple: false,
-      header: false
-
+      header: false,
+      classes: "myClass"
     });
 
     $("#bodytypeselect").multiselect({
       selectedText: "# of # selected",
       noneSelectedText: "*Flattering On",
       show: ["slide", 50],
-      header: false
+      header: false,
+      classes: "myClass"
     });
     
     var buttons = new Array ("#sizeselect", "#bodytypeselect");
     for (var i=0; i<buttons.length; i++) {
-    $(buttons[i]).multiselect("getButton").css("width", "220px");
+    $(buttons[i]).multiselect("getButton").css("width", "185px");
     $(buttons[i]).multiselect("getButton").css("margin-bottom", "10px");
+    $(buttons[i]).multiselect("getButton").removeClass('ui-widget ui-state-default ui-corner-all');
     };
   });
 

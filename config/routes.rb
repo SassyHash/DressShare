@@ -16,6 +16,9 @@ DressShare::Application.routes.draw do
     resources :rentals, :only => [:new, :create]
     collection do
       get 'search'
+      get 'free'
+      get 'rent'
+      get 'sale'
     end
     member do
       get "photo"
@@ -37,7 +40,5 @@ DressShare::Application.routes.draw do
   get "/about_us", :to => "static_pages#about"
   get "/our_story", :to => "static_pages#story"
   get "/legal_stuff", :to => "static_pages#legal"
-
-  get '/free' => 'dresses#free', :as => 'free_dresses'
 
 end

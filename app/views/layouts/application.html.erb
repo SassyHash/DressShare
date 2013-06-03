@@ -44,9 +44,9 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                <li> <%= link_to "Free", dresses_path %></li>
-                <li> <%= link_to "Rent", dresses_path%></li>
-                <li> <%= link_to "Buy", dresses_path%></li>
+                <li> <%= link_to "Free", free_dresses_path %></li>
+                <li> <%= link_to "Rent", rent_dresses_path%></li>
+                <li> <%= link_to "Buy", sale_dresses_path%></li>
               </ul>
             </li>
 
@@ -97,13 +97,14 @@
       </div>
     <% end %>
   </header>
-
     <div class="center-wrap">
         <%= yield %>
     </div>
+    
+  <div class="push"></div>
+</div>
 
   <footer>
-    <div class="footer-stuff">
       &copy; {Sassy Hash} 2013
       <span>  
         <%= link_to "Her Story", our_story_path, :class=> 'about-us' %>
@@ -115,11 +116,35 @@
         <%= link_to "Contact Us",  contact_us_path, :class => 'about-us' %>
       </span>
       <div style="clear:both"></div>
-    </div>
-
   </footer>
-</div>
+
 
 </body>
 </html>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('.link-box').css('visibility','hidden');
+    var location = $('.sticker').position().top ;
+    console.log($(".sticker").position().top);
+    $(window).scroll(function() {
+      if(location <= $(window).scrollTop()) {
+        if($('.sticker').css('position','relative')) {
+          $('.sticker').css('top', '0');
+          $('.sticker').css('position','fixed');
+          $('.link-box').css('visibility', 'visible')
+                console.log("removed");
+            }
+        } else { 
+          if(!$('.sticker').css('position', 'relative') & 
+            !$('.link-box').css('visibility','hidden')) 
+              { $('.sticker').css('position', 'fixed');
+                $('.link-box').css('visibility', 'hidden');
+                console.log("added");
+              }
+            }
+    });
+});
+
+ </script>
 

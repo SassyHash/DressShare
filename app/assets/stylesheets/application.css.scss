@@ -22,8 +22,11 @@
 
  /*@import 'bootstrap-responsive';*/
 
-html {
+html, body {
   height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 
@@ -34,7 +37,6 @@ body {
   // background-position: center;
   // background-attachment: fixed;
   // background-size: cover;
-  height: 100%;
 }
 
 @media (min-width: 980px) {
@@ -52,8 +54,10 @@ body {
 
 .everything {
   min-height: 100%;
+  height: auto !important;
   height: 100%;
   position: relative;
+  margin: 0 auto -4em;
   
   .alert {
   position: fixed;
@@ -63,11 +67,16 @@ body {
   color: #444;
   }
 
-  input[type=text], input[type=file],
-  input[type=image], input[type=submit], 
-  input[type=reset], input[type=button],
-  input[type=radio], input[type=checkbox] {
-    background-color: white;
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  }
+
+  input[type=text], input[type=number], input[type=image],
+  input[type=reset], input[type=button], input[type=radio], 
+  input[type=checkbox], input[type=submit], textarea {
     border: 1px solid #ccc;
     border-right: solid 2px black;
     border-bottom: solid 2px black; 
@@ -77,11 +86,11 @@ body {
     border-radius: 0px;
     font-family: 'AlegreyaRegular'
   }
-
+  input[type="button"] {
+    background-color: white;
+  }
   input[type=submit] {
-    .search{
-      background-color: #cca7d0;
-    }
+    background-color:#87cce5;
   }
   .navbar { 
     margin-top: 0;
@@ -122,9 +131,33 @@ body {
     }  
   }
   .center-wrap {
-    padding-bottom: 50px;
     font-family: 'AlegreyaRegular';
     font-size: 14px;
+
+    .input-group {
+      margin-bottom: 10px;
+      padding-left: 10px;
+      input[type=text], input[type=number], input[type=button] {
+        width: 170px;
+      }
+
+    }
+
+    .ui-multiselect.myClass {
+      background-color: white;
+      font-size: 15px;
+      font-family: 'AlegreyaRegular';
+    }
+    .ui-multiselect-menu.myClass {
+      font-family: 'AlegreyaRegular';
+      font-size: 13px;
+    }
+
+    .page-title{
+      margin: 0 auto;
+      width: 900px;
+      border-top: 5px solid #d470b2
+    }
 
     .box{
       // border-color: #e5aba8;
@@ -144,6 +177,7 @@ body {
     h2 {
       margin-top: 3px;
       margin-bottom: 3px;
+      line-height: 45px;
       font-family: 'DubielPlainRegular';
     }
 
@@ -221,37 +255,37 @@ body {
       height: 100px; 
     }
 
-    .ui-multiselect.myClass {
-      background-color: white;
+
+    .custom-checkbox-label {
+      color: black;
+      font-weight: bold;
       font-size: 15px;
-      font-family: 'AlegreyaRegular';
-    }
-    .ui-multiselect-menu.myClass {
-      font-family: 'AlegreyaRegular';
-      font-size: 13px;
+      margin: 0 auto;
+      padding-right: 5px;
     }
 
-
-    .searchwrap {
+    .sticker {
     width: 100%;
-    height: 40px;
+    height: 50px;
     background-color: #d470b2;
     box-shadow: 0.2em 0.1em 0.1em #acada9;
+    margin-bottom: 25px;
     // background-color: #6b0276;
       .searchbox {
         width: 900px;
+        height: 50px;
         margin: 0 auto;
-        padding-left: 80px;
-        .jquery-ui-button {
-          background-color: #e8e0e9;
-          border-width: 2px;
-          border-style: solid;  
-          font-size: 15px;
-          font-family: 'AlegreyaRegular';
-        }
-        .jquery-ui-menu {
-          font-family: 'AlegreyaRegular'; 
-        }
+        margin-top: 15;
+        // .jquery-ui-button {
+        //   background-color: #e8e0e9;
+        //   border-width: 2px;
+        //   border-style: solid;  
+        //   font-size: 15px;
+        //   font-family: 'AlegreyaRegular';
+        // }
+        // .jquery-ui-menu {
+        //   font-family: 'AlegreyaRegular'; 
+        // }
         // background-color: #63b6ab;
       }
     }
@@ -261,7 +295,7 @@ body {
     }
 
     .form-inputs {
-      font-family: "AlegreyaRegular";
+      margin-top: 30px;
     }
 
     .dresseswrap {
@@ -301,25 +335,26 @@ body {
       }
     }
   }
+  .push {
+    height: 3em;
+  }
   footer {
     position:absolute;
     width:100%;
-    height:50px;   /* Height of the footer */
+    height:3em;   /* Height of the footer */
     margin: 0;
+    border-width: 0;
     // position: relative;
-    padding-top: 40px;
     font-family: "PacificoRegular";
-
-    .footer-stuff {
-      height: 40px;
-      background-color: #a988ad; 
+    background-color: #a988ad; 
       // #bea5c1;
       // background-color: #3b6d66;
-      color: #605a4a;
-      padding-left: 20px;
-      padding-top: 10px;
-      border-top: dashed 3px white;
-    }
+    color: #605a4a;
+    padding-left: 20px;
+    padding-top: 10px;
+    border-top: dashed 3px white;
+    // border-bottom: 0;
+    
     .about-us {
       float:right;
       margin-right: 20px;
@@ -725,7 +760,6 @@ ul {
       margin: 0 auto;
       padding: 30px;
       .form-inputs {
-        padding: 5px;
       }
     }
   }
